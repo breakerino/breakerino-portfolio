@@ -1,0 +1,26 @@
+# System
+.DS_Store
+
+# Node
+node_modules
+
+# Dev
+.vscode
+**/.vscode
+.trash
+.tmp
+.dev
+
+# Logs
+lerna-debug.log
+yarn-error.log
+
+# Enviromental files
+.env
+.env.development
+.env.production
+**/*/.env.development
+**/*/.env.production
+
+# Docker
+docker-compose.yml

@@ -1,0 +1,11 @@
+{
+  "name": "@breakerino-portfolio/core",
+	"private": true,
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {},
+	"engines": {
+    "node": ">=18 <=22.x.x",
+    "yarn": ">=1"
+  }
+}

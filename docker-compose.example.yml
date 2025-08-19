@@ -1,0 +1,96 @@
+services:
+  app:
+    container_name: ${PROJECT_NAME}_app_${PROJECT_ENV}
+    hostname: ${APP_HOST}
+    restart: unless-stopped
+    build: 
+      context: ./packages/app
+      target: runner-${PROJECT_ENV}
+    environment:
+      # App
+      - APP_SERVER_PROTOCOL=${APP_SERVER_PROTOCOL}
+      - APP_SERVER_NAME=${APP_SERVER_NAME}
+      - APP_PORT=${APP_PORT}
+      
+      # Api
+      - API_PUBLIC_BASE_URL=${API_PUBLIC_BASE_URL}
+      - API_INTERNAL_BASE_URL=${API_INTERNAL_BASE_URL}
+    networks:
+      - main
+      - internal
+    depends_on:
+      - api
+
+  api:
+    container_name: ${PROJECT_NAME}_api_${PROJECT_ENV}
+    hostname: ${API_HOST}
+    restart: unless-stopped
+    build:
+      context: ./packages/api
+      target: runner-${PROJECT_ENV}
+    environment:
+      # Strapi
+      - API_PORT=${API_PORT}
+      - API_VERSION=${API_VERSION}
+      - API_APP_KEYS=${API_APP_KEYS}
+      - API_JWT_SECRET=${API_JWT_SECRET}
+      - API_ADMIN_JWT_SECRET=${API_ADMIN_JWT_SECRET}
+      - API_TRANSFER_TOKEN_SALT=${API_TRANSFER_TOKEN_SALT}
+      - API_TOKEN_SALT=${API_TOKEN_SALT}
+      - API_ENCRYPTION_KEY=${API_ENCRYPTION_KEY}
+      
+      # Database
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      
+      # Server
+      - APP_SERVER_PROTOCOL=${APP_SERVER_PROTOCOL}
+      - APP_SERVER_NAME=${APP_SERVER_NAME}
+      - API_SERVER_PROTOCOL=${API_SERVER_PROTOCOL}
+      - API_SERVER_NAME=${API_SERVER_NAME}
+      - ADMIN_SERVER_PROTOCOL=${ADMIN_SERVER_PROTOCOL}
+      - ADMIN_SERVER_NAME=${ADMIN_SERVER_NAME}
+    volumes:
+      - ./packages/api:/srv/app
+      - ~/var/local/${PROJECT_NAME}/public:/srv/app/public:rw
+      - strapi-modules:/srv/app/node_modules
+    networks:
+      - main
+      - internal
+    depends_on:
+      - database
+
+  database:
+    image: mariadb:latest
+    container_name: ${PROJECT_NAME}_database_${PROJECT_ENV}
+    hostname: ${DATABASE_HOST}
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USERNAME}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_TCP_PORT: ${DATABASE_PORT}
+    networks:
+      - internal
+    volumes:
+      - strapi-database:/var/lib/mysql
+
+networks:
+  # main:
+  #   external: true
+  #   name: [MAIN_NETWORK_NAME]
+  internal:
+    driver: bridge
+
+volumes:
+  strapi-modules:
+    name: ${PROJECT_NAME}_strapi-modules_${PROJECT_ENV}
+    driver: local
+  strapi-database:
+    name: ${PROJECT_NAME}_strapi-database_${PROJECT_ENV}
+    driver: local

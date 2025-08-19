@@ -1,0 +1,6 @@
+.dockerignore
+.next
+.DS_Store
+Dockerfile
+node_modules
+README.md

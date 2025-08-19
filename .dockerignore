@@ -1,0 +1,17 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+LICENCE
+.next
+.git
+makefile
+makefile.production
+.env
+.env.example
+.env.local
+.env.development
+.env.production
+docker-compose.yml
+docker-compose.*.yml

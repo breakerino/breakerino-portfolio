@@ -1,0 +1,14 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": ".",
+		"composite": true,
+		"resolveJsonModule": true,
+		"paths": {
+			"@breakerino/core/*": ["packages/core/*"],
+			"@breakerino/api/*": ["packages/api/src/*"],
+			"@breakerino/app/*": ["packages/app/src/*"],
+		}
+	},
+	"exclude": [".dev/*/**", ".trash/*/**"]
+}
