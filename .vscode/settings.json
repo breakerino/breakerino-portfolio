@@ -4,5 +4,9 @@
 		".env.*.*": "properties",
 		".env.*": "properties",
 		"plyconfig.json": "jsonc"
-	}
+	},
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"tailwindCSS.experimental.configFile": "packages/app/src/assets/css/tailwind.css"
 }
