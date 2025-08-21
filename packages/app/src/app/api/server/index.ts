@@ -4,7 +4,7 @@
 
 // --------------------------------------------------------------------- 
 import Axios, { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse, AxiosResponseTransformer } from 'axios';
-import { isArray, isObject, isUndefined, keys, merge } from 'lodash';
+import { isArray, isUndefined, merge } from 'lodash';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -82,9 +82,7 @@ export const useApi = () => {
 				try {
 					logger.debug(`REQUEST: ${method} ${url} (${id})`, { request: requestArgs });
 					response = await axios({ ...requestArgs });
-					logger.debug(`RESPONSE: ${method} ${url} (${id})`, response);
-
-					logger.table(response.data, isArray(response.data) && isObject(response.data[0]) ? keys(response.data[0]) : (isObject(response.data) ? keys(response.data) : undefined));
+					logger.debug(`RESPONSE: ${method} ${url} (${id})`, response.data);
 				} catch (error) {
 					logger.debug(`ERROR: ${method} ${url} (${id})`, error);
 					throw error;
