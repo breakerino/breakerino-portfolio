@@ -7,7 +7,7 @@ import type { AppProps } from 'next/app'
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import Layout from '@/app/layout'
+import RootLayout from '@/layouts/Root'
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -19,9 +19,9 @@ import '@/assets/scss/globals.scss';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
 	return (
-		<Layout>
+		<RootLayout>
 			<Component {...pageProps} />
-		</Layout>
+		</RootLayout>
 	)
 }
 
