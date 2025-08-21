@@ -43,9 +43,6 @@ next-env.d.ts
 .env.development
 .env.production
 
-# VSCode
-.vscode
-
 # Docker
 docker-compose.local.yml
 
