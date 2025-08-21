@@ -12,6 +12,7 @@
 		"build": "yarn icons:generate && next build",
 		"start": "next start",
 		"lint": "next lint",
+		"format": "prettier --write .",
 		"icons:generate": "svgstore -o public/assets/icons.svg src/assets/icons/*.svg",
 	},
 	"dependencies": {
