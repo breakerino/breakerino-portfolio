@@ -12,7 +12,6 @@ declare global {
 	}
 }
 
-
 export interface EndpointsArgs extends RequestArgs {
 	url: string;
 	method: 'GET' | 'POST' | 'PUT' | 'DELETE',
