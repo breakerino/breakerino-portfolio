@@ -5,8 +5,6 @@
 node_modules
 
 # Dev
-.vscode
-**/.vscode
 .trash
 .tmp
 .dev
