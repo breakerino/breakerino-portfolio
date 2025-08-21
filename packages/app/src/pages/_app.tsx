@@ -14,6 +14,7 @@ import Layout from '@/app/layout'
 // Stylesheets
 // --------------------------------------------------------------------- 
 import '@/assets/css/tailwind.css';
+import '@/assets/scss/globals.scss';
 // --------------------------------------------------------------------- 
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
