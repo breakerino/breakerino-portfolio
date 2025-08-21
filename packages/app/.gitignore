@@ -48,3 +48,7 @@ docker-compose.local.yml
 
 # Scripts
 makefile
+
+# Storybook
+*storybook.log
+storybook-static
