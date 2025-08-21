@@ -11,7 +11,7 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"format": "prettier --write ."
+		"lint": "next lint",
 	},
 	"dependencies": {
 		"@tailwindcss/postcss": "^4.1.12",
@@ -28,7 +28,7 @@
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"eslint": "^9",
-		"prettier": "^3.6.2"
+		"eslint-config-next": "15.5.0",
 	},
 	"engines": {
 		"node": ">=18",
