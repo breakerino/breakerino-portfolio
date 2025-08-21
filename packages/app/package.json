@@ -8,10 +8,11 @@
 		"url": "https://breakerino.me"
 	},
 	"scripts": {
-		"dev": "next dev --turbopack",
-		"build": "next build",
+		"dev": "yarn icons:generate && next dev --turbopack",
+		"build": "yarn icons:generate && next build",
 		"start": "next start",
 		"lint": "next lint",
+		"icons:generate": "svgstore -o public/assets/icons.svg src/assets/icons/*.svg",
 	},
 	"dependencies": {
 		"@tailwindcss/postcss": "^4.1.12",
@@ -32,7 +33,7 @@
 		"@types/react-dom": "^19",
 		"eslint": "^9",
 		"eslint-config-next": "15.5.0",
-		"typescript": "^5"
+		"svgstore-cli": "^2.0.1",
 	},
 	"engines": {
 		"node": ">=18",
