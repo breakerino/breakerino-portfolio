@@ -13,7 +13,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"format": "prettier --write .",
-		"icons:generate": "svgstore -o public/assets/icons.svg src/assets/icons/*.svg",
+		"icons:generate": "svgstore -o public/assets/svg/icons.svg src/assets/icons/*.svg",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},
