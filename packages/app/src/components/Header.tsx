@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ className, logo, menuItems: items }) =>
 				/>
 
 				<DesktopMenu className="hidden md:flex" items={items} />
-				<MobileMenu className="md:hidden" logo={logo} items={items} />
+				<MobileMenu className="md:hidden" logo={logo} items={items} breakpoint={767} />
 			</Container>
 		</header>
 	)
