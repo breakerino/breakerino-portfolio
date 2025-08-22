@@ -24,7 +24,7 @@ export interface DesktopMenuProps {
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems: items, className, ariaLabel }) => {
   return (
     <nav
-      className={twMerge(clsx( 'brk-menu brk-menu--desktop', 'flex items-center', className))}
+      className={twMerge(clsx( 'brk-menu brk-desktop-menu', 'flex items-center', className))}
       aria-label={ariaLabel ?? 'Desktop navigation'}
     >
       <ul className="brk-menu-list flex items-center gap-8">
