@@ -1,0 +1,56 @@
+// --------------------------------------------------------------------- 
+// CSS Variables
+// --------------------------------------------------------------------- 
+
+:root {
+  /*
+   * ------------------------------------------------------------------------------
+   * Colors
+   * ------------------------------------------------------------------------------
+   */
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Primary */
+	--color-primary-50:  #eef7ff;
+	--color-primary-100: #daedff;
+	--color-primary-200: #bde0ff;
+	--color-primary-300: #90ceff;
+	--color-primary-400: #4eacff;
+	--color-primary-500: #3592fc;
+	--color-primary-600: #1f72f1;
+	--color-primary-700: #175cde;
+	--color-primary-800: #194bb4;
+	--color-primary-900: #1a428e;
+	--color-primary-950: #152956;
+
+  /* Secondary */
+  --color-secondary-50:  #f7f8f8;
+  --color-secondary-100: #edeee1;
+  --color-secondary-200: #d7dbe0;
+  --color-secondary-300: #b4bac5;
+  --color-secondary-400: #8c97a4;
+  --color-secondary-500: #6d798a;
+  --color-secondary-600: #586271;
+  --color-secondary-700: #48505c;
+  --color-secondary-800: #3e444e;
+  --color-secondary-900: #373c43;
+  --color-secondary-950: #1a1c20;
+
+  /*
+   * ------------------------------------------------------------------------------
+   * Spacings
+   * ------------------------------------------------------------------------------
+   */
+  --spacing-2:   calc(var(--spacing) * 2);   /* 0.5rem   =   8px  */
+  --spacing-3:   calc(var(--spacing) * 3);   /* 0.75rem  =  12px */
+  --spacing-4:   calc(var(--spacing) * 4);   /* 1rem     =  16px */
+  --spacing-6:   calc(var(--spacing) * 6);   /* 1.5rem   =  24px */
+  --spacing-8:   calc(var(--spacing) * 8);   /* 2rem     =  32px */
+  --spacing-12:  calc(var(--spacing) * 12);  /* 3rem     =  48px */
+  --spacing-16:  calc(var(--spacing) * 16);  /* 4rem     =  64px */
+  --spacing-18:  calc(var(--spacing) * 18);  /* 4.5rem   =  72px */
+  --spacing-23:  calc(var(--spacing) * 23);  /* 5.75rem  =  92px */
+  --spacing-container: calc((var(--spacing) * 360) + (2 * var(--spacing-12))); /* 90rem = 1440px */
+	--spacing-menu: calc(var(--spacing) * 112.5); /* 28.125rem = 450px */
+}
