@@ -13,7 +13,7 @@ import { LogoProps } from '@/components/Logo';
 
 // --------------------------------------------------------------------- 
 import Hamburger from './components/Hamburger';
-import Wrapper from './components/Wrapper';
+import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -51,11 +51,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, items, breakpo
 		<>
 			<Hamburger className={className} onClick={handleToggle} />
 
-			<Wrapper isOpened={isOpened}>
+			<Sidebar isOpened={isOpened}>
 				<Header logo={logo} onClose={handleClose} />
 				<Navigation items={items} ariaLabel={navigationAriaLabel} onClose={handleClose} />
 				<Footer />
-			</Wrapper>
+			</Sidebar>
 
 			<Overlay isOpened={isOpened} onClose={handleClose} />
 		</>

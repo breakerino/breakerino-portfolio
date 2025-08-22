@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Modules > MobileMenu > Components > Wrapper
+// Modules > MobileMenu > Components > Sidebar
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -9,7 +9,7 @@ import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface WrapperProps {
+export interface SidebarProps {
 	className?: string;
 	isOpened: boolean;
 	children?: React.ReactNode;
@@ -17,7 +17,7 @@ export interface WrapperProps {
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-const Wrapper: React.FC<WrapperProps> = ({ className, isOpened, children }) => {	
+const Sidebar: React.FC<SidebarProps> = ({ className, isOpened, children }) => {	
 	return (
 		<div className={twMerge(
 			clsx(
@@ -32,4 +32,4 @@ const Wrapper: React.FC<WrapperProps> = ({ className, isOpened, children }) => {
 	)
 }
 
-export default Wrapper;
+export default Sidebar;
