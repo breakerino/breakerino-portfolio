@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ className, children }) => {
 	return (
 		<div className={clsx(
 			'brk-mobile-menu-footer',
-			'w-full flex justify-between items-center gap-4 px-10 py-5 border-t-3 border-secondary-700',
+			'w-full flex justify-between items-center gap-4 border-t-3 border-secondary-700',
 			className
 		)}>
 			{children}

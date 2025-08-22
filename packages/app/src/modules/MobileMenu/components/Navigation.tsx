@@ -29,7 +29,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 			className={twMerge(
 				clsx(
 					'brk-mobile-menu-navigation',
-					'flex flex-col px-10 py-8 overflow-y-auto',
+					'flex flex-col overflow-y-auto',
 					className
 				)
 			)}

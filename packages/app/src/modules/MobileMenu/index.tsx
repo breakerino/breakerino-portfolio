@@ -55,15 +55,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, menuItems, soc
 			<Hamburger className={className} onClick={handleToggle} />
 
 			<Sidebar isOpened={isOpened}>
-				<Header logo={logo} onClose={handleClose} />
-				<Navigation className="flex-1" items={menuItems} ariaLabel={navigationAriaLabel} onClose={handleClose} />
-				<Footer>
+				<Header className="pl-10 pr-5 py-5" logo={logo} onClose={handleClose} />
+				<Navigation className="px-10 py-8 flex-1" items={menuItems} ariaLabel={navigationAriaLabel} onClose={handleClose} />
+				<Footer className="pl-10 pr-8 py-5">
 					{socialItems && (
 						<div className={clsx(
 							'brk-mobile-menu-socials',
-							'w-full flex flex-wrap justify-between'
+							'w-full flex flex-wrap gap-2'
 						)}>
-							{socialItems.map((item) => <SocialLink key={item.id} variant="sm" showLabel={false} {...item} />)}
+							{socialItems.map((item) => <SocialLink key={item.id} variant="xs" showLabel={false} {...item} />)}
 						</div>
 					)}
 				</Footer>
