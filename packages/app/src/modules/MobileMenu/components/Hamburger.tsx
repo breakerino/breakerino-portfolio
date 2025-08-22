@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Components > HamburgerMenu
+// Modules > MobileMenu > Components > Hamburger
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -20,7 +20,7 @@ export interface HamburgerProps {
 const Hamburger: React.FC<HamburgerProps> = ({ className, onClick: handleClick }) => {
 	return (
 		<>
-			<button className={twMerge(clsx('brk-hamburger',
+			<button className={twMerge(clsx('brk-mobile-menu-hamburger',
 				'p-1 w-10 h-10 border-2 border-secondary-700 rounded-sm flex items-center justify-center cursor-pointer hover:bg-secondary-700 active:bg-secondary-800 transition-colors',
 				className))}
 				onClick={handleClick}	

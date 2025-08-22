@@ -11,10 +11,9 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 import Container from '@/components/Container';
 import Logo, { LogoProps } from '@/components/Logo';
-import DesktopMenu from '@/containers/DesktopMenu';
-import MobileMenu from '@/containers/MobileMenu';
+import DesktopMenu from '@/modules/DesktopMenu';
+import MobileMenu from '@/modules/MobileMenu';
 import { MenuItem } from '@/app/types';
-import { useMediaQuery } from '@uidotdev/usehooks';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -26,18 +25,16 @@ export interface HeaderProps {
 // --------------------------------------------------------------------- 
 
 const Header: React.FC<HeaderProps> = ({ className, logo, menuItems: items }) => {
-	const isMobile = useMediaQuery('(max-width: 767px)');
-
 	return (
 		<header className={twMerge(clsx('brk-header', 'w-full py-4 md:py-6 lg:py-8 xl:py-12', className))}>
 			<Container className="@container/header flex items-center justify-between gap-8">
 				<Logo
 					{...logo}
-					className="md:h-7 lg:h-8 n"
+					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
 				/>
 
-				{!isMobile && <DesktopMenu menuItems={items} />}
-				{isMobile && <MobileMenu menuItems={items} />}
+				<DesktopMenu className="hidden md:flex" items={items} />
+				<MobileMenu className="md:hidden" logo={logo} items={items} />
 			</Container>
 		</header>
 	)
