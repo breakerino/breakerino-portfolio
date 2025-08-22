@@ -30,7 +30,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <Wrapper className="min-w-auto min-h-auto">
+      <Wrapper className="min-w-auto min-h-auto bg-secondary-950 text-primary-50">
         <Story />
       </Wrapper>
     ),
