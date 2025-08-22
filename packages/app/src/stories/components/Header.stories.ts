@@ -8,28 +8,9 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 // --------------------------------------------------------------------- 
 import Header from '@/components/Header';
-import { MenuItem } from '@/app/types';
-import { LogoProps } from '@/components/Logo';
+import { HEADER_LOGO, HEADER_MENU_ITEMS } from '@/app/data';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
-// Data
-// --------------------------------------------------------------------- 
-const MENU_ITEMS: MenuItem[] = [
-	{ id: 'about', href: '#', label: 'About me' },
-	{ id: 'skills', href: '#', label: 'Skills' },
-	{ id: 'projects', href: '#', label: 'Projects' },
-	{ id: 'experience', href: '#', label: 'Experience' },
-	{ id: 'contact', href: '#', label: 'Contact' },
-];
-
-const LOGO: Omit<LogoProps, 'className' | 'href'> = {
-	src: '/assets/svg/breakerino-logo.svg',
-	alt: 'Breakerino logo',
-	width: 202,
-	height: 32
-};
-// --------------------------------------------------------------------- 
 
 const meta = {
 	title: 'Breakerino/Components/Header',
@@ -48,7 +29,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		logo: LOGO,
-		menuItems: MENU_ITEMS
+		logo: HEADER_LOGO,
+		menuItems: HEADER_MENU_ITEMS
 	},
 };

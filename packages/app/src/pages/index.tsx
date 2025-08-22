@@ -6,7 +6,7 @@
 import Header from '@/components/Header';
 // --------------------------------------------------------------------- 
 
-import { LOGO, MENU_ITEMS } from '../app/constants';
+import { HEADER_LOGO, HEADER_MENU_ITEMS } from '@/app/data';
 import Wrapper from '@/components/Wrapper';
 // --------------------------------------------------------------------- 
 
@@ -17,7 +17,7 @@ export type IndexProps = unknown
 export default function Index() {
 	return (
 		<Wrapper>
-			<Header logo={LOGO} menuItems={MENU_ITEMS} />
+			<Header logo={HEADER_LOGO} menuItems={HEADER_MENU_ITEMS} />
 		</Wrapper>
 	);
 }
