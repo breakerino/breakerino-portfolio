@@ -12,7 +12,7 @@ import clsx from 'clsx';
 
 export interface LogoProps {
 	className?: string;
-	href: string;
+	href?: string;
 	src: string;
 	width: number;
 	height: number;
@@ -21,9 +21,21 @@ export interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className, href, src, alt, width, height }) => {
 	return (
-		<Link className={twMerge(clsx('brk-header-logo', 'h-6 md:h-7 lg:h-8 no-underline', className))} href={href}>
+		<Link
+			className={twMerge(
+				clsx(
+					'brk-logo',
+					'block h-6 no-underline',
+					className
+				)
+			)}
+			href={href ?? '#'}
+		>
 			<Image
-				className={clsx('brk-header-logo__image', 'w-full h-full')}
+				className={clsx(
+					'brk-logo__image',
+					'w-full h-full object-contain object-left'
+				)}
 				src={src}
 				alt={alt ?? 'Logo'}
 				width={width}
