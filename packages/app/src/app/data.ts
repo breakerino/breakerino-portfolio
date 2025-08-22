@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------- 
 // Types
 // --------------------------------------------------------------------- 
-import { MenuItem } from '@/app/types';
+import { MenuItem, SocialProfile } from '@/app/types';
 import { LogoProps } from '@/components/Logo';
 // --------------------------------------------------------------------- 
 
@@ -26,3 +26,37 @@ export const HEADER_LOGO: Omit<LogoProps, 'className' | 'href'> = {
 	width: 202,
 	height: 32
 };
+
+// --------------------------------------------------------------------- 
+// Social profiles
+// --------------------------------------------------------------------- 
+export const SOCIAL_PROFILES: SocialProfile[] = [
+  {
+    id: 'github',
+    username: 'breakerino',
+  },
+  {
+    id: 'linkedin',
+    username: 'breakerino',
+  },
+  {
+    id: 'facebook',
+    username: 'matus.breakerino.mendel',
+  },
+  {
+    id: 'instagram',
+    username: 'breakerino',
+  },
+  {
+    id: 'spotify',
+    username: 'i6xj4absm6rvpqwvgk8kibz7g',
+  },
+  {
+    id: 'youtube',
+    username: '@breakerinosk', // TODO: Change to @breakerino
+  },
+  {
+    id: 'myanimelist',
+    username: 'breakerino',
+  },
+];
