@@ -14,7 +14,7 @@ import RootLayout from '@/layouts/Root'
 // Stylesheets
 // --------------------------------------------------------------------- 
 import '@/assets/css/tailwind.css';
-import '@/assets/scss/globals.scss';
+import '@/assets/scss/index.scss';
 // --------------------------------------------------------------------- 
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
