@@ -34,7 +34,7 @@ export interface MobileMenuProps {
 // --------------------------------------------------------------------- 
 const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, items, breakpoint, ariaLabel: navigationAriaLabel }) => {
 	const [isOpened, setIsOpened] = React.useState<boolean>(false);
-	const [isMobile] = useMediaQuery(`(max-width: ${breakpoint ?? '767px'})`)
+	const [isMobile] = useMediaQuery(`(max-width: ${breakpoint ? `${breakpoint}px` : '767px'})`)
 
 	const handleToggle = () => setIsOpened(state => !state);
 	const handleClose = () => setIsOpened(false);
