@@ -9,22 +9,23 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
+import { MenuItem, SocialProfile } from '@/app/types';
 import Container from '@/components/Container';
 import Logo, { LogoProps } from '@/components/Logo';
 import DesktopMenu from '@/modules/DesktopMenu';
 import MobileMenu from '@/modules/MobileMenu';
-import { MenuItem } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
 export interface HeaderProps {
 	className?: string;
 	logo: Omit<LogoProps, 'className' | 'href'>
-	menuItems: MenuItem[]
+	menuItems: MenuItem[];
+	socialItems?: SocialProfile[];
 };
 // --------------------------------------------------------------------- 
 
-const Header: React.FC<HeaderProps> = ({ className, logo, menuItems }) => {
+const Header: React.FC<HeaderProps> = ({ className, logo, menuItems, socialItems }) => {
 	return (
 		<header className={twMerge(clsx('brk-header', 'w-full py-4 md:py-6 lg:py-8 xl:py-12', className))}>
 			<Container className="@container/header flex items-center justify-between gap-8">
@@ -34,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ className, logo, menuItems }) => {
 				/>
 
 				<DesktopMenu className="hidden md:flex" menuItems={menuItems} />
-				<MobileMenu className="md:hidden" logo={logo} items={items} breakpoint={767} />
+				<MobileMenu className="md:hidden" logo={logo} menuItems={menuItems} socialItems={socialItems} breakpoint={767} />
 			</Container>
 		</header>
 	)
