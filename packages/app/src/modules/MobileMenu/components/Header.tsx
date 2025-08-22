@@ -25,11 +25,16 @@ const Header: React.FC<MobileMenuProps> = ({ className, logo, onClose: handleClo
 	return (
 		<div className={clsx(
 			'brk-mobile-menu-header',
-			'w-full flex justify-between items-center gap-4 px-10 py-5 border-b-3 border-secondary-700',
+			'w-full flex justify-between items-center gap-4 pl-10 pr-5 py-5 border-b-3 border-secondary-700',
 			className
 		)}>
 			<Logo {...logo} className="brk-mobile-menu-logo h-5" />
-			<button className="brk-mobile-menu-close flex cursor-pointer rounded-sm hover:bg-secondary-700 active:bg-secondary-800 transition-colors" onClick={handleClose}>
+			<button
+				className={clsx(
+					'brk-mobile-menu-close',
+					'flex cursor-pointer rounded-sm hover:bg-secondary-700 active:bg-secondary-800 transition-colors'
+				)}
+				onClick={handleClose}>
 				<Icon id="cross" className="w-8 h-8" />
 			</button>
 		</div>
