@@ -16,6 +16,10 @@ export interface FooterProps {
 
 // --------------------------------------------------------------------- 
 const Footer: React.FC<FooterProps> = ({ className, children }) => {
+	if ( ! children ) {
+		return null;
+	}
+	
 	return (
 		<div className={clsx(
 			'brk-mobile-menu-footer',
