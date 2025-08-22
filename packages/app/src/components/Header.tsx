@@ -24,7 +24,7 @@ export interface HeaderProps {
 };
 // --------------------------------------------------------------------- 
 
-const Header: React.FC<HeaderProps> = ({ className, logo, menuItems: items }) => {
+const Header: React.FC<HeaderProps> = ({ className, logo, menuItems }) => {
 	return (
 		<header className={twMerge(clsx('brk-header', 'w-full py-4 md:py-6 lg:py-8 xl:py-12', className))}>
 			<Container className="@container/header flex items-center justify-between gap-8">
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ className, logo, menuItems: items }) =>
 					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
 				/>
 
-				<DesktopMenu className="hidden md:flex" items={items} />
+				<DesktopMenu className="hidden md:flex" menuItems={menuItems} />
 				<MobileMenu className="md:hidden" logo={logo} items={items} breakpoint={767} />
 			</Container>
 		</header>

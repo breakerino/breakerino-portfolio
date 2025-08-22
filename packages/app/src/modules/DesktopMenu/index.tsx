@@ -15,13 +15,13 @@ import { MenuItem } from '@/app/types';
 
 // ---------------------------------------------------------------------
 export interface DesktopMenuProps {
-	items: MenuItem[];
+	menuItems: MenuItem[];
 	className?: string;
 	ariaLabel?: string;
 }
 // ---------------------------------------------------------------------
 
-const DesktopMenu: React.FC<DesktopMenuProps> = ({ items: items, className, ariaLabel }) => {
+const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, className, ariaLabel }) => {
 	return (
 		<nav
 			className={twMerge(
@@ -33,7 +33,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ items: items, className, aria
 			aria-label={ariaLabel ?? 'Desktop navigation'}
 		>
 			<ul className="brk-menu-list flex items-center gap-8">
-				{items.map(({ id, href, label, className }) => (
+				{menuItems.map(({ id, href, label, className }) => (
 					<li className="brk-menu-list__item" key={id}>
 						<Link
 							href={href}
