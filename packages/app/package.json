@@ -14,8 +14,8 @@
 		"lint": "next lint",
 		"format": "prettier --write .",
 		"icons:generate": "svgstore -o public/assets/svg/icons.svg src/assets/icons/*.svg",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"storybook": "yarn icons:generate && storybook dev -p 6006",
+		"build-storybook": "yarn icons:generate && storybook build"
 	},
 	"dependencies": {
 		"@tailwindcss/postcss": "^4.1.12",
