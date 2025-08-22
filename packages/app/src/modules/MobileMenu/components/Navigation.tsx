@@ -29,7 +29,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 			className={twMerge(
 				clsx(
 					'brk-mobile-menu-navigation',
-					'flex flex-col justify-center px-10',
+					'flex flex-col px-10 py-8 overflow-y-auto',
 					className
 				)
 			)}
@@ -37,15 +37,29 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 		>
 			<ul className="brk-mobile-menu-list flex flex-col gap-8">
 				{items.map(({ id, href, label, className }) => (
-					<li className="brk-mobile-menu-list__item" key={id} onClick={handleClose}>
+					<li className={clsx(
+						'brk-mobile-menu-list-item',
+						'w-fit'
+					)}
+						key={id}
+						onClick={handleClose}
+					>
 						<Link
 							href={href}
 							className={clsx(
-								'brk-menu-list__link font-semibold text-3xl @sm:text-4xl no-underline hover:underline transition-colors',
+								'brk-mobile-menu-list-item__link',
+								'font-semibold text-3xl @sm:text-4xl no-underline hover:underline active:underline transition-colors',
 								className
 							)}
 						>
-							<span className="brk-mobile-menu__item-text text-primary-50">{label}</span><span className="brk-mobile-menu__item-dot text-primary-400">.</span>
+							<span className={clsx(
+								'brk-menu-list-item__text',
+								'text-primary-50'
+							)}>{label}</span>
+							<span className={clsx(
+								'brk-menu-list-item__dot',
+								'text-primary-400'
+							)}>.</span>
 						</Link>
 					</li>
 				))}
