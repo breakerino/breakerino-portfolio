@@ -41,7 +41,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 						<Link
 							href={href}
 							className={clsx(
-								'brk-menu-list__link font-semibold text-4xl no-underline hover:underline transition-colors',
+								'brk-menu-list__link font-semibold text-3xl @sm:text-4xl no-underline hover:underline transition-colors',
 								className
 							)}
 						>
