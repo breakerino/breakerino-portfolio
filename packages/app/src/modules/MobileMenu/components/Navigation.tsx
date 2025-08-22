@@ -18,11 +18,12 @@ export interface NavigationProps {
 	className?: string;
 	items: MenuItem[];
 	ariaLabel?: string;
+	onClose: React.MouseEventHandler<HTMLElement>;
 }
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel }) => {
+const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, onClose: handleClose }) => {
 	return (
 		<nav
 			className={twMerge(
@@ -36,7 +37,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel }) 
 		>
 			<ul className="brk-mobile-menu-list flex flex-col gap-8">
 				{items.map(({ id, href, label, className }) => (
-					<li className="brk-mobile-menu-list__item" key={id}>
+					<li className="brk-mobile-menu-list__item" key={id} onClick={handleClose}>
 						<Link
 							href={href}
 							className={clsx(

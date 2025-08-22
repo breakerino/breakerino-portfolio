@@ -53,7 +53,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, items, breakpo
 
 			<Wrapper isOpened={isOpened}>
 				<Header logo={logo} onClose={handleClose} />
-				<Navigation items={items} ariaLabel={navigationAriaLabel} />
+				<Navigation items={items} ariaLabel={navigationAriaLabel} onClose={handleClose} />
 				<Footer />
 			</Wrapper>
 
