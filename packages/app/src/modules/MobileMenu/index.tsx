@@ -4,11 +4,14 @@
 
 // --------------------------------------------------------------------- 
 import React from 'react';
+import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { MenuItem } from '@/app/types';
+import { MenuItem, SocialProfile } from '@/app/types';
 import { LogoProps } from '@/components/Logo';
+import SocialLink from '@/components/SocialLink';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -18,32 +21,32 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Overlay from './components/Overlay';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
 export interface MobileMenuProps {
 	className?: string;
 	logo: Omit<LogoProps, 'className' | 'href'>;
-	items: MenuItem[];
+	menuItems: MenuItem[];
+	socialItems?: SocialProfile[];
 	ariaLabel?: string;
 	breakpoint?: number;
 }
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, items, breakpoint, ariaLabel: navigationAriaLabel }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, menuItems, socialItems, breakpoint, ariaLabel: navigationAriaLabel }) => {
 	const [isOpened, setIsOpened] = React.useState<boolean>(false);
 	const [isMobile] = useMediaQuery(`(max-width: ${breakpoint ? `${breakpoint}px` : '767px'})`)
 
 	const handleToggle = () => setIsOpened(state => !state);
 	const handleClose = () => setIsOpened(false);
-	
+
 	React.useEffect(() => {
-		if ( ! isMobile ) {
+		if (!isMobile) {
 			handleClose();
 		}
-		
+
 		return () => handleClose();
 	}, [isMobile])
 
@@ -53,8 +56,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ className, logo, items, breakpo
 
 			<Sidebar isOpened={isOpened}>
 				<Header logo={logo} onClose={handleClose} />
-				<Navigation items={items} ariaLabel={navigationAriaLabel} onClose={handleClose} />
-				<Footer />
+				<Navigation className="flex-1" items={menuItems} ariaLabel={navigationAriaLabel} onClose={handleClose} />
+				<Footer>
+					{socialItems && (
+						<div className={clsx(
+							'brk-mobile-menu-socials',
+							'w-full flex flex-wrap justify-between'
+						)}>
+							{socialItems.map((item) => <SocialLink key={item.id} variant="sm" showLabel={false} {...item} />)}
+						</div>
+					)}
+				</Footer>
 			</Sidebar>
 
 			<Overlay isOpened={isOpened} onClose={handleClose} />
