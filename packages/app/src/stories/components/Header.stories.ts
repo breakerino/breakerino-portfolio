@@ -20,8 +20,8 @@ const meta = {
 		layout: 'fullscreen',
 	},
 	args: {
-
-	}
+	},
+	decorators: [PageDecorator],
 } satisfies Meta<typeof Header>;
 
 export default meta;
