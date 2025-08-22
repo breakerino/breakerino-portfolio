@@ -22,7 +22,7 @@ export interface IconProps {
 
 const Icon: React.FC<IconProps> = ({ className, id }) => (
   <svg
-    className={twMerge(clsx('brk-icon', 'w-auto h-6', className))}
+    className={twMerge(clsx('brk-icon', 'w-6 h-6', className))}
     aria-label={id}
     role="img"
   >
