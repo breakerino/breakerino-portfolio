@@ -15,7 +15,7 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 export interface PortalProps {
 	className?: string;
-	children: React.ReactNode;
+	children?: React.ReactNode;
 };
 // --------------------------------------------------------------------- 
 
