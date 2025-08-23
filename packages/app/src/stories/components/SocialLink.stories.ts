@@ -34,3 +34,11 @@ export const Default: Story = {
 		username: 'breakerino'
 	},
 };
+
+export const IconOnly: Story = {
+	args: {
+		showLabel: false,
+		id: 'github',
+		username: 'breakerino'
+	},
+};
