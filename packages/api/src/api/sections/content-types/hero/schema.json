@@ -1,0 +1,64 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_section_settings",
+  "info": {
+    "singularName": "hero",
+    "pluralName": "hero-section-settings",
+    "displayName": "Hero Section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "heading": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "general.heading",
+      "repeatable": false
+    },
+    "subheading": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "socials": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "github",
+        "linkedin",
+        "facebook",
+        "instagram",
+        "spotify",
+        "youtube",
+        "myanimelist"
+      ]
+    }
+  }
+}
