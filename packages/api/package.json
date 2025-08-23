@@ -8,14 +8,11 @@
 		"build": "strapi build",
 		"start": "strapi start",
 		"console": "strapi console",
-		"deploy": "strapi deploy",
 		"strapi": "strapi",
 		"upgrade": "npx @strapi/upgrade latest",
 		"upgrade:dry": "npx @strapi/upgrade latest --dry"
 	},
 	"dependencies": {
-		"@strapi/plugin-cloud": "5.22.0",
-		"@strapi/plugin-users-permissions": "5.22.0",
 		"@strapi/strapi": "5.22.0",
 		"mysql2": "3.9.8",
 		"react": "^18.0.0",
