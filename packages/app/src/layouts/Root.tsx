@@ -14,7 +14,7 @@ const interFont = Inter({ variable: '--font-inter', subsets: ['cyrillic'], displ
 
 // --------------------------------------------------------------------- 
 export interface RootLayoutProps {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }
 // --------------------------------------------------------------------- 
 
