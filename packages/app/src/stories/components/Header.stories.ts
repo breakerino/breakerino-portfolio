@@ -8,7 +8,7 @@ import PageDecorator from '@/storybook/decorators/page';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import Header from '@/components/Header';
+import Header from '@/sections/Header';
 import { HEADER_LOGO, HEADER_MENU_ITEMS, SOCIAL_PROFILES } from '@/app/data';
 // --------------------------------------------------------------------- 
 
