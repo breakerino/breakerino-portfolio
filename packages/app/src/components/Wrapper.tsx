@@ -10,7 +10,7 @@ import clsx from 'clsx';
 
 // --------------------------------------------------------------------- 
 export interface WrapperProps {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	className?: string;
 }
 // --------------------------------------------------------------------- 
@@ -18,7 +18,7 @@ export interface WrapperProps {
 const Wrapper: React.FC<WrapperProps> = ({ className, children }) => {
 	return (
 		<div
-			className={twMerge(clsx('brk-wrapper', '@container/wrapper min-w-dvw min-h-dvh flex flex-col bg-secondary-950 text-primary-50', className))}>
+			className={twMerge(clsx('brk-wrapper', '@container/wrapper flex flex-col bg-secondary-950 text-primary-50', className))}>
 			{children}
 		</div>
 	);
