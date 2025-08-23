@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_general_logos",
+  "info": {
+    "displayName": "Logo",
+    "icon": "heart"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "alt": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_general_headings",
+  "info": {
+    "displayName": "Heading",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

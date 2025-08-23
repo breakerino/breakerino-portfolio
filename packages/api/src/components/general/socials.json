@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_general_socials",
+  "info": {
+    "displayName": "Social profile",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

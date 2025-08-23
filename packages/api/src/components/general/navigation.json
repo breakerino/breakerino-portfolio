@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_general_navigations",
+  "info": {
+    "displayName": "Navigation item",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+		"slug": {
+      "type": "string",
+      "unique": true,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    }
+  },
+  "config": {}
+}
