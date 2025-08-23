@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "general_settings",
+  "info": {
+    "singularName": "general",
+    "pluralName": "general-settings",
+    "displayName": "General"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "logo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "general.logo",
+      "repeatable": false
+    },
+    "navigation": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "general.navigation",
+      "repeatable": true
+    }
+  }
+}
