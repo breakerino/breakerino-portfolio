@@ -3,7 +3,7 @@ import { DefaultContext } from 'koa';
 import { get, isEmpty, merge } from 'lodash';
 
 // ---------------------------------------------------------------------
-import { handleResponseError } from './functions';
+import { handleResponseError } from './errors';
 // ---------------------------------------------------------------------
 
 class Response {

@@ -1,9 +1,10 @@
 // --------------------------------------------------------------------- 
-import type { Core } from '@strapi/strapi';
+// Utils > Errors
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-declare const strapi: Core.Strapi;
+import _ from 'lodash';
+import logger from './logger';
 // --------------------------------------------------------------------- 
 
 export class GenericException extends Error {
@@ -23,11 +24,6 @@ export class GenericException extends Error {
     this.message = error;
     this.details = details ?? {};
   }
-
-  logError() {
-    const logger = (typeof strapi !== 'undefined' && strapi?.log) ? strapi.log : console;
-    logger.error(this.message);
-  }
 }
 
 export class ResponseError extends GenericException {
@@ -40,3 +36,36 @@ export class ResponseError extends GenericException {
 		this.status = status ?? 500;
 	}
 }
+
+export const handleResponseError = (error: any | null = null) => {
+	// Log error
+	logger.error(error);
+	
+	// Default error
+	if (!(error instanceof GenericException)) {
+		return {
+			status: 500,
+			error: {
+				name: 'UnknownError',
+				message: error?.message ?? 'An unknown error has occured',
+				details: {
+					...error?.details,
+					code: error?.code,
+					status: error.response?.status,
+					data: error.response?.data,
+				},
+			},
+		};
+	}
+
+	// Response error
+	const { id, status, name, message, details } =
+		error instanceof GenericException && !(error instanceof ResponseError)
+			? new ResponseError(error.message, 400, error.details)
+			: error;
+
+	return {
+		status: status ?? 400,
+		error: { id, name, message, status, details: _.omit(details, ['id']) },
+	};
+};
