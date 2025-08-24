@@ -46,6 +46,21 @@ export interface PersonalSocials extends Struct.ComponentSchema {
   };
 }
 
+export interface SiteLayout extends Struct.ComponentSchema {
+  collectionName: 'components_site_layouts';
+  info: {
+    displayName: 'Layout';
+    icon: 'layout';
+  };
+  attributes: {
+    sectionComponent: Schema.Attribute.Enumeration<
+      ['Header', 'Hero', 'AboutMe', 'Skills', 'Experience', 'Footer']
+    >;
+    sectionHeading: Schema.Attribute.Component<'general.heading', false>;
+    sectionID: Schema.Attribute.String & Schema.Attribute.Unique;
+  };
+}
+
 export interface SiteMeta extends Struct.ComponentSchema {
   collectionName: 'components_site_meta';
   info: {
@@ -53,7 +68,7 @@ export interface SiteMeta extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    description: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
     keywords: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
@@ -77,6 +92,7 @@ declare module '@strapi/strapi' {
       'general.heading': GeneralHeading;
       'general.image': GeneralImage;
       'personal.socials': PersonalSocials;
+      'site.layout': SiteLayout;
       'site.meta': SiteMeta;
       'site.navigation': SiteNavigation;
     }
