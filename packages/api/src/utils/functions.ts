@@ -34,7 +34,7 @@ export const sanitizeDocument = (
 	// 	: _.omit(document, [...DOCUMENT_KEYS_TO_OMIT, ...keys]);
 };
 
-export const buildDeepPopulate = (uid: string) => {
+export const deepDocumentPopulate = (uid: string) => {
   const schema = strapi.contentTypes[uid];
   const populate: Record<string, any> = {};
 

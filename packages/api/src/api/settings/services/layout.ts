@@ -3,13 +3,13 @@
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { buildDeepPopulate, sanitizeDocument } from '../../../utils/functions';
+import { deepDocumentPopulate, sanitizeDocument } from '../../../utils/functions';
 // --------------------------------------------------------------------- 
 
 export default {
 	async getSettings() {
 		const settings = await strapi.documents('api::settings.layout').findFirst({
-			populate: buildDeepPopulate('api::settings.site'),
+			populate: deepDocumentPopulate('api::settings.layout'),
 			status: 'published',
 		});
 
