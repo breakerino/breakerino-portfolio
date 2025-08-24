@@ -7,44 +7,42 @@ import _ from 'lodash';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { GenericException, ResponseError } from './errors';
+import { DOCUMENT_KEYS_TO_OMIT } from './constants';
 // --------------------------------------------------------------------- 
 
-export const handleResponseError = (error: any | null = null) => {
-	if (!(error instanceof GenericException)) {
-		return {
-			status: 500,
-			error: {
-				name: 'UnknownError',
-				//message: String(error),
-				message: error?.message ?? 'An unknown error has occured',
-				details: {
-					...error?.details,
-					code: error?.code,
-					status: error.response?.status,
-					data: error.response?.data,
-				},
-			},
-		};
+export const omitRecursively = (obj: Record<string, any>, keys: string[]): any => {
+	if (_.isArray(obj)) {
+		return obj.map((item) => omitRecursively(item, keys));
+	} else if (_.isPlainObject(obj)) {
+		const omitted = _.omit(obj, keys);
+		return _.mapValues(omitted, (value) => omitRecursively(value, keys));
 	}
 
-	const { id, status, name, message, details } =
-		error instanceof GenericException && !(error instanceof ResponseError)
-			? new ResponseError(error.message, 400, error.details)
-			: error;
-
-	return {
-		status: status ?? 400,
-		error: { id, name, message, status, details: _.omit(details, ['id']) },
-	};
+	return obj;
 };
 
-export const sanitizeDocument = (document: Record<string, any>) => _.omit(
-	document, 
-	['id', 'documentId', 'createdAt', 'updatedAt', 'publishedAt', 'locale']
-);
+export const sanitizeDocument = (
+  document: Record<string, any>,
+  deep: boolean = true,
+	keys: string[] = []
+): Record<string, any> => {
+	return omitRecursively({...document}, [...DOCUMENT_KEYS_TO_OMIT, ...keys]);
+	
+	// NOTE: Disabledd deep support because fucking piece of shit anomaly happening, inversed logic for "deep" boolean
+  // return ! deep
+	// 	? omitRecursively(document, [...DOCUMENT_KEYS_TO_OMIT, ...keys])
+	// 	: _.omit(document, [...DOCUMENT_KEYS_TO_OMIT, ...keys]);
+};
 
-export const sanitizeImage = (image: Record<string, any>) => _.omit(
-	sanitizeDocument(image), 
-	['alternativeText', 'caption', 'formats', 'hash', 'ext', 'mime', 'size', 'previewUrl', 'provider', 'provider_metadata', 'folderPath', 'locale']
-);
+export const buildDeepPopulate = (uid: string) => {
+  const schema = strapi.contentTypes[uid];
+  const populate: Record<string, any> = {};
+
+  for (const [attribute, config] of Object.entries<any>(schema.attributes)) {
+    if (['component', 'dynamiczone', 'relation', 'media'].includes(config.type)) {
+      populate[attribute] = { populate: '*' };
+    }
+  }
+
+  return populate;
+}
