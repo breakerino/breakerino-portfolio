@@ -3,9 +3,10 @@
 // --------------------------------------------------------------------- 
 
 export default ({ env }) => ({
-  'users-permissions': {
-    config: {
-      jwtSecret: env('API_JWT_SECRET'),
-    },
-  },
+	'wysiwyg-react-md-editor': {
+		enabled: true,
+		config: {
+			toolbarCommands: ['title1', 'strapiMediaLibrary'],
+		},
+	}
 });
