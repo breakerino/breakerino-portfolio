@@ -2,12 +2,23 @@
 // Api > Settings > Services > Settings
 // --------------------------------------------------------------------- 
 
-export default {
-	async getSettings() {
-		const site = await strapi.service('api::settings.personal').getSettings();
-		const personal = await strapi.service('api::settings.personal').getSettings();
-		const layout = await strapi.service('api::settings.layout').getSettings();
+// --------------------------------------------------------------------- 
+import _ from 'lodash';
+// --------------------------------------------------------------------- 
 
-		return { site, personal, layout }
+// --------------------------------------------------------------------- 
+import { SettingsType } from '../types';
+// --------------------------------------------------------------------- 
+
+export default {
+	async getSettings(types: SettingsType[] = ['site', 'personal', 'layout']) {
+		const settings: Partial<Record<SettingsType, Record<string, any>>> = {};
+		
+		for ( const type of types ) {
+			const data = await strapi.service(`api::settings.${type}`).getSettings()
+			settings[type] = data;
+		}
+		
+		return settings;
 	}
 };

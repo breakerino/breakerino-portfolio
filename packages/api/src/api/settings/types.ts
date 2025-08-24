@@ -1,0 +1,1 @@
+export type SettingsType = 'site' | 'personal' | 'layout';
