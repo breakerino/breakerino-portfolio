@@ -4,7 +4,7 @@
   "info": {
     "singularName": "hero",
     "pluralName": "hero-section-settings",
-    "displayName": "Hero Section"
+    "displayName": "Sections / Hero"
   },
   "options": {
     "draftAndPublish": true
@@ -15,15 +15,16 @@
     }
   },
   "attributes": {
-    "heading": {
-      "type": "component",
+		"settingsName": {
+      "type": "string",
+      "private": true,
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "component": "general.heading",
-      "repeatable": false
+      "default": "Sections / Hero",
+      "unique": true
     },
     "subheading": {
       "type": "string",
@@ -34,7 +35,7 @@
       }
     },
     "text": {
-      "type": "text",
+      "type": "richtext",
       "pluginOptions": {
         "i18n": {
           "localized": true
