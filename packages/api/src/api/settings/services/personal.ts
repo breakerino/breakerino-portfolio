@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Settings > Services > Personal
+// Api > Settings > Services > Personal
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -8,15 +8,13 @@ import moment from 'moment';
 
 // --------------------------------------------------------------------- 
 import { DEFAULT_SITE_LOCALE } from '../../../utils/constants';
-import { sanitizeDocument } from '../../../utils/functions';
+import { buildDeepPopulate, sanitizeDocument } from '../../../utils/functions';
 // --------------------------------------------------------------------- 
 
 export default {
 	async getSettings() {
 		const settings = await strapi.documents('api::settings.personal').findFirst({
-			populate: {
-				socials: true
-			},
+			populate: buildDeepPopulate('api::settings.site'),
 			locale: DEFAULT_SITE_LOCALE,
 			status: 'published',
 		});

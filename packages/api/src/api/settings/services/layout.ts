@@ -1,17 +1,15 @@
 // --------------------------------------------------------------------- 
-// Api > Settings > Services > Site
+// Api > Settings > Services > Layout
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { DEFAULT_SITE_LOCALE } from '../../../utils/constants';
-import { sanitizeDocument, buildDeepPopulate } from '../../../utils/functions';
+import { buildDeepPopulate, sanitizeDocument } from '../../../utils/functions';
 // --------------------------------------------------------------------- 
 
 export default {
 	async getSettings() {
-		const settings = await strapi.documents('api::settings.site').findFirst({
+		const settings = await strapi.documents('api::settings.layout').findFirst({
 			populate: buildDeepPopulate('api::settings.site'),
-			locale: DEFAULT_SITE_LOCALE,
 			status: 'published',
 		});
 
@@ -20,9 +18,12 @@ export default {
 
 	sanitizeSettings(document: Record<string, unknown>) {
 		const settings = sanitizeDocument(document);
-		
+
 		return {
-			meta: sanitizeDocument(settings.siteMeta)
+			...settings,
+			sections: settings.sections.map(({ sectionID: id, sectionComponent: component, sectionHeading: heading }) => {
+				return { id, component, heading }
+			})
 		}
 	}
 };
