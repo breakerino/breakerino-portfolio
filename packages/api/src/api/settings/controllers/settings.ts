@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Settings > Controller
+// Api > Settings > Controllers > Settings
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -37,5 +37,19 @@ export default {
 		}
 
 		return response.send();
-	}
+	},
+	
+	getLayoutSettings: async (ctx: DefaultContext) => {
+		const response = new Response(ctx);
+
+		try {
+			const settings = await strapi.service('api::settings.layout').getSettings();
+			response.setData(settings);
+		} catch (error) {
+			response.setError(error);
+			response.setStatus(error?.status ?? 400);
+		}
+
+		return response.send();
+	},
 };
