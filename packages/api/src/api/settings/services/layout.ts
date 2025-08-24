@@ -22,7 +22,7 @@ export default {
 		return {
 			...settings,
 			sections: settings.sections.map(({ sectionID: id, sectionComponent: component, sectionHeading: heading }) => {
-				return { id, component, heading }
+				return { id, component, ...(heading ? {heading} : {}) }
 			})
 		}
 	}
