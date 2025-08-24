@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_site_layouts",
+  "info": {
+    "displayName": "Layout",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "sectionID": {
+      "type": "string",
+      "unique": true
+    },
+    "sectionComponent": {
+      "type": "enumeration",
+      "enum": [
+        "Header",
+        "Hero",
+        "AboutMe",
+        "Skills",
+        "Experience",
+        "Footer"
+      ]
+    },
+    "sectionHeading": {
+      "type": "component",
+      "component": "general.heading",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
