@@ -1,7 +1,7 @@
 # --------------------------------------------------
 # Dependencies
 # --------------------------------------------------
-FROM node:22-alpine AS deps
+FROM node:20-alpine AS deps
 
 WORKDIR /srv/app
 
@@ -30,7 +30,7 @@ RUN yarn config set registry https://registry.npmjs.org/ \
 # --------------------------------------------------
 # Builder
 # --------------------------------------------------
-FROM node:22-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /srv/app
 
@@ -48,7 +48,7 @@ RUN yarn install --frozen-lockfile --production --ignore-scripts --prefer-offlin
 # --------------------------------------------------
 # Production runner
 # --------------------------------------------------
-FROM node:22-alpine AS runner-prod
+FROM node:20-alpine AS runner-prod
 
 WORKDIR /srv/app
 
