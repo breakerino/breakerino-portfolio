@@ -15,6 +15,17 @@
     }
   },
   "attributes": {
+		"settingsName": {
+      "type": "string",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "Settings / Site",
+      "unique": true
+    },
     "siteMeta": {
       "type": "component",
       "pluginOptions": {
@@ -24,26 +35,6 @@
       },
       "component": "site.meta",
       "repeatable": false
-    },
-    "siteLogo": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "component": "general.image",
-      "repeatable": false
-    },
-    "siteNavigation": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "site.navigation",
-      "repeatable": true
     }
   }
 }

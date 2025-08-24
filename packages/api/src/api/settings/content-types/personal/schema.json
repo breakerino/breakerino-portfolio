@@ -15,6 +15,17 @@
     }
   },
   "attributes": {
+		"settingsName": {
+      "type": "string",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "Settings / Personal",
+      "unique": true
+    },
     "socials": {
       "type": "component",
       "pluginOptions": {

@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "layout_settings",
+  "info": {
+    "singularName": "layout",
+    "pluralName": "layout-settings",
+    "displayName": "Settings / Layout"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "settingsName": {
+      "type": "string",
+      "private": true,
+      "default": "Settings / Layout",
+      "unique": true
+    },
+    "sections": {
+      "type": "component",
+      "component": "site.layout",
+      "repeatable": true
+    }
+  }
+}
