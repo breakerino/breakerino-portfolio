@@ -1,6 +1,9 @@
 // --------------------------------------------------------------------- 
+// Utils > Functions
+// --------------------------------------------------------------------- 
+
+// --------------------------------------------------------------------- 
 import _ from 'lodash';
-import { DefaultContext } from 'koa';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -36,9 +39,12 @@ export const handleResponseError = (error: any | null = null) => {
 	};
 };
 
-export const sendResponse = (
-	{ data = {}, error = {}, status = 200 },
-	ctx: DefaultContext
-) => {
-	return ctx.send({ data, error }, status);
-};
+export const sanitizeDocument = (document: Record<string, any>) => _.omit(
+	document, 
+	['id', 'documentId', 'createdAt', 'updatedAt', 'publishedAt', 'locale']
+);
+
+export const sanitizeImage = (image: Record<string, any>) => _.omit(
+	sanitizeDocument(image), 
+	['alternativeText', 'caption', 'formats', 'hash', 'ext', 'mime', 'size', 'previewUrl', 'provider', 'provider_metadata', 'folderPath', 'locale']
+);

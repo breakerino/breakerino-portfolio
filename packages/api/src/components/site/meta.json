@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_site_meta",
+  "info": {
+    "displayName": "Meta",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "string",
+      "regex": "^[a-zA-ZÀ-ž0-9 .+-]+(?:,\\s*[a-zA-ZÀ-ž0-9 .+-]+)*$"
+    }
+  },
+  "config": {}
+}

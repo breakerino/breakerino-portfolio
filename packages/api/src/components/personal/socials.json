@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_personal_socials",
+  "info": {
+    "displayName": "Social",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+		"username": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "github",
+        "linkedin",
+        "facebook",
+        "instagram",
+        "spotify",
+        "youtube",
+        "myanimelist"
+      ]
+    }
+  },
+  "config": {}
+}

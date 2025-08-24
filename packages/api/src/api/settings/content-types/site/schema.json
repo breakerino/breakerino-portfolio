@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "general_settings",
+  "collectionName": "site_settings",
   "info": {
-    "singularName": "general",
-    "pluralName": "general-settings",
-    "displayName": "General"
+    "singularName": "site",
+    "pluralName": "site-settings",
+    "displayName": "Settings / Site"
   },
   "options": {
     "draftAndPublish": true
@@ -15,24 +15,34 @@
     }
   },
   "attributes": {
-    "logo": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "component": "general.logo",
-      "repeatable": false
-    },
-    "navigation": {
+    "siteMeta": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "general.navigation",
+      "component": "site.meta",
+      "repeatable": false
+    },
+    "siteLogo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "general.image",
+      "repeatable": false
+    },
+    "siteNavigation": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "site.navigation",
       "repeatable": true
     }
   }

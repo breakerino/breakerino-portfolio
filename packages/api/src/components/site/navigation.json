@@ -1,15 +1,15 @@
 {
-  "collectionName": "components_general_navigations",
+  "collectionName": "components_site_navigation",
   "info": {
-    "displayName": "Navigation item",
-    "icon": "link"
+    "displayName": "Navigation",
+    "icon": "house"
   },
   "options": {},
   "attributes": {
     "label": {
       "type": "string"
     },
-		"slug": {
+    "slug": {
       "type": "string",
       "unique": true,
       "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
