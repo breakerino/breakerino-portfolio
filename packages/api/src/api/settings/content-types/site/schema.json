@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-		"settingsName": {
+    "settingsName": {
       "type": "string",
       "private": true,
       "pluginOptions": {
@@ -26,7 +26,7 @@
       "default": "Settings / Site",
       "unique": true
     },
-    "siteMeta": {
+    "seoMeta": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
