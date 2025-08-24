@@ -4,6 +4,7 @@
 
 // --------------------------------------------------------------------- 
 import _ from 'lodash';
+import Mustache from 'mustache';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -45,4 +46,22 @@ export const deepDocumentPopulate = (uid: string) => {
   }
 
   return populate;
+}
+
+export const populateDocumentData = (document: unknown, data: Record<string, any>): Record<string, any> => {
+	if (_.isString(document)) {
+		return Mustache.render(document, data) as any;
+	}
+
+	if (_.isArray(document)) {
+		return document.map((item) => populateDocumentData(item, data)) as any;
+	}
+
+	if (_.isPlainObject(document)) {
+		return Object.fromEntries(
+			Object.entries(document).map(([key, value]) => [key, populateDocumentData(value, data)])
+		);
+	}
+
+	return document;
 }
