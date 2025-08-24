@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "experience_section_settings",
+  "info": {
+    "singularName": "experience",
+    "pluralName": "experience-settings",
+    "displayName": "Sections / Experience"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+		"settingsName": {
+      "type": "string",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "Sections / Experience",
+      "unique": true
+    }
+  }
+}

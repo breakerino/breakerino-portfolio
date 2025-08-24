@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_me_section_settings",
+  "info": {
+    "singularName": "about-me",
+    "pluralName": "about-me-settings",
+    "displayName": "Sections / About me"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+		"settingsName": {
+      "type": "string",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "Sections / About me",
+      "unique": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "skills_section_settings",
+  "info": {
+    "singularName": "skills",
+    "pluralName": "skills-settings",
+    "displayName": "Sections / Skills"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+		"settingsName": {
+      "type": "string",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "Sections / Skills",
+      "unique": true
+    }
+  }
+}

@@ -373,6 +373,166 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSectionsAboutMe extends Struct.SingleTypeSchema {
+  collectionName: 'about_me_section_settings';
+  info: {
+    displayName: 'Sections / About me';
+    pluralName: 'about-me-settings';
+    singularName: 'about-me';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.about-me'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    settingsName: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Sections / About me'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionsContact extends Struct.SingleTypeSchema {
+  collectionName: 'contact_section_settings';
+  info: {
+    displayName: 'Sections / Contact';
+    pluralName: 'contact-settings';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.contact'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    settingsName: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Sections / Contact'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionsExperience extends Struct.SingleTypeSchema {
+  collectionName: 'experience_section_settings';
+  info: {
+    displayName: 'Sections / Experience';
+    pluralName: 'experience-settings';
+    singularName: 'experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.experience'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    settingsName: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Sections / Experience'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionsFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footer_section_settings';
+  info: {
+    displayName: 'Sections / Footer';
+    pluralName: 'footer-settings';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.footer'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    settingsName: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Sections / Footer'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSectionsHeader extends Struct.SingleTypeSchema {
   collectionName: 'header_section_settings';
   info: {
@@ -487,6 +647,86 @@ export interface ApiSectionsHero extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionsProjects extends Struct.SingleTypeSchema {
+  collectionName: 'projects_section_settings';
+  info: {
+    displayName: 'Sections / Projects';
+    pluralName: 'projects-settings';
+    singularName: 'projects';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.projects'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    settingsName: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Sections / Projects'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionsSkills extends Struct.SingleTypeSchema {
+  collectionName: 'skills_section_settings';
+  info: {
+    displayName: 'Sections / Skills';
+    pluralName: 'skills-settings';
+    singularName: 'skills';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.skills'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    settingsName: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Sections / Skills'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -989,8 +1229,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::sections.about-me': ApiSectionsAboutMe;
+      'api::sections.contact': ApiSectionsContact;
+      'api::sections.experience': ApiSectionsExperience;
+      'api::sections.footer': ApiSectionsFooter;
       'api::sections.header': ApiSectionsHeader;
       'api::sections.hero': ApiSectionsHero;
+      'api::sections.projects': ApiSectionsProjects;
+      'api::sections.skills': ApiSectionsSkills;
       'api::settings.layout': ApiSettingsLayout;
       'api::settings.personal': ApiSettingsPersonal;
       'api::settings.site': ApiSettingsSite;

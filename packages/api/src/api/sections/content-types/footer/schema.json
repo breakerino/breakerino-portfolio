@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer_section_settings",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footer-settings",
+    "displayName": "Sections / Footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+		"settingsName": {
+      "type": "string",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "Sections / Footer",
+      "unique": true
+    }
+  }
+}
