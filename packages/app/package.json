@@ -60,7 +60,7 @@
 		"vitest": "^3.2.4"
 	},
 	"engines": {
-		"node": ">=20",
+		"node": ">=18 <=22.x.x",
 		"yarn": ">=1"
 	},
 	"repository": {
