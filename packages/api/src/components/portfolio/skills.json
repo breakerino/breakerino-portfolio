@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_portfolio_skills",
+  "info": {
+    "displayName": "Skills",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::portfolio.skill"
+    }
+  },
+  "config": {}
+}
