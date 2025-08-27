@@ -3,10 +3,7 @@
 // --------------------------------------------------------------------- 
 
 export default ({ env }) => ({
-	'wysiwyg-react-md-editor': {
+	'strapi-cache': {
 		enabled: true,
-		config: {
-			toolbarCommands: ['title1', 'strapiMediaLibrary'],
-		},
-	}
+	},
 });
