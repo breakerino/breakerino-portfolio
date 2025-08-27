@@ -4,7 +4,7 @@ import { isArray } from 'lodash';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import useLogger from '@/hooks/useLogger';
+import createLogger from '@/utils/logger';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -12,7 +12,8 @@ import { DEFAULT_EVENT_BUS_NAMESPACE } from '@/app/constants';
 // --------------------------------------------------------------------- 
 
 export const useEventBus = ({ namespace }: { namespace?: string } = { namespace: DEFAULT_EVENT_BUS_NAMESPACE }) => {
-	const logger = useLogger('Event Bus');
+	const logger = createLogger('Event Bus');
+	
 	const channel = React.useMemo(() => {
 		if (!('BroadcastChannel' in window)) {
 			logger.warn('Required browser API "BroadcastChannel" is not supported in this browser, cross-window events dispatching will not work.')
