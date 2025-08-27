@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "footer_section_settings",
+  "collectionName": "contact_section_settings",
   "info": {
-    "singularName": "footer",
-    "pluralName": "footer-settings",
-    "displayName": "Sections / Footer"
+    "singularName": "contact-section",
+    "pluralName": "contact-section-settings",
+    "displayName": "Sections / Contact"
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +23,7 @@
           "localized": false
         }
       },
-      "default": "Sections / Footer",
+      "default": "Sections / Contact",
       "unique": true
     }
   }

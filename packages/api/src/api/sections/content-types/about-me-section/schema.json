@@ -2,8 +2,8 @@
   "kind": "singleType",
   "collectionName": "about_me_section_settings",
   "info": {
-    "singularName": "about-me",
-    "pluralName": "about-me-settings",
+    "singularName": "about-me-section",
+    "pluralName": "about-me-section-settings",
     "displayName": "Sections / About me"
   },
   "options": {
@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-		"settingsName": {
+    "settingsName": {
       "type": "string",
       "private": true,
       "pluginOptions": {
@@ -25,6 +25,24 @@
       },
       "default": "Sections / About me",
       "unique": true
+    },
+    "reels": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "general.video",
+      "repeatable": true
+    },
+    "text": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

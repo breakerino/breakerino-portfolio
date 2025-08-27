@@ -2,8 +2,8 @@
   "kind": "singleType",
   "collectionName": "skills_section_settings",
   "info": {
-    "singularName": "skills",
-    "pluralName": "skills-settings",
+    "singularName": "skills-section",
+    "pluralName": "skills-section-settings",
     "displayName": "Sections / Skills"
   },
   "options": {
@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-		"settingsName": {
+    "settingsName": {
       "type": "string",
       "private": true,
       "pluginOptions": {
@@ -25,6 +25,16 @@
       },
       "default": "Sections / Skills",
       "unique": true
+    },
+    "skills": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "portfolio.skills",
+      "repeatable": true
     }
   }
 }

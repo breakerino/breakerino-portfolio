@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "projects_section_settings",
+  "collectionName": "footer_section_settings",
   "info": {
-    "singularName": "projects",
-    "pluralName": "projects-settings",
-    "displayName": "Sections / Projects"
+    "singularName": "footer-section",
+    "pluralName": "footer-section-settings",
+    "displayName": "Sections / Footer"
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +23,7 @@
           "localized": false
         }
       },
-      "default": "Sections / Projects",
+      "default": "Sections / Footer",
       "unique": true
     }
   }

@@ -2,8 +2,8 @@
   "kind": "singleType",
   "collectionName": "experience_section_settings",
   "info": {
-    "singularName": "experience",
-    "pluralName": "experience-settings",
+    "singularName": "experience-section",
+    "pluralName": "experience-section-settings",
     "displayName": "Sections / Experience"
   },
   "options": {

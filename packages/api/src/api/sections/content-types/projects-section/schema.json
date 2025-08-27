@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "contact_section_settings",
+  "collectionName": "projects_section_settings",
   "info": {
-    "singularName": "contact",
-    "pluralName": "contact-settings",
-    "displayName": "Sections / Contact"
+    "singularName": "projects-section",
+    "pluralName": "projects-section-settings",
+    "displayName": "Sections / Projects"
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +23,7 @@
           "localized": false
         }
       },
-      "default": "Sections / Contact",
+      "default": "Sections / Projects",
       "unique": true
     }
   }

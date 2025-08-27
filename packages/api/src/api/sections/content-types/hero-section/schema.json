@@ -2,7 +2,7 @@
   "kind": "singleType",
   "collectionName": "hero_section_settings",
   "info": {
-    "singularName": "hero",
+    "singularName": "hero-section",
     "pluralName": "hero-section-settings",
     "displayName": "Sections / Hero"
   },
