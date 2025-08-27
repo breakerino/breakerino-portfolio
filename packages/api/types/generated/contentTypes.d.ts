@@ -373,12 +373,61 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSectionsAboutMe extends Struct.SingleTypeSchema {
+export interface ApiPortfolioSkill extends Struct.CollectionTypeSchema {
+  collectionName: 'skills';
+  info: {
+    displayName: 'Skills';
+    pluralName: 'skills';
+    singularName: 'skill';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.skill'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionsAboutMeSection extends Struct.SingleTypeSchema {
   collectionName: 'about_me_section_settings';
   info: {
     displayName: 'Sections / About me';
-    pluralName: 'about-me-settings';
-    singularName: 'about-me';
+    pluralName: 'about-me-section-settings';
+    singularName: 'about-me-section';
   };
   options: {
     draftAndPublish: true;
@@ -395,9 +444,15 @@ export interface ApiSectionsAboutMe extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.about-me'
+      'api::sections.about-me-section'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    reels: Schema.Attribute.Component<'general.video', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     settingsName: Schema.Attribute.String &
       Schema.Attribute.Private &
       Schema.Attribute.Unique &
@@ -407,18 +462,24 @@ export interface ApiSectionsAboutMe extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'Sections / About me'>;
+    text: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiSectionsContact extends Struct.SingleTypeSchema {
+export interface ApiSectionsContactSection extends Struct.SingleTypeSchema {
   collectionName: 'contact_section_settings';
   info: {
     displayName: 'Sections / Contact';
-    pluralName: 'contact-settings';
-    singularName: 'contact';
+    pluralName: 'contact-section-settings';
+    singularName: 'contact-section';
   };
   options: {
     draftAndPublish: true;
@@ -435,7 +496,7 @@ export interface ApiSectionsContact extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.contact'
+      'api::sections.contact-section'
     >;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
@@ -453,12 +514,12 @@ export interface ApiSectionsContact extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSectionsExperience extends Struct.SingleTypeSchema {
+export interface ApiSectionsExperienceSection extends Struct.SingleTypeSchema {
   collectionName: 'experience_section_settings';
   info: {
     displayName: 'Sections / Experience';
-    pluralName: 'experience-settings';
-    singularName: 'experience';
+    pluralName: 'experience-section-settings';
+    singularName: 'experience-section';
   };
   options: {
     draftAndPublish: true;
@@ -475,7 +536,7 @@ export interface ApiSectionsExperience extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.experience'
+      'api::sections.experience-section'
     >;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
@@ -493,12 +554,12 @@ export interface ApiSectionsExperience extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSectionsFooter extends Struct.SingleTypeSchema {
+export interface ApiSectionsFooterSection extends Struct.SingleTypeSchema {
   collectionName: 'footer_section_settings';
   info: {
     displayName: 'Sections / Footer';
-    pluralName: 'footer-settings';
-    singularName: 'footer';
+    pluralName: 'footer-section-settings';
+    singularName: 'footer-section';
   };
   options: {
     draftAndPublish: true;
@@ -515,7 +576,7 @@ export interface ApiSectionsFooter extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.footer'
+      'api::sections.footer-section'
     >;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
@@ -533,12 +594,12 @@ export interface ApiSectionsFooter extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSectionsHeader extends Struct.SingleTypeSchema {
+export interface ApiSectionsHeaderSection extends Struct.SingleTypeSchema {
   collectionName: 'header_section_settings';
   info: {
     displayName: 'Sections / Header';
     pluralName: 'header-section-settings';
-    singularName: 'header';
+    singularName: 'header-section';
   };
   options: {
     draftAndPublish: true;
@@ -555,7 +616,7 @@ export interface ApiSectionsHeader extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.header'
+      'api::sections.header-section'
     >;
     logo: Schema.Attribute.Component<'general.image', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -585,12 +646,12 @@ export interface ApiSectionsHeader extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSectionsHero extends Struct.SingleTypeSchema {
+export interface ApiSectionsHeroSection extends Struct.SingleTypeSchema {
   collectionName: 'hero_section_settings';
   info: {
     displayName: 'Sections / Hero';
     pluralName: 'hero-section-settings';
-    singularName: 'hero';
+    singularName: 'hero-section';
   };
   options: {
     draftAndPublish: true;
@@ -605,7 +666,10 @@ export interface ApiSectionsHero extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::sections.hero'>;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sections.hero-section'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
       Schema.Attribute.Private &
@@ -653,12 +717,12 @@ export interface ApiSectionsHero extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSectionsProjects extends Struct.SingleTypeSchema {
+export interface ApiSectionsProjectsSection extends Struct.SingleTypeSchema {
   collectionName: 'projects_section_settings';
   info: {
     displayName: 'Sections / Projects';
-    pluralName: 'projects-settings';
-    singularName: 'projects';
+    pluralName: 'projects-section-settings';
+    singularName: 'projects-section';
   };
   options: {
     draftAndPublish: true;
@@ -675,7 +739,7 @@ export interface ApiSectionsProjects extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.projects'
+      'api::sections.projects-section'
     >;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
@@ -693,12 +757,12 @@ export interface ApiSectionsProjects extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSectionsSkills extends Struct.SingleTypeSchema {
+export interface ApiSectionsSkillsSection extends Struct.SingleTypeSchema {
   collectionName: 'skills_section_settings';
   info: {
     displayName: 'Sections / Skills';
-    pluralName: 'skills-settings';
-    singularName: 'skills';
+    pluralName: 'skills-section-settings';
+    singularName: 'skills-section';
   };
   options: {
     draftAndPublish: true;
@@ -715,7 +779,7 @@ export interface ApiSectionsSkills extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::sections.skills'
+      'api::sections.skills-section'
     >;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
@@ -727,6 +791,12 @@ export interface ApiSectionsSkills extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'Sections / Skills'>;
+    skills: Schema.Attribute.Component<'portfolio.skills', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1229,14 +1299,15 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::sections.about-me': ApiSectionsAboutMe;
-      'api::sections.contact': ApiSectionsContact;
-      'api::sections.experience': ApiSectionsExperience;
-      'api::sections.footer': ApiSectionsFooter;
-      'api::sections.header': ApiSectionsHeader;
-      'api::sections.hero': ApiSectionsHero;
-      'api::sections.projects': ApiSectionsProjects;
-      'api::sections.skills': ApiSectionsSkills;
+      'api::portfolio.skill': ApiPortfolioSkill;
+      'api::sections.about-me-section': ApiSectionsAboutMeSection;
+      'api::sections.contact-section': ApiSectionsContactSection;
+      'api::sections.experience-section': ApiSectionsExperienceSection;
+      'api::sections.footer-section': ApiSectionsFooterSection;
+      'api::sections.header-section': ApiSectionsHeaderSection;
+      'api::sections.hero-section': ApiSectionsHeroSection;
+      'api::sections.projects-section': ApiSectionsProjectsSection;
+      'api::sections.skills-section': ApiSectionsSkillsSection;
       'api::settings.layout': ApiSettingsLayout;
       'api::settings.personal': ApiSettingsPersonal;
       'api::settings.site': ApiSettingsSite;

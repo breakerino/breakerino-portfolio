@@ -24,6 +24,19 @@ export interface GeneralImage extends Struct.ComponentSchema {
   };
 }
 
+export interface GeneralVideo extends Struct.ComponentSchema {
+  collectionName: 'components_general_videos';
+  info: {
+    displayName: 'Video';
+    icon: 'picture';
+  };
+  attributes: {
+    thumbnail: Schema.Attribute.Component<'general.image', false>;
+    title: Schema.Attribute.String;
+    video: Schema.Attribute.Media<'files' | 'videos'>;
+  };
+}
+
 export interface PersonalSocials extends Struct.ComponentSchema {
   collectionName: 'components_personal_socials';
   info: {
@@ -43,6 +56,18 @@ export interface PersonalSocials extends Struct.ComponentSchema {
       ]
     >;
     username: Schema.Attribute.String;
+  };
+}
+
+export interface PortfolioSkills extends Struct.ComponentSchema {
+  collectionName: 'components_portfolio_skills';
+  info: {
+    displayName: 'Skills';
+    icon: 'brush';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    skills: Schema.Attribute.Relation<'oneToMany', 'api::portfolio.skill'>;
   };
 }
 
@@ -91,7 +116,9 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'general.heading': GeneralHeading;
       'general.image': GeneralImage;
+      'general.video': GeneralVideo;
       'personal.socials': PersonalSocials;
+      'portfolio.skills': PortfolioSkills;
       'site.layout': SiteLayout;
       'site.meta': SiteMeta;
       'site.navigation': SiteNavigation;
