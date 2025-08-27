@@ -13,8 +13,10 @@ services:
       - APP_PORT=${APP_PORT}
       
       # Api
-      - API_PUBLIC_BASE_URL=${API_PUBLIC_BASE_URL}
+      - API_TOKEN=${API_TOKEN}
       - API_INTERNAL_BASE_URL=${API_INTERNAL_BASE_URL}
+      - NEXT_PUBLIC_API_PUBLIC_BASE_URL=${API_PUBLIC_BASE_URL}"
+      - NEXT_PUBLIC_STATIC_BASE_URL=${STATIC_SERVER_PROTOCOL}://${STATIC_SERVER_NAME}
     networks:
       - main
       - internal
