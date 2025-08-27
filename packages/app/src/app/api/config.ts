@@ -4,10 +4,11 @@
 
 const config = {
 	baseURL: typeof window !== 'undefined'
-		? process.env.API_PUBLIC_BASE_URL
+		? process.env.NEXT_PUBLIC_API_PUBLIC_BASE_URL
 		: process.env.API_INTERNAL_BASE_URL,
 	headers: {
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/json',
+		'Authorization': `Bearer ${process.env.API_TOKEN}`
 	}
 }
 
