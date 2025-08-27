@@ -20,6 +20,10 @@ set -a
 source $PROJECT_ROOT_DIR/.env.development
 set +a
 
+# Public variables
+export NEXT_PUBLIC_API_PUBLIC_BASE_URL="${API_PUBLIC_BASE_URL}"
+export NEXT_PUBLIC_STATIC_BASE_URL="${STATIC_SERVER_PROTOCOL}://${STATIC_SERVER_NAME}"
+
 # Install dependencies for the app package.
 yarn install
 
