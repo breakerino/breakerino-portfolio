@@ -7,7 +7,7 @@ export type LogLevel = 'info' | 'debug' | 'warn' | 'error' | 'table';
 export const LOG_LEVELS: LogLevel[] = ['info', 'debug', 'warn', 'error', 'table']
 // --------------------------------------------------------------------- 
 
-const useLogger = (label = '', prefix = DEFAULT_LOGGER_LABEL) => {
+const logger = (label = '', prefix = DEFAULT_LOGGER_LABEL) => {
 	const logMessage = (type: LogLevel, message: string | unknown, ...data: unknown[]) => {
 		if (['debug'].includes(type) && process.env.NODE_ENV !== 'development') {
 			return;
@@ -31,4 +31,4 @@ const useLogger = (label = '', prefix = DEFAULT_LOGGER_LABEL) => {
 	}
 }
 
-export default useLogger;
+export default logger;
