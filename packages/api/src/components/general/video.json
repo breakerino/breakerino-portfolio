@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_general_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "videos"
+      ]
+    },
+    "thumbnail": {
+      "type": "component",
+      "component": "general.image",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
