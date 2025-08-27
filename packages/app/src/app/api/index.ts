@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Api > Server
+// Api > Client
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -8,13 +8,13 @@ import { isArray, isUndefined, merge } from 'lodash';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import useLogger from '@/hooks/useLogger';
+import createLogger from '@/utils/logger';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import config from '../config';
-import endpoints from '../endpoints';
-import { EndpointsArgs, RequestArgs } from '../types';
+import config from './config';
+import endpoints from './endpoints';
+import { EndpointsArgs, RequestArgs } from './types';
 // --------------------------------------------------------------------- 
 
 declare global {
@@ -25,10 +25,9 @@ declare global {
 
 const axios = Axios.create({ ...config });
 
-export const useApi = () => {
-	const logger = useLogger('Api');
+export const createApiClient = () => {
+	const logger = createLogger('Api');
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const handleRequest = (id: (keyof typeof endpoints), _defaultArgs: EndpointsArgs) => {
 		return (
 			async (_passedArgs: RequestArgs): Promise<AxiosResponse> => { // TODO
@@ -96,7 +95,6 @@ export const useApi = () => {
 	const handlers = Object.fromEntries(
 		Object.entries(endpoints).map(([id, args]) => [id, handleRequest(id as keyof typeof endpoints, args)])
 	) as Record<keyof typeof endpoints, (requestArgs?: RequestArgs) => Promise<AxiosResponse>>
-
 
 	return handlers;
 }
