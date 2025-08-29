@@ -23,30 +23,58 @@ export const omitRecursively = (obj: Record<string, any>, keys: string[]): any =
 };
 
 export const sanitizeDocument = (
-  document: Record<string, any>,
-  deep: boolean = true,
+	document: Record<string, any>,
+	deep: boolean = true,
 	keys: string[] = []
 ): Record<string, any> => {
-	return omitRecursively({...document}, [...DOCUMENT_KEYS_TO_OMIT, ...keys]);
-	
+	return omitRecursively({ ...document }, [...DOCUMENT_KEYS_TO_OMIT, ...keys]);
+
 	// NOTE: Disabledd deep support because fucking piece of shit anomaly happening, inversed logic for "deep" boolean
-  // return ! deep
+	// return ! deep
 	// 	? omitRecursively(document, [...DOCUMENT_KEYS_TO_OMIT, ...keys])
 	// 	: _.omit(document, [...DOCUMENT_KEYS_TO_OMIT, ...keys]);
 };
 
-export const deepDocumentPopulate = (uid: string) => {
-  const schema = strapi.contentTypes[uid];
-  const populate: Record<string, any> = {};
+export const deepDocumentPopulate = (
+	uid: string,
+	exclude: string[] = ['createdBy', 'updatedBy', 'localizations']
+): Record<string, any> => {
+	const schema = strapi.contentTypes[uid] ?? strapi.components[uid];
+	const populate: Record<string, any> = {};
 
-  for (const [attribute, config] of Object.entries<any>(schema.attributes)) {
-    if (['component', 'dynamiczone', 'relation', 'media'].includes(config.type)) {
-      populate[attribute] = { populate: '*' };
-    }
-  }
+	for (const [attribute, config] of Object.entries<any>(schema.attributes)) {
+		if (exclude.includes(attribute)) {
+			continue;
+		}
 
-  return populate;
-}
+		switch (config.type) {
+			case 'component':
+				populate[attribute] = {
+					populate: deepDocumentPopulate(config.component, exclude),
+				};
+				break;
+
+			case 'dynamiczone':
+				populate[attribute] = {
+					populate: config.components.reduce((populateMap: Record<string, any>, compUID: string) => {
+						populateMap[compUID] = { populate: deepDocumentPopulate(compUID, exclude) };
+						return populateMap;
+					}, {}),
+				};
+				break;
+
+			case 'relation':
+				populate[attribute] = { populate: '*' };
+				break;
+
+			case 'media':
+				populate[attribute] = true;
+				break;
+		}
+	}
+
+	return populate;
+};
 
 export const populateDocumentData = (document: unknown, data: Record<string, any>): Record<string, any> => {
 	if (_.isString(document)) {
