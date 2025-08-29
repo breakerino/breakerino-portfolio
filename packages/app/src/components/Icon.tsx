@@ -10,13 +10,13 @@ import clsx from 'clsx';
 
 // --------------------------------------------------------------------- 
 import { ICON_SET_URI } from '@/app/constants';
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface IconProps {
+export interface IconProps extends BaseComponentProps {
   id: string;
   size?: number;
-  className?: string;
 }
 // --------------------------------------------------------------------- 
 

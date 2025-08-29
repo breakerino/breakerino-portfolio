@@ -13,11 +13,10 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface PortalProps {
-	className?: string;
-	children?: React.ReactNode;
-};
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
+
+export interface PortalProps extends BaseComponentProps {}
 
 export default function Portal({ className, children }: PortalProps) {
 	if (typeof document === 'undefined') {

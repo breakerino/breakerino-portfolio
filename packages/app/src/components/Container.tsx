@@ -9,10 +9,11 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface ContainerProps {
-	children?: React.ReactNode;
-	className?: string;
-}
+import { BaseComponentProps } from '@/app/types';
+// --------------------------------------------------------------------- 
+
+// --------------------------------------------------------------------- 
+export interface ContainerProps extends BaseComponentProps {}
 // --------------------------------------------------------------------- 
 
 const Container: React.FC<ContainerProps> = ({ children, className }) => {

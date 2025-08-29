@@ -10,8 +10,11 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
-export interface LogoProps {
-	className?: string;
+// --------------------------------------------------------------------- 
+import { BaseComponentProps } from '@/app/types';
+// --------------------------------------------------------------------- 
+
+export interface LogoProps extends BaseComponentProps {
 	href?: string;
 	src: string;
 	width: number;

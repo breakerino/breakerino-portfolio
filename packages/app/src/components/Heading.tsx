@@ -8,10 +8,11 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
-export interface HeadingProps {
-	className?: string;
-	title: string;
-	subtitle?: string;
+// --------------------------------------------------------------------- 
+import { BaseComponentProps, Heading as HeadingType } from '@/app/types';
+// --------------------------------------------------------------------- 
+
+export interface HeadingProps extends BaseComponentProps, HeadingType {
 	showTitleDot?: boolean;
 	as?: keyof React.JSX.IntrinsicElements;
 }

@@ -8,13 +8,13 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
-export interface TextProps {
-	className?: string;
-	children?: React.ReactNode;
-	as?: keyof React.JSX.IntrinsicElements;
-}
+// --------------------------------------------------------------------- 
+import { BaseComponentProps } from '@/app/types';
+// --------------------------------------------------------------------- 
 
-const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'p' }) => {
+export interface TextProps extends BaseComponentProps {}
+
+const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'div' }) => {
 	return (
 		<Tag
 			className={twMerge(

@@ -4,11 +4,12 @@ import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
-export interface SectionProps {
+// --------------------------------------------------------------------- 
+import { BaseComponentProps } from '@/app/types';
+// --------------------------------------------------------------------- 
+
+export interface SectionProps extends BaseComponentProps {
 	id?: string;
-	className?: string;
-	children?: React.ReactNode;
-	as?: keyof React.JSX.IntrinsicElements;
 }
 
 const Section: React.FC<SectionProps> = ({ id, className, children, as: Tag = 'section' }) => {

@@ -9,11 +9,10 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface WrapperProps {
-	children?: React.ReactNode;
-	className?: string;
-}
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
+
+export interface WrapperProps extends BaseComponentProps {}
 
 const Wrapper: React.FC<WrapperProps> = ({ className, children }) => {
 	return (
