@@ -18,9 +18,11 @@
       ]
     },
     "thumbnail": {
-      "type": "component",
-      "component": "general.image",
-      "repeatable": false
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   },
   "config": {}
