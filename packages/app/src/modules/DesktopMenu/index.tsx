@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------
-// Modules > DesktopMenu
+// Modules > Desktop menu
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
@@ -10,16 +10,13 @@ import clsx from 'clsx';
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
-import { MenuItem } from '@/app/types';
+import { BaseComponentProps, MenuItem } from '@/app/types';
 // ---------------------------------------------------------------------
 
-// ---------------------------------------------------------------------
-export interface DesktopMenuProps {
+export interface DesktopMenuProps extends BaseComponentProps {
 	menuItems: MenuItem[];
-	className?: string;
 	ariaLabel?: string;
 }
-// ---------------------------------------------------------------------
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, className, ariaLabel }) => {
 	return (
