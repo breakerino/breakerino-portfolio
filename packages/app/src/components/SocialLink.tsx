@@ -46,7 +46,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({
 			className={twMerge(
 				clsx(
 					'brk-social-link',
-					'w-fit flex items-center border-2 border-secondary-700 rounded-lg hover:bg-secondary-700 active:bg-secondary-800 transition-colors',
+					'w-fit flex items-center border-2 border-secondary-700 rounded-lg hover:bg-secondary-800 active:bg-secondary-900 transition-colors',
 					styles.padding,
 					styles.gap,
 					!showLabel && styles.paddingIcon,

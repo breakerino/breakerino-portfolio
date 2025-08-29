@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ className, logo, onClose: handleClose }
 			<button
 				className={clsx(
 					'brk-mobile-menu-close',
-					'flex cursor-pointer rounded-sm hover:bg-secondary-700 active:bg-secondary-800 transition-colors'
+					'flex cursor-pointer rounded-sm hover:bg-secondary-800 active:bg-secondary-900 transition-colors'
 				)}
 				onClick={handleClose}>
 				<Icon id="cross" className="w-8 h-8" />
