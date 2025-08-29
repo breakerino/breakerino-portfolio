@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-		"settingsName": {
+    "settingsName": {
       "type": "string",
       "private": true,
       "pluginOptions": {
@@ -41,6 +41,18 @@
           "localized": true
         }
       }
+    },
+    "image": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "socials": {
       "type": "customField",
