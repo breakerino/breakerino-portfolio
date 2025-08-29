@@ -24,7 +24,7 @@ const Frame: React.FC<FrameProps> = ({ className, children, as: Tag = 'div' }) =
 			className={twMerge(
 				clsx(
 					'brk-frame',
-					'relative pr-8 pb-8 md:pr-12 md:pb-12',
+					'relative w-fit h-fit pr-8 pb-8 md:pr-12 md:pb-12',
 					className
 				)
 			)}
@@ -33,7 +33,7 @@ const Frame: React.FC<FrameProps> = ({ className, children, as: Tag = 'div' }) =
 				ref={contentRef}
 				className={clsx(
 					'brk-frame-content',
-					'relative z-10'
+					'relative z-10 w-fit h-fit'
 				)}
 			>
 				{children}
