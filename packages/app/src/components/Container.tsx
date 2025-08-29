@@ -21,7 +21,7 @@ const Container: React.FC<ContainerProps> = ({ children, className }) => {
 		<div className={twMerge(
 			clsx(
 				'brk-container',
-				'@container/container w-full max-w-container flex flex-col gap-8 md:gap-12 lg:gap-18 px-6 md:px-8 lg:px-12 m-auto',
+				'@container/container w-full max-w-container flex flex-col gap-8 md:gap-12 lg:gap-16 px-6 md:px-8 lg:px-12 m-auto',
 				className
 			)
 		)}>
