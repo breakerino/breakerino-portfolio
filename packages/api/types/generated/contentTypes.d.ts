@@ -570,6 +570,12 @@ export interface ApiSectionsFooterSection extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    copyrightText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -588,6 +594,12 @@ export interface ApiSectionsFooterSection extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'Sections / Footer'>;
+    text: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -618,7 +630,7 @@ export interface ApiSectionsHeaderSection extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::sections.header-section'
     >;
-    logo: Schema.Attribute.Component<'general.image', false> &
+    logo: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -640,6 +652,25 @@ export interface ApiSectionsHeaderSection extends Struct.SingleTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'Sections / Header'>;
+    socials: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'github',
+          'linkedin',
+          'facebook',
+          'instagram',
+          'spotify',
+          'youtube',
+          'myanimelist',
+        ]
+      > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'[]'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -665,6 +696,12 @@ export interface ApiSectionsHeroSection extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

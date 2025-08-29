@@ -12,18 +12,6 @@ export interface GeneralHeading extends Struct.ComponentSchema {
   };
 }
 
-export interface GeneralImage extends Struct.ComponentSchema {
-  collectionName: 'components_general_image';
-  info: {
-    displayName: 'Image';
-    icon: 'heart';
-  };
-  attributes: {
-    alt: Schema.Attribute.String;
-    image: Schema.Attribute.Media<'images'>;
-  };
-}
-
 export interface GeneralVideo extends Struct.ComponentSchema {
   collectionName: 'components_general_videos';
   info: {
@@ -31,7 +19,7 @@ export interface GeneralVideo extends Struct.ComponentSchema {
     icon: 'picture';
   };
   attributes: {
-    thumbnail: Schema.Attribute.Component<'general.image', false>;
+    thumbnail: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
     video: Schema.Attribute.Media<'files' | 'videos'>;
   };
@@ -78,11 +66,20 @@ export interface SiteLayout extends Struct.ComponentSchema {
     icon: 'layout';
   };
   attributes: {
-    sectionComponent: Schema.Attribute.Enumeration<
-      ['Header', 'Hero', 'AboutMe', 'Skills', 'Experience', 'Footer']
-    >;
     sectionHeading: Schema.Attribute.Component<'general.heading', false>;
-    sectionID: Schema.Attribute.String & Schema.Attribute.Unique;
+    sectionID: Schema.Attribute.Enumeration<
+      [
+        'header',
+        'hero',
+        'about-me',
+        'skills',
+        'projects',
+        'experience',
+        'contact',
+        'footer',
+      ]
+    > &
+      Schema.Attribute.Unique;
   };
 }
 
@@ -115,7 +112,6 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'general.heading': GeneralHeading;
-      'general.image': GeneralImage;
       'general.video': GeneralVideo;
       'personal.socials': PersonalSocials;
       'portfolio.skills': PortfolioSkills;
