@@ -17,6 +17,7 @@ import Text from '@/components/Text';
 import Heading from '@/components/Heading';
 import { BaseSectionProps } from '../app/types';
 import { getStaticAssetURL } from '@/app/functions';
+import Frame from '@/components/Frame';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -49,20 +50,21 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 				<div className="flex flex-col lg:flex-row gap-8">
 					<div className={clsx(
 						'brk-section--about-me-left',
-						'flex-2/5'
+						'w-fit'
 					)}>
-						<Image
-							className="sticky top-8"
-							src={getStaticAssetURL(reel.thumbnail.url)}
-							width={reel.thumbnail.width}
-							height={reel.thumbnail.height}
-							alt={reel.thumbnail.alternativeText}
-							priority
-						/>
+						<Frame className="lg:sticky lg:top-8">
+							<Image
+								src={getStaticAssetURL(reel.thumbnail.url)}
+								width={reel.thumbnail.width}
+								height={reel.thumbnail.height}
+								alt={reel.thumbnail.alternativeText}
+								priority
+							/>
+						</Frame>
 					</div>
 					<div className={clsx(
 						'brk-section--hero-right',
-						'flex-3/5'
+						'flex-1'
 					)}>
 						<Text>{text}</Text>
 					</div>
