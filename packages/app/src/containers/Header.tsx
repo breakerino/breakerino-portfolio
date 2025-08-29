@@ -1,32 +1,53 @@
 // --------------------------------------------------------------------- 
-// Sections > Header
+// Containers > Header
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
+import clsx from 'clsx';
+import { pick } from 'lodash';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
-import clsx from 'clsx';
+import { NavigationItem, SocialSiteType, Image } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { MenuItem, SocialProfile } from '@/app/types';
-import Container from '@/components/Container';
-import Logo, { LogoProps } from '@/components/Logo';
+import { MenuItem, BaseSectionProps } from '@/app/types';
+import { getStaticAssetURL } from '@/app/functions';
+import { useAppContext } from '@/contexts/App';
 import DesktopMenu from '@/modules/DesktopMenu';
 import MobileMenu from '@/modules/MobileMenu';
+import Container from '@/components/Container';
+import Logo, { LogoProps } from '@/components/Logo';
 import Section from '@/components/Section';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface HeaderProps {
-	className?: string;
-	logo: Omit<LogoProps, 'className' | 'href'>
-	menuItems: MenuItem[];
-	socialItems?: SocialProfile[];
+export interface HeaderProps extends Pick<BaseSectionProps, 'className'> {
+	data: {
+		logo: Image;
+		navigation: NavigationItem[]
+		socials: SocialSiteType[];
+	}
 };
 // --------------------------------------------------------------------- 
 
-const Header: React.FC<HeaderProps> = ({ className, logo, menuItems, socialItems }) => {
+const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, navigation, socials } }) => {
+	const { settings } = useAppContext();
+
+	const logo: LogoProps = React.useMemo(() => ({
+		...pick(logoImage, ['width', 'height']),
+		src: getStaticAssetURL(logoImage.url),
+		alt: logoImage.alternativeText
+	}), [logoImage]);
+
+	const menuItems: MenuItem[] = React.useMemo(() => (
+		navigation.map(({ label, slug }) => ({ label, id: slug, href: `#${slug}` }))
+	), [navigation]);
+
+	const socialItems = React.useMemo(() => {
+		return settings.personal.socials.filter(social => socials.includes(social.type))
+	}, [socials, settings.personal.socials])
+
 	return (
 		<Section
 			as="header"
@@ -42,9 +63,8 @@ const Header: React.FC<HeaderProps> = ({ className, logo, menuItems, socialItems
 					{...logo}
 					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
 				/>
-
 				<DesktopMenu className="hidden md:flex" menuItems={menuItems} />
-				<MobileMenu className="md:hidden" logo={logo} menuItems={menuItems} socialItems={socialItems} breakpoint={767} />
+				<MobileMenu {...{ logo, menuItems, socialItems }} />
 			</Container>
 		</Section>
 	)

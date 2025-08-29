@@ -3,41 +3,46 @@
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import React from 'react';
-import Image from 'next/image';
 import clsx from 'clsx';
+import Image from 'next/image';
+import React from 'react';
 import { twMerge } from 'tailwind-merge';
+import { Image as ImageType, SocialSiteType } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import Section from '@/components/Section';
+import { useAppContext } from '@/contexts/App';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { BaseSectionProps } from '@/app/types';
 import Container from '@/components/Container';
+import Section from '@/components/Section';
 import SocialLink from '@/components/SocialLink';
 import Text from '@/components/Text';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { SocialProfile } from '@/app/types';
+import { getStaticAssetURL } from '@/app/functions';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-const SOCIAL_PROFILES: SocialProfile[] = [
-	{ id: 'github', username: 'breakerino' },
-	{ id: 'linkedin', username: 'breakerino' }
-]
-// --------------------------------------------------------------------- 
-
-// --------------------------------------------------------------------- 
-export interface HeroSectionProps {
-	className?: string;
+export interface HeroSectionProps extends BaseSectionProps {
+	subheading: string;
+	text: string;
+	socials: SocialSiteType[]
+	image: ImageType
 }
 // --------------------------------------------------------------------- 
 
-const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subheading, text, socials, image }) => {
+	const { settings } = useAppContext();
+	
 	const [isTablet] = useMediaQuery('(max-width: 1023px)');
 	const [isMobile] = useMediaQuery('(max-width: 767px)');
+	
+	const socialProfiles = React.useMemo(() => {
+		return settings.personal.socials.filter(social => socials?.includes(social.type))
+	}, [socials, settings.personal.socials])
 
 	return (
 		<Section
-			id="about-me"
+			id={id}
 			className={twMerge(
 				clsx(
 					'brk-section--hero',
@@ -53,23 +58,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
 						<div className="flex flex-col gap-2">
 							<h1 className="flex flex-col gap-2">
 								<span className="text-2xl md:text-3xl lg:text-5xl font-light text-primary-100">
-									Hi, I&apos;m
+									{heading?.subtitle}
 								</span>
 								<span className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-50">
-									Breakerino
+									{heading?.title}
 									<abbr className="text-primary-400" aria-hidden="true">.</abbr>
 								</span>
 								<span className="text-xl md:text-3xl lg:text-4xl font-medium text-primary-400">
-									Full Stack Web Developer
+									{subheading}
 								</span>
 							</h1>
 						</div>
-						<Text>
-							I’m a 24-year-old developer with 6 years of professional experience building clean, scalable, and user-focused web applications. From TypeScript and React on the frontend to PHP, WordPress, Node.js, and Strapi on the backend, I’ve built solutions that power websites used by thousands every day — with my code running every single second.
-						</Text>
+						<Text>{text}</Text>
 						<div className="flex gap-4">
-							{SOCIAL_PROFILES.map((profile) => (
-								<SocialLink key={profile.id} variant={isMobile ? 'sm' : isTablet ? 'md' : 'lg'} {...profile} />
+							{socialProfiles.map((profile) => (
+								<SocialLink key={profile.type} variant={isMobile ? 'sm' : isTablet ? 'md' : 'lg'} {...profile} />
 							))}
 						</div>
 					</div>
@@ -79,10 +82,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
 					)}>
 						<Image
 							className="w-52 md:w-full"
-							src="/assets/img/breakerino-photo.png"
-							width={500}
-							height={594}
-							alt="Breakerino photo"
+							src={getStaticAssetURL(image.url)}
+							width={image.width}
+							height={image.height}
+							alt={image.alternativeText}
 							priority
 						/>
 					</div>
