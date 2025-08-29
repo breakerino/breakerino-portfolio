@@ -22,6 +22,8 @@ services:
     networks:
       - main
       - internal
+    extra_hosts:
+      - ${STATIC_SERVER_NAME}:host-gateway
     depends_on:
       - api
 
