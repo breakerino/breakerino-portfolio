@@ -19,6 +19,7 @@ import Section from '@/components/Section';
 import SocialLink from '@/components/SocialLink';
 import Text from '@/components/Text';
 import { getStaticAssetURL } from '@/app/functions';
+import PhotoFrame from '@/components/PhotoFrame';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -32,10 +33,10 @@ export interface HeroSectionProps extends BaseSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subheading, text, socials, image }) => {
 	const { settings } = useAppContext();
-	
+
 	const [isTablet] = useMediaQuery('(max-width: 1023px)');
 	const [isMobile] = useMediaQuery('(max-width: 767px)');
-	
+
 	const socialProfiles = React.useMemo(() => {
 		return settings.personal.socials.filter(social => socials?.includes(social.type))
 	}, [socials, settings.personal.socials])
@@ -80,13 +81,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 						'brk-section--hero-right',
 						'-order-1 lg:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 lg:w-4/12 lg:flex-4/12'
 					)}>
-						<Image
+						<PhotoFrame
 							className="w-52 md:w-full"
-							src={getStaticAssetURL(image.url)}
-							width={image.width}
-							height={image.height}
-							alt={image.alternativeText}
-							priority
+							image={{ ...image, url: getStaticAssetURL(image.url), }}
 						/>
 					</div>
 				</div>
