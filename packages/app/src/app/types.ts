@@ -40,6 +40,13 @@ export interface NavigationItem {
 	slug: string;
 }
 
+export interface Skill {
+	name: string;
+	icon: string;
+	order: number;
+	link?: string;
+}
+
 export interface Image {
 	alternativeText: string;
 	name: string;
