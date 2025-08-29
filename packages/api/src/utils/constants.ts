@@ -8,7 +8,6 @@ export const SETTINGS_FIELDS_TO_OMIT = [
 ];
 
 export const IMAGE_FIELDS_TO_OMIT = [
-	'alternativeText',
 	'caption',
 	'formats',
 	'hash',
