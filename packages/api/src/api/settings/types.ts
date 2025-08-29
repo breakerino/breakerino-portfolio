@@ -1,1 +1,1 @@
-export type SettingsType = 'site' | 'personal' | 'layout';
+export type SettingsType = 'general' | 'site' | 'personal' | 'layout';

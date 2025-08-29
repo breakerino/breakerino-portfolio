@@ -11,7 +11,7 @@ import { SettingsType } from '../types';
 // --------------------------------------------------------------------- 
 
 export default {
-	async getSettings(types: SettingsType[] = ['site', 'personal', 'layout']) {
+	async getSettings(types: SettingsType[] = ['general', 'site', 'personal', 'layout']) {
 		const settings: Partial<Record<SettingsType, Record<string, any>>> = {};
 		
 		for ( const type of types ) {
