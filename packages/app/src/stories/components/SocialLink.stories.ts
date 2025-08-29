@@ -30,7 +30,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		id: 'github',
+		type: 'github',
 		username: 'breakerino'
 	},
 };
@@ -38,7 +38,7 @@ export const Default: Story = {
 export const IconOnly: Story = {
 	args: {
 		showLabel: false,
-		id: 'github',
+		type: 'github',
 		username: 'breakerino'
 	},
 };

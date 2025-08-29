@@ -8,8 +8,8 @@ import PageDecorator from '@/storybook/decorators/page';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import Header from '@/sections/Header';
-import { HEADER_LOGO, HEADER_MENU_ITEMS, SOCIAL_PROFILES } from '@/app/data';
+import Header from '@/containers/Header';
+import { headerData } from '@/storybook/data';
 // --------------------------------------------------------------------- 
 
 
@@ -21,9 +21,7 @@ const meta = {
 		layout: 'fullscreen',
 	},
 	args: {
-		logo: HEADER_LOGO,
-		menuItems: HEADER_MENU_ITEMS,
-		socialItems: SOCIAL_PROFILES
+		data: headerData
 	},
 	decorators: [PageDecorator],
 } satisfies Meta<typeof Header>;
