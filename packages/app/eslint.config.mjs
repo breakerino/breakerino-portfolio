@@ -19,6 +19,9 @@ const eslintConfig = [
 
     // Enforce single quotes in TS
     quotes: ['error', 'single', { avoidEscape: true }],
+		
+		// Disable the empty object type rule globally
+		'@typescript-eslint/no-empty-object-type': 'off'
   },
 }];
 
