@@ -27,16 +27,18 @@
       "unique": true
     },
     "logo": {
-      "type": "component",
+      "type": "media",
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "component": "general.image",
-      "repeatable": false
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
-		"navigation": {
+    "navigation": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
@@ -45,6 +47,25 @@
       },
       "component": "site.navigation",
       "repeatable": true
+    },
+		"socials": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "github",
+        "linkedin",
+        "facebook",
+        "instagram",
+        "spotify",
+        "youtube",
+        "myanimelist"
+      ]
     }
   }
 }
