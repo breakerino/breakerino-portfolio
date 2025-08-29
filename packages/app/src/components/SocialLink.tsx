@@ -7,28 +7,28 @@ import React from 'react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { SocialProfile } from '@/app/types';
+import { SOCIAL_SITES } from '@/app/constants';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
 import Icon from '@/components/Icon';
-import { SOCIAL_SITES } from '@/app/constants';
-import { SocialProfile } from '@/app/types';
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-export interface SocialLinkProps extends SocialProfile {
+export interface SocialLinkProps extends BaseComponentProps, SocialProfile {
 	variant?: 'xs' | 'sm' | 'md' | 'lg';
 	showLabel?: boolean;
-	className?: string;
 }
 
 const SocialLink: React.FC<SocialLinkProps> = ({
 	className,
-	id,
+	type,
 	username,
 	showLabel = true,
 	variant = 'md',
 }) => {
-	const socialSite = React.useMemo(() => SOCIAL_SITES[id], [id]);
+	const socialSite = React.useMemo(() => SOCIAL_SITES[type], [type]);
 
 	const variants: Record<NonNullable<SocialLinkProps['variant']>, { icon: string; text: string; padding: string; paddingIcon: string; gap: string }> = {
 		xs: { icon: 'w-6 h-6', text: 'text-sm', padding: 'p-1', paddingIcon: 'p-1', gap: 'gap-1.5' },
@@ -49,7 +49,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({
 					'w-fit flex items-center border-2 border-secondary-700 rounded-lg hover:bg-secondary-700 active:bg-secondary-800 transition-colors',
 					styles.padding,
 					styles.gap,
-					! showLabel && styles.paddingIcon,
+					!showLabel && styles.paddingIcon,
 					className
 				)
 			)}
