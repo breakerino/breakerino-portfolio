@@ -32,12 +32,12 @@ export default {
 			throw new GenericException(`Document for section "${id}" not found.`)
 		}
 	},
-	
+
 	async getSections() {
 		const globalSettings = await strapi.service('api::settings.settings').getSettings();
 		const sections = [];
 
-		for (let section of (globalSettings.layout.sections as Section[])) {
+		for (let { heading, ...section } of (globalSettings.layout.sections as Section[])) {
 			try {
 				// @ts-expect-error Dynamic content type assignment
 				const document = (await strapi.documents(`api::sections.${section.id}-section`)?.findFirst({
@@ -49,7 +49,7 @@ export default {
 				let data = this.sanitizeData(document);
 				data = populateDocumentData(data, globalSettings);
 
-				section = { ...section, ...data };
+				section = { ...section, data: { ...data, heading } };
 
 			} catch (error) {
 				strapi.log.error(`Document for section "${section.id}" not found.`)
