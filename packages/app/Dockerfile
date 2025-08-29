@@ -17,87 +17,101 @@ FROM base AS deps
 # 1. Copy package manager files
 COPY package.json yarn.lock* pnpm-lock.yaml* .npmrc* ./
 
-# 2. Install dependencies (pick yarn/npm/pnpm automatically)
+# 2. Install dependencies
 RUN --mount=type=cache,id=yarn,sharing=locked,target=/usr/local/share/.cache/yarn \
-	if [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
-	elif [ -f package-lock.json ]; then npm ci; \
-	elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm install; \
-	else echo "Lockfile not found." && exit 1; \
-	fi
+		if [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
+		elif [ -f package-lock.json ]; then npm ci; \
+		elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm install; \
+		else echo "Lockfile not found." && exit 1; \
+		fi
 
 # --------------------------------------------------
 # Builder
 # --------------------------------------------------
 FROM base AS builder
 
-# 1. Copy dependencies
+# 1. Set working directory
+WORKDIR /app
+
+# 1.1 Accept build-time public envs for Next.js
+ARG NEXT_PUBLIC_STATIC_BASE_URL
+ARG NEXT_PUBLIC_API_PUBLIC_BASE_URL
+
+# 1.2 Expose them to the build environment so Next can inline them
+ENV NEXT_PUBLIC_STATIC_BASE_URL=${NEXT_PUBLIC_STATIC_BASE_URL}
+ENV NEXT_PUBLIC_API_PUBLIC_BASE_URL=${NEXT_PUBLIC_API_PUBLIC_BASE_URL}
+
+# 2. Copy deps from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/package.json ./package.json
 COPY --from=deps /app/yarn.lock ./yarn.lock
 
-# 2. Copy source code
+# 3. Copy source code
 COPY . .
 
-# 3. Build Next.js app (standalone output)
+# 4. Build Next.js app (standalone output)
 RUN yarn build
-
-# --------------------------------------------------
-# Runner
-# --------------------------------------------------
-FROM base AS runner
-
-# 1. Environment defaults (overridable)
-ENV APP_HOST="0.0.0.0" \
-	APP_PORT=3000 \
-	APP_SERVER_PROTOCOL="http" \
-	APP_SERVER_NAME="nextjs.local"
 
 # --------------------------------------------------
 # Production runner
 # --------------------------------------------------
-FROM runner AS runner-prod
+FROM base AS runner-prod
 
-# 1. Set production env
+# 1. Set working directory
+WORKDIR /app
+
+# 2. Set production env
 ENV NODE_ENV=production \
-	NEXT_TELEMETRY_DISABLED=1
+		NEXT_TELEMETRY_DISABLED=1
 
-# 2. Create non-root user
+# 2.1 Keep public vars available at runtime (not strictly required, but harmless)
+ARG NEXT_PUBLIC_STATIC_BASE_URL
+ARG NEXT_PUBLIC_API_PUBLIC_BASE_URL
+ENV NEXT_PUBLIC_STATIC_BASE_URL=${NEXT_PUBLIC_STATIC_BASE_URL}
+ENV NEXT_PUBLIC_API_PUBLIC_BASE_URL=${NEXT_PUBLIC_API_PUBLIC_BASE_URL}
+
+# 3. Create non-root user
 RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
 
-# 3. Copy production build artifacts
+# 4: Copy standalone build artifacts
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone/. ./
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# 4. Copy runtime node_modules
+# 5. Copy runtime node_modules
 COPY --from=deps --chown=nextjs:nodejs /app/node_modules ./node_modules
 
-# 5. Switch to non-root user
+# 6. Switch to non-root user
 USER nextjs
 
-# 6. Expose port
+# 7. Expose port
 EXPOSE ${APP_PORT}
 
-# 7. Start Next.js server
+# 8. Start Next.js server
 CMD HOSTNAME=${APP_HOST} PORT=${APP_PORT} node server.js
 
 # --------------------------------------------------
 # Development runner
 # --------------------------------------------------
-FROM runner AS runner-dev
+FROM base AS runner-dev
 
-# 1. Set development env
+# 1. Set working directory
+WORKDIR /app
+
+# 2. Set development env
 ENV NODE_ENV=development \
-	NEXT_TELEMETRY_DISABLED=1
+		NEXT_TELEMETRY_DISABLED=1 \
+		APP_HOST="0.0.0.0" \
+		APP_PORT=3000
 
-# 2. Copy source code
+# 3. Copy source code
 COPY . .
 
-# 3. Copy node_modules from deps (needed for next binary)
+# 4. Copy node_modules from deps
 COPY --from=deps /app/node_modules ./node_modules
 
-# 4. Expose port
+# 5. Expose port
 EXPOSE ${APP_PORT}
 
-# 5. Start Next.js in development mode (Turbopack enabled)
+# 6. Start Next.js in development mode (Turbopack enabled)
 CMD ["sh", "-c", "yarn dev --turbopack --port ${APP_PORT} --hostname ${APP_HOST}"]
