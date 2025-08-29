@@ -7,19 +7,18 @@
   "options": {},
   "attributes": {
     "sectionID": {
-      "type": "string",
-      "unique": true
-    },
-    "sectionComponent": {
       "type": "enumeration",
       "enum": [
-        "Header",
-        "Hero",
-        "AboutMe",
-        "Skills",
-        "Experience",
-        "Footer"
-      ]
+        "header",
+        "hero",
+        "about-me",
+        "skills",
+        "projects",
+        "experience",
+        "contact",
+        "footer"
+      ],
+			"unique": true
     },
     "sectionHeading": {
       "type": "component",
