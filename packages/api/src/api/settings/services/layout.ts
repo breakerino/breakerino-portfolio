@@ -21,8 +21,8 @@ export default {
 
 		return {
 			...settings,
-			sections: settings.sections.map(({ sectionID: id, sectionComponent: component, sectionHeading: heading }) => {
-				return { id, component, ...(heading ? {heading} : {}) }
+			sections: settings.sections.map(({ sectionID: id, sectionHeading: heading }) => {
+				return { id, ...(heading ? {heading} : {}) }
 			})
 		}
 	}
