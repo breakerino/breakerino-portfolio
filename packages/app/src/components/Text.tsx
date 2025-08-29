@@ -6,6 +6,7 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { marked } from 'marked';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -24,9 +25,8 @@ const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'div' }) => 
 					className
 				)
 			)}
-		>
-			{children}
-		</Tag>
+			dangerouslySetInnerHTML={{ __html: marked.parse(`${children}`) }}
+		/>
 	)
 }
 
