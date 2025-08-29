@@ -9,14 +9,13 @@ import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface SidebarProps {
-	className?: string;
-	isOpened: boolean;
-	children?: React.ReactNode;
-}
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
+export interface SidebarProps extends BaseComponentProps {
+	isOpened: boolean;
+}
+
 const Sidebar: React.FC<SidebarProps> = ({ className, isOpened, children }) => {	
 	return (
 		<aside className={twMerge(

@@ -3,20 +3,18 @@
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
+import { BaseComponentProps } from '@/app/types';
 import clsx from 'clsx';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
-export interface OverlayProps {
-	className?: string;
+
+export interface OverlayProps extends BaseComponentProps {
 	isOpened?: boolean;
 	onClose: React.MouseEventHandler<HTMLDivElement>;
 }
-// --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
 const Overlay: React.FC<OverlayProps> = ({ className, isOpened, onClose: handleClose }) => {
 	return (
 		<div

@@ -10,19 +10,15 @@ import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { MenuItem } from '@/app/types';
+import { MenuItem, BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
-export interface NavigationProps {
-	className?: string;
+export interface NavigationProps extends BaseComponentProps {
 	items: MenuItem[];
 	ariaLabel?: string;
 	onClose: React.MouseEventHandler<HTMLElement>;
 }
-// --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
 const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, onClose: handleClose }) => {
 	return (
 		<nav

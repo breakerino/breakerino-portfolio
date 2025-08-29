@@ -10,18 +10,15 @@ import React from 'react';
 // --------------------------------------------------------------------- 
 import Icon from '@/components/Icon';
 import Logo, { LogoProps } from '@/components/Logo';
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
-export interface MobileMenuProps {
-	className?: string;
+export interface HeaderProps extends BaseComponentProps {
 	logo: Omit<LogoProps, 'className' | 'href'>;
 	onClose?: React.MouseEventHandler<HTMLButtonElement>;
 }
-// --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
-const Header: React.FC<MobileMenuProps> = ({ className, logo, onClose: handleClose }) => {
+const Header: React.FC<HeaderProps> = ({ className, logo, onClose: handleClose }) => {
 	return (
 		<div className={clsx(
 			'brk-mobile-menu-header',

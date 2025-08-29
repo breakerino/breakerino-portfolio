@@ -8,13 +8,11 @@ import React from 'react';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface FooterProps {
-	className?: string;
-	children?: React.ReactNode;
-}
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
+export interface FooterProps extends BaseComponentProps {}
+
 const Footer: React.FC<FooterProps> = ({ className, children }) => {
 	if ( ! children ) {
 		return null;

@@ -10,10 +10,10 @@ import clsx from 'clsx';
 
 // --------------------------------------------------------------------- 
 import Icon from '@/components/Icon';
+import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-export interface HamburgerProps {
-	className?: string;
+export interface HamburgerProps extends BaseComponentProps {
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
