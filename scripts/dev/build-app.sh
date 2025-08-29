@@ -27,5 +27,5 @@ export NEXT_PUBLIC_STATIC_BASE_URL="${STATIC_BASE_URL}"
 # Install dependencies for the app package.
 yarn install
 
-# Start the development server with Turbopack, using the specified port and hostname from environment variables.
-yarn dev --turbopack --port ${APP_PORT} --hostname ${APP_HOST}
+# Build app
+yarn build

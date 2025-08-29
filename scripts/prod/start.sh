@@ -16,5 +16,8 @@ fi
 # Ensure the Strapi uploads directory exists
 docker compose run --rm api mkdir -p /srv/app/public/uploads
 
+# Copy public folder from packages/api/public to the api container's /srv/app/public/uploads
+docker compose cp packages/api/public/. api:/srv/app/public/
+
 # Start all services defined in the local Docker Compose configuration in detached mode.
 docker compose --file docker-compose.yml --env-file .env up -d
