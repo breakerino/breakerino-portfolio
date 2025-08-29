@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "target": "ES2019",
+    "composite": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
     "lib": ["ES2020"],
-    "target": "ES2019",
     "strict": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -12,8 +13,15 @@
     "resolveJsonModule": true,
     "noEmitOnError": true,
     "noImplicitThis": true,
+    "declaration": true,
+    "declarationMap": true,
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@breakerino/core/*": ["../core/src/*"],
+      "@breakerino/app/*": ["../app/src/*"]
+    }
   },
   "include": [
     // Include root files

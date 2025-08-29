@@ -14,11 +14,11 @@
     "jsx": "preserve",
     "incremental": true,
     "plugins": [
-      {
-        "name": "next"
-      }
+      { "name": "next" }
     ],
     "paths": {
+      "@breakerino/core/*": ["../core/src/*"],
+      "@breakerino/api/*": ["../api/src/*"],
       "@/storybook/*": ["./.storybook/*"],
       "@/*": ["./src/*"]
     }
