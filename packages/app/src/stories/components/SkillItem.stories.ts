@@ -32,9 +32,15 @@ export const Default: Story = {
 	args: {},
 };
 
-export const RoundedLarge: Story = {
+export const RoundedMedium: Story = {
 	args: {
 		variant: 'rounded',
-		size: 'large'
+		size: 'medium'
+	},
+};
+export const ChipMedium: Story = {
+	args: {
+		variant: 'chip',
+		size: 'medium'
 	},
 };
