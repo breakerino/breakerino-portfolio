@@ -53,8 +53,8 @@ export interface PortfolioSkills extends Struct.ComponentSchema {
     icon: 'brush';
   };
   attributes: {
-    name: Schema.Attribute.String;
     skills: Schema.Attribute.Relation<'oneToMany', 'api::portfolio.skill'>;
+    title: Schema.Attribute.String;
   };
 }
 
