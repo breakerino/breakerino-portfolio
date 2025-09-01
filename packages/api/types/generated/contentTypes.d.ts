@@ -373,6 +373,71 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPortfolioProject extends Struct.CollectionTypeSchema {
+  collectionName: 'projects';
+  info: {
+    displayName: 'Projects';
+    pluralName: 'projects';
+    singularName: 'project';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    finishDate: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    links: Schema.Attribute.Component<'project.link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.project'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    technologies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.skill'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Component<'general.video', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+  };
+}
+
 export interface ApiPortfolioSkill extends Struct.CollectionTypeSchema {
   collectionName: 'skills';
   info: {
@@ -778,6 +843,7 @@ export interface ApiSectionsProjectsSection extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::sections.projects-section'
     >;
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::portfolio.project'>;
     publishedAt: Schema.Attribute.DateTime;
     settingsName: Schema.Attribute.String &
       Schema.Attribute.Private &
@@ -1336,6 +1402,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::portfolio.project': ApiPortfolioProject;
       'api::portfolio.skill': ApiPortfolioSkill;
       'api::sections.about-me-section': ApiSectionsAboutMeSection;
       'api::sections.contact-section': ApiSectionsContactSection;

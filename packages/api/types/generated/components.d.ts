@@ -20,7 +20,6 @@ export interface GeneralVideo extends Struct.ComponentSchema {
   };
   attributes: {
     thumbnail: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String;
     video: Schema.Attribute.Media<'files' | 'videos'>;
   };
 }
@@ -56,6 +55,19 @@ export interface PortfolioSkills extends Struct.ComponentSchema {
   attributes: {
     name: Schema.Attribute.String;
     skills: Schema.Attribute.Relation<'oneToMany', 'api::portfolio.skill'>;
+  };
+}
+
+export interface ProjectLink extends Struct.ComponentSchema {
+  collectionName: 'components_project_links';
+  info: {
+    displayName: 'Link';
+    icon: 'link';
+  };
+  attributes: {
+    icon: Schema.Attribute.Enumeration<['link', 'github', 'figma-logo']>;
+    text: Schema.Attribute.String;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -115,6 +127,7 @@ declare module '@strapi/strapi' {
       'general.video': GeneralVideo;
       'personal.socials': PersonalSocials;
       'portfolio.skills': PortfolioSkills;
+      'project.link': ProjectLink;
       'site.layout': SiteLayout;
       'site.meta': SiteMeta;
       'site.navigation': SiteNavigation;
