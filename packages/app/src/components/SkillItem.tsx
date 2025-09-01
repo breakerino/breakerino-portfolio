@@ -9,45 +9,45 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseComponentProps, Skill as SkillType } from '@/app/types';
+import { BaseComponentProps, Skill } from '@/app/types';
 import Icon from '@/components/Icon';
 import Text from '@/components/Text';
 // --------------------------------------------------------------------- 
 
-export type SkillSize = 'small' | 'medium' | 'large';;
-export type SkillVariant = 'rounded' | 'chip';
+export type SkillItemSize = 'small' | 'medium' | 'large';;
+export type SkillItemVariant = 'rounded' | 'chip';
 
-export interface SkillProps extends Pick<BaseComponentProps, 'className'>, Omit<SkillType, 'order'> {
-	variant?: SkillVariant;
-	size?: SkillSize;
+export interface SkillItemProps extends Omit<BaseComponentProps, 'children'>, Omit<Skill, 'order'> {
+	variant?: SkillItemVariant;
+	size?: SkillItemSize;
 }
 
-const Skill: React.FC<SkillProps> = ({ className, name, icon, size = 'medium', variant = 'rounded' }) => {
-	const variants: Record<SkillVariant, string> = {
+const SkillItem: React.FC<SkillItemProps> = ({ className, name, icon, size = 'medium', variant = 'rounded', as: Tag = 'div' }) => {
+	const variants: Record<SkillItemVariant, string> = {
 		rounded: 'rounded-lg',
 		chip: 'rounded-full'
 	}
 	
-	const sizes: Record<SkillSize, string> = {
+	const sizes: Record<SkillItemSize, string> = {
 		small: variant === 'chip' ? 'px-3 py-2 gap-1.5' : 'px-2 py-1.5 gap-1.5',
 		medium: variant === 'chip' ? 'px-4 py-2.5 gap-2' : 'px-2.5 py-2 gap-2',
 		large: variant === 'chip' ? 'px-5 py-3 gap-2.5' : 'px-3 py-2.5 gap-2.5 ',
 	}
 	
-	const iconSizes: Record<SkillSize, string> = {
+	const iconSizes: Record<SkillItemSize, string> = {
 		small: 'h-5',
 		medium: 'h-6',
 		large: 'h-8'
 	}
 	
-	const textSizes: Record<SkillSize, string> = {
+	const textSizes: Record<SkillItemSize, string> = {
 		small: 'text-md lg:text-md',
 		medium: 'text-lg lg:text-lg',
 		large: 'text-xl lg:text-xl'
 	}
 
 	return (
-		<div
+		<Tag
 			className={twMerge(
 				clsx(
 					'brk-skill-item',
@@ -73,8 +73,8 @@ const Skill: React.FC<SkillProps> = ({ className, name, icon, size = 'medium', v
 			>
 				{name}
 			</Text>
-		</div>
+		</Tag>
 	)
 }
 
-export default Skill;
+export default SkillItem;

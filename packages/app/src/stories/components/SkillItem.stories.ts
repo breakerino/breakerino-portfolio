@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------
-// Stories > Components > Skill
+// Stories > Components > Skill item
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
@@ -8,12 +8,12 @@ import ComponentDecorator from '@/storybook/decorators/component';
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
-import Skill from '@/components/Skill';
+import SkillItem from '@/components/SkillItem';
 // ---------------------------------------------------------------------
 
 const meta = {
-	title: 'Breakerino/Components/Skill',
-	component: Skill,
+	title: 'Breakerino/Components/SkillItem',
+	component: SkillItem,
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'fullscreen',
@@ -23,7 +23,7 @@ const meta = {
 		name: 'HTML',
 	},
 	decorators: [ComponentDecorator],
-} satisfies Meta<typeof Skill>;
+} satisfies Meta<typeof SkillItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
