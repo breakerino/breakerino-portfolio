@@ -38,7 +38,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 	ariaLabel: navigationAriaLabel,
 }) => {
 	const [isOpened, setIsOpened] = React.useState<boolean>(false)
-	const [isMobile] = useMediaQuery('(max-width: 47.9375rem)')
+	const [isMobile] = useMediaQuery('(max-width: 767px)');
 
 	const handleToggle = () => setIsOpened(state => !state);
 	const handleClose = () => setIsOpened(false);
