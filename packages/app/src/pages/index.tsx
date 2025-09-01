@@ -42,9 +42,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
 					try {
 						const { status, data: { data } } = await queryFn();
 						return status === 200 ? data : [];
-					} catch (e) {
-						if (e instanceof AxiosError) console.error('Axios Error:', e.message);
-						else console.error(e);
+					} catch (error) {
+						if (error instanceof AxiosError) {
+							console.error('Axios Error:', error.message);
+						} else {
+							console.error(error);
+						}
 						return [];
 					}
 				}
