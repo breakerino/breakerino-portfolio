@@ -56,15 +56,15 @@ export const deepDocumentPopulate = (
 
 			case 'dynamiczone':
 				populate[attribute] = {
-					populate: config.components.reduce((populateMap: Record<string, any>, compUID: string) => {
-						populateMap[compUID] = { populate: deepDocumentPopulate(compUID, exclude) };
+					populate: config.components.reduce((populateMap: Record<string, any>, componentUID: string) => {
+						populateMap[componentUID] = { populate: deepDocumentPopulate(componentUID, exclude) };
 						return populateMap;
 					}, {}),
 				};
 				break;
 
 			case 'relation':
-				populate[attribute] = { populate: '*' };
+				populate[attribute] = { populate: deepDocumentPopulate(config.target, exclude) };
 				break;
 
 			case 'media':
