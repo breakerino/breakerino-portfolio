@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-		"settingsName": {
+    "settingsName": {
       "type": "string",
       "private": true,
       "pluginOptions": {
@@ -25,6 +25,11 @@
       },
       "default": "Sections / Experience",
       "unique": true
+    },
+    "workExperiences": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::portfolio.work-experience"
     }
   }
 }
