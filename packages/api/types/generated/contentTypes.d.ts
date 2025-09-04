@@ -487,6 +487,46 @@ export interface ApiPortfolioSkill extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPortfolioWorkExperience
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'work_experiences';
+  info: {
+    displayName: 'Work Experience';
+    pluralName: 'work-experiences';
+    singularName: 'work-experience';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    companyLogo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    companyName: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    employmentType: Schema.Attribute.Enumeration<
+      ['Full-time', 'Part-time', 'Contract', 'Freelance', 'Internship']
+    >;
+    endDate: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.work-experience'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    position: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSectionsAboutMeSection extends Struct.SingleTypeSchema {
   collectionName: 'about_me_section_settings';
   info: {
@@ -616,6 +656,10 @@ export interface ApiSectionsExperienceSection extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    workExperiences: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.work-experience'
+    >;
   };
 }
 
@@ -1404,6 +1448,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::portfolio.project': ApiPortfolioProject;
       'api::portfolio.skill': ApiPortfolioSkill;
+      'api::portfolio.work-experience': ApiPortfolioWorkExperience;
       'api::sections.about-me-section': ApiSectionsAboutMeSection;
       'api::sections.contact-section': ApiSectionsContactSection;
       'api::sections.experience-section': ApiSectionsExperienceSection;
