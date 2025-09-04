@@ -10,7 +10,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { BaseComponentProps, MenuItem } from '@/app/types'
 import { LogoProps } from '@/components/Logo'
-import SocialLink from '@/components/SocialLink'
+import Link from '@/components/Link'
 import { SocialProfile } from '@/app/types'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 // --------------------------------------------------------------------- 
@@ -21,6 +21,7 @@ import Header from './components/Header'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Overlay from './components/Overlay'
+import { SOCIAL_SITES } from '@/app/constants'
 // --------------------------------------------------------------------- 
 
 export interface MobileMenuProps extends BaseComponentProps {
@@ -38,7 +39,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 	ariaLabel: navigationAriaLabel,
 }) => {
 	const [isOpened, setIsOpened] = React.useState<boolean>(false)
-	const [isMobile] = useMediaQuery('(max-width: 767px)');
+	const [isMobile] = useMediaQuery('(max-width: 48rem)');
 
 	const handleToggle = () => setIsOpened(state => !state);
 	const handleClose = () => setIsOpened(false);
@@ -73,8 +74,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 					{socialItems && (
 						<div className={clsx('brk-mobile-menu-socials w-full flex flex-wrap gap-2')}>
 							{
-								socialItems.map(item => (
-									<SocialLink key={item.type} variant="xs" showLabel={false} {...item} />
+								socialItems.map(({type, username}) => (
+									<Link 
+										key={type}
+										size="xs"
+										showLabel={false} 
+										icon={SOCIAL_SITES[type].icon}
+										text={SOCIAL_SITES[type].label}
+										url={`${SOCIAL_SITES[type].baseURL}/${username}`}
+										/>
 								))
 							}
 						</div>
