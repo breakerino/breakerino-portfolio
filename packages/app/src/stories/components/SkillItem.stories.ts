@@ -35,12 +35,12 @@ export const Default: Story = {
 export const RoundedMedium: Story = {
 	args: {
 		variant: 'rounded',
-		size: 'medium'
+		size: 'md'
 	},
 };
 export const ChipMedium: Story = {
 	args: {
 		variant: 'chip',
-		size: 'medium'
+		size: 'md'
 	},
 };
