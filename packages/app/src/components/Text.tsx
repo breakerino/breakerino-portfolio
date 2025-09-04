@@ -13,20 +13,40 @@ import { marked } from 'marked';
 import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
-export interface TextProps extends BaseComponentProps {}
+export interface TextProps extends BaseComponentProps {
+	withMarkdown?: boolean;
+}
 
-const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'div' }) => {
+const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'div', withMarkdown = true }) => {
+	const styles = 'text-md md:text-lg lg:text-xl font-normal text-primary-100 leading-[1.75]';
+	
+	if (withMarkdown) {
+		return (
+			<Tag
+				className={twMerge(
+					clsx(
+						'brk-text',
+						styles,
+						className
+					)
+				)}
+				dangerouslySetInnerHTML={{ __html: marked.parse(`${children}`) }}
+			/>
+		)
+	}
+
 	return (
 		<Tag
 			className={twMerge(
 				clsx(
 					'brk-text',
-					'text-lg lg:text-xl font-normal text-primary-100 leading-[1.75]',
+					styles,
 					className
 				)
 			)}
-			dangerouslySetInnerHTML={{ __html: marked.parse(`${children}`) }}
-		/>
+		>
+			{children}
+		</Tag>
 	)
 }
 
