@@ -27,7 +27,7 @@ export interface SkillsSectionProps extends BaseSectionProps {
 // --------------------------------------------------------------------- 
 
 const SkillsSection: React.FC<SkillsSectionProps> = ({ id, className, heading, skills }) => {
-	const [isMobile] = useMediaQuery('(max-width: 767px)');
+	const [isMobile] = useMediaQuery('(max-width: 48rem)');
 
 	return (
 		<Section
@@ -51,7 +51,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ id, className, heading, s
 							>
 								{title}
 							</h3>
-							<SkillsList size={isMobile ? 'small' : 'medium'} {...{ skills }} />
+							<SkillsList size={isMobile ? 'sm' : 'md'} {...{ skills }} />
 						</div>
 					))}
 				</div>
