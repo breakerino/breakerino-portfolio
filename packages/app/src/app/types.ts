@@ -48,14 +48,18 @@ export interface Skill {
 }
 
 export interface Image {
-	alternativeText: string;
+	alternativeText?: string|null;
 	name: string;
 	url: string;
 	width: number;
 	height: number;
 }
 
-export type Video = Record<string, unknown>;
+export type Video = {
+	title?: string;
+	thumbnail: Image;
+	video: unknown; // TODO
+}	
 
 export interface SocialSite {
 	label: string;
@@ -68,6 +72,21 @@ export type SocialSiteType = keyof typeof SOCIAL_SITES;
 export interface SocialProfile {
 	type: SocialSiteType;
 	username: string;
+}
+
+export interface Link {
+	text: string;
+	icon: string;
+	url: string;
+}
+
+export interface ProjectItem {
+	name: string;
+	finishDate: string;
+	description: string;
+	technologies: Skill[];
+	video: Video;
+	links: Link[];
 }
 
 // --------------------------------------------------------------------- 
