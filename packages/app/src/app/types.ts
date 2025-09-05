@@ -81,6 +81,7 @@ export interface Link {
 }
 
 export interface ProjectItem {
+	id: number;
 	name: string;
 	finishDate: string;
 	description: string;
