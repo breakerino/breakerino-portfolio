@@ -9,17 +9,20 @@ import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseSectionProps } from '../app/types';
+import { BaseSectionProps, ProjectItem } from '@/app/types';
 import Section from '@/components/Section';
 import Container from '@/components/Container';
 import Heading from '@/components/Heading';
+import ProjectsList from '@/components/ProjectsList';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface ProjectsSectionProps extends BaseSectionProps {}
+export interface ProjectsSectionProps extends BaseSectionProps {
+	projects: ProjectItem[]
+}
 // --------------------------------------------------------------------- 
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ id, className, heading }) => {
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ id, className, heading, projects }) => {
 	return (
 		<Section
 			id={id}
@@ -31,6 +34,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ id, className, headin
 			)}>
 			<Container>
 				{heading && <Heading {...heading} />}
+				<ProjectsList projects={projects} />
 			</Container>
 		</Section>
 	)
