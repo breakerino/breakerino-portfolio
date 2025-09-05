@@ -43,7 +43,7 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({ className, as: Tag = 'div', ima
 					src={image.url}
 					width={image.width}
 					height={image.height}
-					alt={image.alternativeText}
+					alt={image.alternativeText ?? 'Image'}
 				/>
 			</div>
 

@@ -49,7 +49,7 @@ export interface Skill {
 
 export interface Image {
 	alternativeText?: string|null;
-	name: string;
+	name?: string;
 	url: string;
 	width: number;
 	height: number;

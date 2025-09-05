@@ -20,10 +20,10 @@ const meta = {
 	},
 	args: {
 		image: {
-				url: '/assets/img/breakerino-photo.png',
-				width: 485,
-				height: 840,
-				alt: 'Photo'
+			url: '/assets/img/breakerino-photo.png',
+			width: 485,
+			height: 840,
+			alternativeText: 'Photo'
 		}
 	},
 	decorators: [ComponentDecorator]

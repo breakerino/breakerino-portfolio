@@ -19,6 +19,7 @@ const meta = {
 		layout: 'fullscreen',
 	},
 	args: {
+		id: 1,
 		name: 'Portfolio',
 		description:
 			'Modern, responsive personal portfolio designed in Figma and built with Next.js and Strapi. Featured custom components, smooth scroll animations, and a layout tailored to showcase skills and projects effectively.',
