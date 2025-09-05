@@ -26,9 +26,9 @@ const SkillItem: React.FC<SkillItemProps> = ({ className, name, icon, size = 'md
 	}
 	
 	const sizes: Record<NonNullable<SkillItemProps['size']>, { wrapper: string, icon: string; text: string }> = {
-		sm: { icon: 'h-5', text: 'text-md lg:text-md', wrapper: variant === 'chip' ? 'px-3 py-2 gap-1.5' : 'px-2 py-1.5 gap-1.5' },
-		md: { icon: 'h-6', text: 'text-xl', wrapper: variant === 'chip' ? 'px-4 py-2.5 gap-2' : 'px-2.5 py-2 gap-2' },
-		lg: { icon: 'h-8', text: 'text-xl lg:text-xl', wrapper: variant === 'chip' ? 'px-5 py-3 gap-2.5' : 'px-3 py-2.5 gap-2.5' },
+		sm: { icon: 'w-5 h-5', text: 'text-md lg:text-md', wrapper: variant === 'chip' ? 'px-3 py-2 gap-1.5' : 'px-2 py-1.5 gap-1.5' },
+		md: { icon: 'w-6 h-6', text: 'text-xl', wrapper: variant === 'chip' ? 'px-4 py-2.5 gap-2' : 'px-3 py-2 gap-2' },
+		lg: { icon: 'w-8 h-8', text: 'text-xl lg:text-xl', wrapper: variant === 'chip' ? 'px-5 py-3 gap-2.5' : 'px-3 py-2 gap-2.5' },
 	};
 
 	const styles = sizes[size];

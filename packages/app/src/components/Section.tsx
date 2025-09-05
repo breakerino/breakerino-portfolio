@@ -19,7 +19,7 @@ const Section: React.FC<SectionProps> = ({ id, className, children, as: Tag = 's
 			className={twMerge(
 				clsx(
 					'brk-section',
-					'@container/section w-full h-fit py-8 md:py-12 lg:py-23',
+					'@container/section w-full h-fit py-8 md:py-12 lg:py-16',
 					className
 				)
 			)}

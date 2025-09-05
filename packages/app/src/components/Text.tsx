@@ -17,7 +17,7 @@ export interface TextProps extends BaseComponentProps {
 	withMarkdown?: boolean;
 }
 
-const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'div', withMarkdown = true }) => {
+const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'div', withMarkdown = false }) => {
 	const styles = 'text-md md:text-lg lg:text-xl font-normal text-primary-100 leading-[1.75]';
 	
 	if (withMarkdown) {

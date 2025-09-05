@@ -47,12 +47,9 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 			)}>
 			<Container>
 				{heading && <Heading {...heading} />}
-				<div className="flex flex-col lg:flex-row gap-8">
-					<div className={clsx(
-						'brk-section--about-me-left',
-						'w-fit'
-					)}>
-						<Frame className="lg:sticky lg:top-8">
+				<div className="flex flex-col md:flex-row gap-8">
+					<div className="w-fit sm:max-w-1/2">
+						<Frame className="md:sticky md:top-8">
 							<Image
 								src={getStaticAssetURL(reel.thumbnail.url)}
 								width={reel.thumbnail.width}
@@ -62,11 +59,8 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 							/>
 						</Frame>
 					</div>
-					<div className={clsx(
-						'brk-section--hero-right',
-						'flex-1'
-					)}>
-						<Text>{text}</Text>
+					<div className="flex-1">
+						<Text withMarkdown>{text}</Text>
 					</div>
 				</div>
 			</Container>

@@ -27,6 +27,7 @@ export interface SkillsSectionProps extends BaseSectionProps {
 // --------------------------------------------------------------------- 
 
 const SkillsSection: React.FC<SkillsSectionProps> = ({ id, className, heading, skills }) => {
+	const [isTablet] = useMediaQuery('(max-width: 64rem)');
 	const [isMobile] = useMediaQuery('(max-width: 48rem)');
 
 	return (
@@ -40,18 +41,16 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ id, className, heading, s
 			)}>
 			<Container>
 				{heading && <Heading {...heading} />}
-				<div className="flex flex-col gap-12">
+				<div className="flex flex-col gap-8 md:gap-10 lg:gap-12">
 					{skills.map(({ title, skills }) => (
 						<div
 							key={title}
-							className="flex flex-col gap-2 md:gap-3 lg:gap-4"
+							className="flex flex-col gap-3 md:gap-4"
 						>
-							<h3
-								className="font-bold text-2xl md:text-4xl lg:text-[2.5rem] text-primary-100"
-							>
+							<h3 className="font-bold text-2xl md:text-3xl lg:text-4xl text-primary-100">
 								{title}
 							</h3>
-							<SkillsList size={isMobile ? 'sm' : 'md'} {...{ skills }} />
+							<SkillsList size={isMobile ? 'sm' : isTablet ? 'md' : 'lg'} {...{ skills }} />
 						</div>
 					))}
 				</div>

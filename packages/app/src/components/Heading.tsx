@@ -23,7 +23,7 @@ const Heading: React.FC<HeadingProps> = ({ className, as: Tag = 'h2', title, sub
 			className={twMerge(
 				clsx(
 					'brk-heading',
-					'w-full h-fit flex flex-col gap-2',
+					'w-full h-fit flex flex-col gap-1',
 					className
 				)
 			)}
@@ -35,7 +35,7 @@ const Heading: React.FC<HeadingProps> = ({ className, as: Tag = 'h2', title, sub
 				)}>
 					<span className={clsx(
 						'brk-heading-subtitle__text',
-						'text-lg md:text-2xl lg:text-3xl font-normal leading-[1] text-primary-100'
+						'text-xl md:text-2xl lg:text-3xl font-normal leading-[1] text-primary-100'
 					)}>
 						{subtitle}
 					</span>
@@ -48,19 +48,25 @@ const Heading: React.FC<HeadingProps> = ({ className, as: Tag = 'h2', title, sub
 
 			<div className={clsx(
 				'brk-heading-title',
-				'inline text-5xl md:text-6xl lg:text-7xl font-bold leading-[1]'
+				'inline text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15]'
 			)}>
-				<span className={clsx(
-					'brk-heading-title__text',
-					'text-primary-50'
-				)}>
+				<span
+					className={clsx(
+						'brk-heading-title__text',
+						'text-primary-50'
+					)}
+					aria-label={title.toLocaleLowerCase()}
+					>
 					{title}
 				</span>
 				{showTitleDot && (
-					<abbr className={clsx(
-						'brk-heading-title__dot',
-						'text-primary-400'
-					)}>
+					<abbr
+						className={clsx(
+							'brk-heading-title__dot',
+							'text-primary-400'
+						)}
+						aria-hidden={true}
+					>
 						.
 					</abbr>
 				)}

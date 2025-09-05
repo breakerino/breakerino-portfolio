@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Components > SkillsList
+// Components > Skills list
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -19,10 +19,10 @@ export interface SkillsListProps extends Omit<BaseComponentProps, 'children'> {
 	size?: SkillItemProps['size'];
 }
 
-const SkillsList: React.FC<SkillsListProps> = ({ className, skills, as: Tag = 'ul', variant, size }) => {
-	const sortedSkills = React.useMemo(() => {
-		return skills.sort((a, b) => a.order > b.order ? 1 : -1);
-	}, [skills]);
+const SkillsList: React.FC<SkillsListProps> = ({ className, skills: passedSkills, as: Tag = 'ul', variant, size }) => {
+	const skills = React.useMemo(() => {
+		return passedSkills.sort((a, b) => a.order > b.order ? 1 : -1);
+	}, [passedSkills]);
 	
 	const sizes: Record<NonNullable<SkillItemProps['size']>, string> = {
 		sm: 'gap-2',
@@ -41,7 +41,7 @@ const SkillsList: React.FC<SkillsListProps> = ({ className, skills, as: Tag = 'u
 				)
 			)}
 		>
-			{sortedSkills.map(skill => (
+			{skills.map(skill => (
 				<Skill key={skill.name} as="li" {...{...skill, variant, size}} />
 			))}
 		</Tag>

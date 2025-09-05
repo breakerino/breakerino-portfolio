@@ -47,35 +47,39 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 			className={twMerge(
 				clsx(
 					'brk-section--hero',
+					'md:py-16 lg:py-20',
 					className
 				)
 			)}>
 			<Container>
-				<div className="flex flex-col md:flex-row items-start lg:items-end justify-between gap-6 lg:gap-8">
+				<div className="flex flex-col md:flex-row items-start xl:items-end justify-between gap-6 xl:gap-8">
 					<div className={clsx(
 						'brk-section--hero-left',
-						'w-full flex-1 md:w-8/12 md:flex-8/12 flex flex-col gap-8'
+						'@container/hero-left w-full flex-1 md:w-8/12 md:flex-8/12 flex flex-col gap-6 xl:gap-8'
 					)}>
-						<div className="flex flex-col gap-2">
-							<h1 className="flex flex-col gap-2">
-								<span className="text-2xl md:text-3xl lg:text-5xl font-light text-primary-100">
-									{heading?.subtitle}
-								</span>
-								<span className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-50">
-									{heading?.title}
-									<abbr className="text-primary-400" aria-hidden="true">.</abbr>
-								</span>
-								<span className="text-xl md:text-3xl lg:text-4xl font-medium text-primary-400">
-									{subheading}
-								</span>
-							</h1>
-						</div>
-						<Text withMarkdown>{text}</Text>
+						<h1 className="flex flex-col gap-2">
+							<span className="text-2xl md:text-3xl xl:text-5xl font-light text-primary-100">
+								{heading?.subtitle}
+							</span>
+							<span className="text-5xl md:text-7xl xl:text-8xl font-bold text-primary-50">
+								<span>{heading?.title}</span>
+								<abbr className="text-primary-400" aria-hidden="true">.</abbr>
+							</span>
+							<span
+								className="text-xl md:text-3xl xl:text-4xl font-medium text-primary-400"
+								aria-label={`— ${subheading}`}
+							>
+								{subheading}
+							</span>
+						</h1>
+						<Text withMarkdown>
+							{text}
+						</Text>
 						<div className="flex gap-4">
-							{socialProfiles.map(({type, username}) => (
-								<Link 
+							{socialProfiles.map(({ type, username }) => (
+								<Link
 									key={type}
-									size={isMobile ? 'sm' : isTablet ? 'md' : 'lg'}  
+									size={isMobile ? 'sm' : isTablet ? 'md' : 'lg'}
 									icon={SOCIAL_SITES[type].icon}
 									text={SOCIAL_SITES[type].label}
 									url={`${SOCIAL_SITES[type].baseURL}/${username}`}
@@ -85,10 +89,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 					</div>
 					<div className={clsx(
 						'brk-section--hero-right',
-						'-order-1 lg:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 lg:w-4/12 lg:flex-4/12'
+						'@container/hero-right left -order-1 xl:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 xl:w-4/12 xl:flex-4/12'
 					)}>
 						<PhotoFrame
-							className="w-52 md:w-full"
+							className="min-w-52 w-[33.33333vw] md:w-full"
 							image={{ ...image, url: getStaticAssetURL(image.url), }}
 						/>
 					</div>

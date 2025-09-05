@@ -36,10 +36,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 	const [isMobile] = useMediaQuery('(max-width: 32rem)');
 	
 	const styles = {
-		wrapper: alignment === 'left' ? '@6xl:pl-0' : '@6xl:pr-0',
-		frame: alignment === 'left' ? '@6xl:left-[unset] @6xl:right-0' : '@6xl:right-[unset] @6xl:left-0',
-		left: alignment === 'left' ? '@6xl:order-0' : '@6xl:order-1',
-		right: alignment === 'left' ? '@6xl:order-1' : '@6xl:order-0'
+		wrapper: alignment === 'left' ? '@4xl:pl-0' : '@4xl:pr-0',
+		frame: alignment === 'left' ? '@4xl:left-[unset] @4xl:right-0' : '@4xl:right-[unset] @4xl:left-0',
+		left: alignment === 'left' ? '@4xl:order-0' : '@4xl:order-1',
+		right: alignment === 'left' ? '@4xl:order-1' : '@4xl:order-0'
 	}
 
 	return (
@@ -54,7 +54,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 			<div className={twMerge(
 				clsx(
 					'brk-project-item-wrapper',
-					'relative w-full flex flex-col @6xl:flex-row @6xl:items-center gap-6 @xl:gap-8 p-6 @xl:p-9 @5xl:p-12',
+					'relative w-full flex flex-col @4xl:flex-row @4xl:items-center gap-6 @xl:gap-8 p-6 @xl:p-8 @2xl:p-10 @3xl:py-12 @5xl:py-24',
 					styles.wrapper
 				))}>
 
@@ -69,7 +69,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 					<div className={clsx(
 						'brk-project-item-video',
 						'border-3 border-secondary-700 rounded-lg overflow-hidden',
-						'w-full @6xl:w-[50vw] @6xl:max-w-[48rem]'
+						'w-full @4xl:w-[50vw] @4xl:max-w-[48rem]'
 					)}>
 						<Image
 							className="w-full h-full object-contain object-center"
@@ -107,7 +107,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							{/* <ProjectItemSubtitle> */}
 							<span className={clsx(
 								'brk-project-item-subtitle',
-								'w-fit px-2.5 @lg:px-3 py-1.5 @lg:py-2 text-md @md:text-lg @lg:text-xl leading-[1] font-normal text-secondary-100 bg-secondary-900 rounded-full'
+								'w-fit px-2.5 md:px-3 py-1.5 md:py-2 text-md md:text-lg lg:text-xl leading-[1] font-normal text-secondary-100 bg-secondary-900 rounded-full'
 							)}>
 								{moment(finishDate).year()}
 							</span>
@@ -115,7 +115,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							{/* <ProjectItemTitle> */}
 							<h3 className={clsx(
 								'brk-project-item-title',
-								'font-bold text-2xl @md:text-3xl @xl:text-4xl leading-[1.15]'
+								'font-bold text-2xl md:text-4xl xl:text-5xl leading-[1.25]'
 							)}>
 								{name}
 							</h3>
@@ -126,7 +126,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 						<Text
 							className={clsx(
 								'brk-project-item-description',
-								'text-md @lg:text-lg @xl:text-xl leading-[1.75]'
+								'text-md md:text-lg lg:text-xl leading-[1.75]'
 							)}
 						>
 							{description}
@@ -143,8 +143,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 									key={link.text}
 									target="_blank"
 									className={clsx(
-										'brk-project-item-link',
-										'px-4 py-2 text-lg'
+										'brk-project-item-link'
 									)}
 									size={isMobile ? 'xs' : 'sm'}
 									{...link}
@@ -161,7 +160,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 				<div className={twMerge(clsx(
 					'brk-project-item-frame',
 					'absolute z-0 top-0 left-0 pointer-events-none border-3 border-secondary-700 rounded-lg',
-					'w-full h-full @6xl:w-[calc(100%-var(--spacing)*24)]',
+					'w-full h-full @4xl:w-[calc(100%-var(--spacing)*24)]',
 					styles.frame
 				))} />
 				{/* </ProjectItemFrame> */}

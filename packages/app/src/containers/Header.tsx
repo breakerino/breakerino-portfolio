@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 	const logo: LogoProps = React.useMemo(() => ({
 		...pick(logoImage, ['width', 'height']),
 		src: getStaticAssetURL(logoImage.url),
-		alt: logoImage.alternativeText
+		alt: logoImage.alternativeText ?? 'Logo'
 	}), [logoImage]);
 
 	const menuItems: MenuItem[] = React.useMemo(() => (
@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 			className={twMerge(
 				clsx(
 					'brk-header',
-					'@container/header w-full py-4 md:py-6 lg:py-8 xl:py-12',
+					'@container/header w-full py-4 sm:py-4 md:py-8 lg:py-10 xl:py-12',
 					className)
 			)}
 		>
