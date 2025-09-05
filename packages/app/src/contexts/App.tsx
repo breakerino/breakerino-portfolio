@@ -32,26 +32,31 @@ export const AppContextProvider: React.FC<AppContextProps> = ({ children }) => {
 	const { data: siteSettings } = useQuery<SiteSettings>({
 		queryKey: ['settings', 'site'],
 		suspense: true,
+		enabled: false
 	});
 	
 	const { data: personalSettings } = useQuery<PersonalSettings>({
 		queryKey: ['settings', 'personal'],
 		suspense: true,
+		enabled: false
 	});
 	
 	const { data: headerData } = useQuery<AppContextStore['sections']['header']>({
 		queryKey: ['sections', 'header'],
 		suspense: true,
+		enabled: false
 	});
 	
 	const { data: contentData } = useQuery<AppContextStore['sections']['content']>({
 		queryKey: ['sections'],
 		suspense: true,
+		enabled: false
 	});
 	
 	const { data: footerData } = useQuery<AppContextStore['sections']['footer']>({
 		queryKey: ['sections', 'footer'],
 		suspense: true,
+		enabled: false
 	});
 
 	return (
