@@ -3,7 +3,7 @@
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import React from 'react';
+import React, { HTMLAttributeAnchorTarget } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
@@ -16,13 +16,15 @@ import { BaseComponentProps } from '@/app/types';
 
 export interface LogoProps extends BaseComponentProps {
 	href?: string;
+	target?: HTMLAttributeAnchorTarget;
 	src: string;
 	width: number;
 	height: number;
 	alt?: string
+	priority: boolean | undefined;
 }
 
-const Logo: React.FC<LogoProps> = ({ className, href, src, alt, width, height }) => {
+const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt, width, height, priority = false }) => {
 	return (
 		<Link
 			className={twMerge(
@@ -33,17 +35,15 @@ const Logo: React.FC<LogoProps> = ({ className, href, src, alt, width, height })
 				)
 			)}
 			href={href ?? '#'}
+			target={target}
 		>
 			<Image
 				className={clsx(
 					'brk-logo__image',
 					'w-full h-full object-contain object-left'
 				)}
-				src={src}
 				alt={alt ?? 'Logo'}
-				width={width}
-				height={height}
-				priority
+				{...{src, width, height, priority}}
 			/>
 		</Link>
 	)
