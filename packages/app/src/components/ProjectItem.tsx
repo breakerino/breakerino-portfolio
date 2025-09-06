@@ -10,7 +10,7 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseComponentProps, ProjectItem as ProjectItemType } from '@/app/types';
+import { BaseComponentProps, Project as ProjectItemType } from '@/app/types';
 import Link from '@/components/Link';
 import Text from '@/components/Text';
 import moment from 'moment';

@@ -9,7 +9,7 @@ import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseSectionProps, ProjectItem } from '@/app/types';
+import { BaseSectionProps, Project } from '@/app/types';
 import Section from '@/components/Section';
 import Container from '@/components/Container';
 import Heading from '@/components/Heading';
@@ -18,7 +18,7 @@ import ProjectsList from '@/components/ProjectsList';
 
 // --------------------------------------------------------------------- 
 export interface ProjectsSectionProps extends BaseSectionProps {
-	projects: ProjectItem[]
+	projects: Project[]
 }
 // --------------------------------------------------------------------- 
 

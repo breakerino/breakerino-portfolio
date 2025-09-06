@@ -41,6 +41,7 @@ export interface NavigationItem {
 }
 
 export interface Skill {
+	id: number;
 	name: string;
 	icon: string;
 	order: number;
@@ -48,11 +49,12 @@ export interface Skill {
 }
 
 export interface Image {
-	alternativeText?: string|null;
+	id?: number;
 	name?: string;
 	url: string;
 	width: number;
 	height: number;
+	alternativeText?: string|null;
 }
 
 export type Video = {
@@ -80,7 +82,7 @@ export interface Link {
 	url: string;
 }
 
-export interface ProjectItem {
+export interface Project {
 	id: number;
 	name: string;
 	finishDate: string;

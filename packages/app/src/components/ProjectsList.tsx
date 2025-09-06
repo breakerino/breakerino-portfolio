@@ -10,12 +10,12 @@ import moment from 'moment';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseComponentProps, ProjectItem as ProjectItemType } from '@/app/types';
-import ProjectItem from './ProjectItem';
+import { BaseComponentProps, Project } from '@/app/types';
+import ProjectItem from '@/components/ProjectItem';
 // --------------------------------------------------------------------- 
 
 export interface ProjectsListProps extends Omit<BaseComponentProps, 'children'> {
-	projects: ProjectItemType[];
+	projects: Project[];
 }
 
 const ProjectsList: React.FC<ProjectsListProps> = ({ className, projects: passedProjects, as: Tag = 'ul' }) => {
