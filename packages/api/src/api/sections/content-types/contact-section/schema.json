@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-		"settingsName": {
+    "settingsName": {
       "type": "string",
       "private": true,
       "pluginOptions": {
@@ -25,6 +25,41 @@
       },
       "default": "Sections / Contact",
       "unique": true
+    },
+    "text": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "email": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "socials": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "github",
+        "linkedin",
+        "facebook",
+        "instagram",
+        "spotify",
+        "youtube",
+        "myanimelist"
+      ]
     }
   }
 }
