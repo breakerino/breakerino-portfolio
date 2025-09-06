@@ -55,7 +55,6 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 								width={reel.thumbnail.width}
 								height={reel.thumbnail.height}
 								alt={reel.thumbnail.alternativeText}
-								priority
 							/>
 						</Frame>
 					</div>

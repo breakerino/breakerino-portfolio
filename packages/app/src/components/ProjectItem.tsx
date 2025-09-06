@@ -77,7 +77,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							width={video.thumbnail.width}
 							height={video.thumbnail.height}
 							alt={video.thumbnail.alternativeText ?? 'Project video thumbnail'}
-							priority
 						/>
 					</div>
 					{/* </ProjectItemVideo> */}
