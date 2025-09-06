@@ -31,7 +31,7 @@ const Link: React.FC<LinkProps> = ({
 	size = 'md',
 }) => {
 	const sizes: Record<NonNullable<LinkProps['size']>, { wrapper: string, icon: string; text: string }> = {
-		xs: { icon: 'w-6 h-6', text: 'text-md', wrapper: 'gap-1.5 p-1.5' },
+		xs: { icon: 'w-6 h-6', text: 'text-base', wrapper: 'gap-1.5 p-1.5' },
 		sm: { icon: 'w-8 h-8', text: 'text-lg', wrapper: 'gap-2 p-2' },
 		md: { icon: 'w-10 h-10', text: 'text-xl', wrapper: twMerge(clsx('gap-2.5 px-3 py-2.5', !showLabel && 'p-2.5')) },
 		lg: { icon: 'w-12 h-12', text: 'text-2xl', wrapper: twMerge(clsx('gap-3 px-4 py-2.5', !showLabel && 'p-2.5')) },

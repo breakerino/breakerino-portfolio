@@ -107,7 +107,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							{/* <ProjectItemSubtitle> */}
 							<span className={clsx(
 								'brk-project-item-subtitle',
-								'w-fit px-2.5 md:px-3 py-1.5 md:py-2 text-md md:text-lg lg:text-xl leading-[1] font-normal text-secondary-100 bg-secondary-900 rounded-full'
+								'w-fit px-2.5 md:px-3 py-1.5 md:py-2 text-base md:text-lg lg:text-xl leading-[1] font-normal text-secondary-100 bg-secondary-900 rounded-full'
 							)}>
 								{moment(finishDate).year()}
 							</span>
@@ -126,7 +126,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 						<Text
 							className={clsx(
 								'brk-project-item-description',
-								'text-md md:text-lg lg:text-xl leading-[1.75]'
+								'text-base md:text-lg lg:text-xl leading-[1.75]'
 							)}
 						>
 							{description}
