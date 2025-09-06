@@ -37,7 +37,8 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 	const logo: LogoProps = React.useMemo(() => ({
 		...pick(logoImage, ['width', 'height']),
 		src: getStaticAssetURL(logoImage.url),
-		alt: logoImage.alternativeText ?? 'Logo'
+		alt: logoImage.alternativeText ?? 'Logo',
+		priority: true
 	}), [logoImage]);
 
 	const menuItems: MenuItem[] = React.useMemo(() => (
@@ -62,7 +63,6 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 				<Logo
 					{...logo}
 					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
-					priority
 				/>
 				<DesktopMenu className="hidden md:flex" menuItems={menuItems} />
 				<MobileMenu {...{ logo, menuItems, socialItems }} />
