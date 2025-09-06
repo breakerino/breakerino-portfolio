@@ -21,7 +21,7 @@ export interface LogoProps extends BaseComponentProps {
 	width: number;
 	height: number;
 	alt?: string
-	priority: boolean | undefined;
+	priority?: boolean;
 }
 
 const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt, width, height, priority = false }) => {
