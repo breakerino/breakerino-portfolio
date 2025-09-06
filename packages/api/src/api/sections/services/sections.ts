@@ -46,10 +46,10 @@ export default {
 					locale: DEFAULT_SITE_LOCALE
 				})) ?? {};
 
-				let data = this.sanitizeData(document);
-				data = populateDocumentData(data, globalSettings);
+				const sanitizedData = this.sanitizeData(document);
+				const {id, ...data} = populateDocumentData(sanitizedData, globalSettings);
 
-				section = { ...section, data: { ...data, heading } };
+				section = { ...section, data: { id, heading, ...data } };
 
 			} catch (error) {
 				strapi.log.error(`Document for section "${section.id}" not found.`)
