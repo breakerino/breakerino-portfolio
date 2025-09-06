@@ -92,6 +92,20 @@ export interface Project {
 	links: Link[];
 }
 
+export interface WorkExperience {
+	id: number;
+	companyName: string;
+	companySiteURL: string;
+	companyLogo: Image;
+	location: string;
+	startDate: string;
+	endDate: string;
+	employmentType: string;
+	description: string;
+	position: string;
+	skills: Skill[]
+}
+
 // --------------------------------------------------------------------- 
 // Settings
 // --------------------------------------------------------------------- 
