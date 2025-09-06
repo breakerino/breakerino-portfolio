@@ -72,19 +72,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 				/>
 				<Footer className="pl-10 pr-8 py-5" >
 					{socialItems && (
-						<div className={clsx('brk-mobile-menu-socials w-full flex flex-wrap gap-2')}>
-							{
-								socialItems.map(({type, username}) => (
-									<Link 
-										key={type}
-										size="xs"
-										showLabel={false} 
-										icon={SOCIAL_SITES[type].icon}
-										text={SOCIAL_SITES[type].label}
-										url={`${SOCIAL_SITES[type].baseURL}/${username}`}
-										/>
-								))
-							}
+						<div className={clsx(
+							'brk-mobile-menu-socials',
+							'w-full flex flex-wrap gap-2'
+						)}>
+							{socialItems.map(({ type, username }) => (
+								<Link
+									key={type}
+									size="xs"
+									showLabel={false}
+									icon={SOCIAL_SITES[type].icon}
+									text={SOCIAL_SITES[type].label}
+									url={`${SOCIAL_SITES[type].baseURL}/${username}`}
+								/>
+							))}
 						</div>
 					)}
 				</Footer>
