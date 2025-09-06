@@ -24,6 +24,9 @@
         "audios"
       ]
     },
+    "companySiteURL": {
+      "type": "string"
+    },
     "position": {
       "type": "string"
     },
@@ -48,6 +51,11 @@
     },
     "description": {
       "type": "richtext"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::portfolio.skill"
     }
   }
 }
