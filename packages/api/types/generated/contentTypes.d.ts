@@ -503,6 +503,7 @@ export interface ApiPortfolioWorkExperience
       'images' | 'files' | 'videos' | 'audios'
     >;
     companyName: Schema.Attribute.String;
+    companySiteURL: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -520,6 +521,7 @@ export interface ApiPortfolioWorkExperience
     location: Schema.Attribute.String;
     position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    skills: Schema.Attribute.Relation<'oneToMany', 'api::portfolio.skill'>;
     startDate: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
