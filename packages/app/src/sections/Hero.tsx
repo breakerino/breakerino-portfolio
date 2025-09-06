@@ -72,7 +72,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 								{subheading}
 							</span>
 						</h1>
-						<Text withMarkdown>
+						<Text
+							withMarkdown
+							as="div"
+						>
 							{text}
 						</Text>
 						<div className="flex gap-4">

@@ -123,6 +123,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
 						{/* <ProjectItemDescription> */}
 						<Text
+							withMarkdown
+							as="div"
 							className={clsx(
 								'brk-project-item-description',
 								'text-base md:text-lg lg:text-xl leading-[1.75]'

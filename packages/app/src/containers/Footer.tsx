@@ -35,8 +35,20 @@ const Footer: React.FC<FooterProps> = ({ className, data: { text, copyrightText 
 			)}
 		>
 			<Container className="text-center gap-2 md:gap-2 lg:gap-2">
-				<Text className="text-sm md:text-base lg:text-base" withMarkdown>{text}</Text>
-				<Text className="text-xs md:text-xs lg:text-xs font-light" withMarkdown>{copyrightText}</Text>
+				<Text
+					className="text-sm md:text-base lg:text-base"
+					withMarkdown
+					as="div"
+				>
+					{text}
+				</Text>
+				<Text
+					className="text-xs md:text-xs lg:text-xs font-light"
+					withMarkdown
+					as="div"
+				>
+					{copyrightText}
+				</Text>
 			</Container>
 		</Section>
 	)
