@@ -9,17 +9,20 @@ import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseSectionProps } from '@/app/types';
+import { BaseSectionProps, WorkExperience } from '@/app/types';
 import Section from '@/components/Section';
 import Container from '@/components/Container';
 import Heading from '@/components/Heading';
+import WorkExperienceList from '@/components/WorkExperienceList';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-export interface ExperienceSectionProps extends BaseSectionProps {}
+export interface ExperienceSectionProps extends BaseSectionProps {
+	workExperiences: WorkExperience[];
+}
 // --------------------------------------------------------------------- 
 
-const ExperienceSection: React.FC<ExperienceSectionProps> = ({ id, className, heading}) => {
+const ExperienceSection: React.FC<ExperienceSectionProps> = ({ id, className, heading, workExperiences}) => {
 	return (
 		<Section
 			id={id}
@@ -31,6 +34,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ id, className, he
 			)}>
 			<Container>
 				{heading && <Heading {...heading} />}
+				<WorkExperienceList items={workExperiences} />
 			</Container>
 		</Section>
 	)
