@@ -25,6 +25,7 @@ const Content: React.FC<ContentProps> = ({ className, data }) => {
 
 	return (
 		<main
+			id="main"
 			className={twMerge(
 				clsx(
 					'brk-content',

@@ -25,6 +25,7 @@ export interface FooterProps extends Pick<BaseSectionProps, 'className'> {
 const Footer: React.FC<FooterProps> = ({ className, data: { text, copyrightText } }) => {
 	return (
 		<Section
+			id="footer"
 			as="footer"
 			className={twMerge(
 				clsx(

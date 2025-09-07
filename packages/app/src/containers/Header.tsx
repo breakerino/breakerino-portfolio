@@ -51,6 +51,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 
 	return (
 		<Section
+			id="header"
 			as="header"
 			className={twMerge(
 				clsx(

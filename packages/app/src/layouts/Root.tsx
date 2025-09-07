@@ -9,6 +9,7 @@ import { Inter } from 'next/font/google';
 
 // --------------------------------------------------------------------- 
 import Head from '@/components/Head';
+import SkipLink from '@/components/SkipLink';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -25,6 +26,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => (
 	<html lang="en" className={`${interFont.variable}`}>
 		<Head />
 		<body className="bg-secondary-950 text-primary-50">
+			<SkipLink />
 			{children}
 		</body>
 	</html>
