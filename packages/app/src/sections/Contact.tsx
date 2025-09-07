@@ -43,7 +43,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 				)
 			)}>
 			<Container>
-				<div className="flex flex-col justify-center gap-8">
+				<div className="flex flex-col items-center gap-8">
 					<div className="flex flex-col gap-3 md:gap-4 lg:gap-5">
 						<h2 className="text-primary-50 text-3xl md:text-5xl lg:text-6xl font-bold text-center">
 							<span>{text}</span>
@@ -56,7 +56,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 							{email}
 						</NextLink>
 					</div>
-					<div className="flex flex-wrap gap-4">
+					<div className="flex flex-wrap gap-4 justify-center">
 						{socialItems.map(({ type, username }) => (
 							<Link
 								key={type}
