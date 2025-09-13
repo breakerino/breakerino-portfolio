@@ -23,12 +23,12 @@ start-app-dev:
 	
 start-app-storybook:
 	bash scripts/dev/start-app-storybook.sh
-	
+
 build-app:
 	bash scripts/dev/build-app.sh
 
 start-api-dev:
 	bash scripts/dev/start-api.sh
-	
+
 build-api:
 	bash scripts/dev/build-api.sh
