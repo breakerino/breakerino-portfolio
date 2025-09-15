@@ -35,6 +35,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 
 	return (
 		<Section
+			id="contact"
 			className={twMerge(
 				clsx(
 					'brk-section--contact',

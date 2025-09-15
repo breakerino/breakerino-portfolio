@@ -39,6 +39,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 
 	return (
 		<Section
+			id="about-me"
 			className={twMerge(
 				clsx(
 					'brk-section--about-me',
