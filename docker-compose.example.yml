@@ -14,6 +14,7 @@ services:
       - APP_SERVER_PROTOCOL=${APP_SERVER_PROTOCOL}
       - APP_SERVER_NAME=${APP_SERVER_NAME}
       - APP_PORT=${APP_PORT}
+      - APP_REFRESH_TOKEN=${APP_REFRESH_TOKEN}
       
       # Api
       - API_TOKEN=${API_TOKEN}
@@ -36,7 +37,7 @@ services:
       context: ./packages/api
       target: runner-${PROJECT_ENV}
     environment:
-      # Strapi
+      # Api
       - API_PORT=${API_PORT}
       - API_VERSION=${API_VERSION}
       - API_APP_KEYS=${API_APP_KEYS}
@@ -44,6 +45,10 @@ services:
       - API_TRANSFER_TOKEN_SALT=${API_TRANSFER_TOKEN_SALT}
       - API_TOKEN_SALT=${API_TOKEN_SALT}
       - API_ENCRYPTION_KEY=${API_ENCRYPTION_KEY}
+      
+      # App
+      - APP_BASE_URL=${APP_BASE_URL}
+      - APP_REFRESH_TOKEN=${APP_REFRESH_TOKEN}
       
       # Database
       - DATABASE_HOST=${DATABASE_HOST}
