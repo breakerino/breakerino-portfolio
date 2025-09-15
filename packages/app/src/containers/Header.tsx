@@ -19,6 +19,7 @@ import MobileMenu from '@/modules/MobileMenu';
 import Container from '@/components/Container';
 import Logo, { LogoProps } from '@/components/Logo';
 import Section from '@/components/Section';
+import useHeader from '@/hooks/useHeader';
 import { HEADER_STICKY_SCROLL_THRESHOLD_Y, HEADER_SHOW_SCROLL_OFFSET_Y, HEADER_HIDE_SCROLL_OFFSET_Y } from '@/app/constants';
 // --------------------------------------------------------------------- 
 
@@ -34,12 +35,11 @@ export interface HeaderProps extends Pick<BaseSectionProps, 'className'> {
 
 const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, navigation, socials } }) => {
 	const { settings } = useAppContext();
-	
-	const [isVisible, setIsVisible] = React.useState<boolean>(false);
-	const [isSticky, setIsSticky] = React.useState<boolean>(false);
-	const [isAnimated, setIsAnimated] = React.useState<boolean>(false);
-	
-	const lastScrollY = React.useRef(0);
+	const { isSticky, isVisible, isAnimated } = useHeader({
+		stickyThreshold: HEADER_STICKY_SCROLL_THRESHOLD_Y,
+		showOffset: HEADER_SHOW_SCROLL_OFFSET_Y,
+		hideOffset: HEADER_HIDE_SCROLL_OFFSET_Y
+	})
 
 	const logo: LogoProps = React.useMemo(() => ({
 		...pick(logoImage, ['width', 'height']),
@@ -56,34 +56,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 		return settings.personal.socials.filter(social => socials.includes(social.type))
 	}, [socials, settings.personal.socials])
 
-	const handleScroll = () => {
-    const currentScrollY = window.scrollY;
 
-		// Sticky
-		setIsSticky(currentScrollY > HEADER_STICKY_SCROLL_THRESHOLD_Y);
-		
-		setTimeout(() => {
-			setIsAnimated(currentScrollY > HEADER_STICKY_SCROLL_THRESHOLD_Y)
-		}, 300);
-
-		// Visibility
-    if (currentScrollY < (lastScrollY.current - HEADER_SHOW_SCROLL_OFFSET_Y)) {
-      setIsVisible(true);
-    } else if (currentScrollY > (lastScrollY.current + HEADER_HIDE_SCROLL_OFFSET_Y)) {
-      setIsVisible(false);
-    }
-
-    lastScrollY.current = currentScrollY;
-  };
-
-  React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-	
 	return (
 		<Section
 			id="header"
@@ -94,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 					'@container/header w-full py-4 sm:py-4 md:py-8 lg:py-8',
 					isSticky && 'sticky top-0 z-100 backdrop-blur-sm -translate-y-full bg-secondary-950/75',
 					isAnimated && 'transition-transform duration-300 ease-in-out',
-					(! isSticky || isVisible) && 'translate-y-0',
+					(!isSticky || isVisible) && 'translate-y-0',
 					className)
 			)}
 		>
