@@ -56,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 			className={twMerge(
 				clsx(
 					'brk-header',
-					'@container/header w-full py-4 sm:py-4 md:py-8 lg:py-10 xl:py-12',
+					'@container/header w-full py-4 sm:py-4 md:py-8 lg:py-9',
 					className)
 			)}
 		>
