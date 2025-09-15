@@ -7,6 +7,7 @@ import type { Preview } from '@storybook/nextjs-vite';
 // --------------------------------------------------------------------- 
 import '@/assets/css/tailwind.css';
 import '@/assets/scss/index.scss'
+import '@splidejs/react-splide/css/core';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 

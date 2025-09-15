@@ -19,6 +19,7 @@ import queryClient from '@/app/api/client';
 // --------------------------------------------------------------------- 
 import '@/assets/css/tailwind.css';
 import '@/assets/scss/index.scss';
+import '@splidejs/react-splide/css/core';
 // --------------------------------------------------------------------- 
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
