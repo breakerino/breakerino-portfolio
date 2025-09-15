@@ -16,6 +16,7 @@ import Text from '@/components/Text';
 import moment from 'moment';
 import { getStaticAssetURL } from '@/app/functions';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import SkillsList from '@/components/SkillsList';
 // --------------------------------------------------------------------- 
 
 export interface ProjectItemProps extends Omit<BaseComponentProps, 'children'>, ProjectItemType {
@@ -34,7 +35,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 	alignment = 'left'
 }) => {
 	const [isMobile] = useMediaQuery('(max-width: 32rem)');
-	
+
 	const styles = {
 		wrapper: alignment === 'left' ? '@4xl:pl-0' : '@4xl:pr-0',
 		frame: alignment === 'left' ? '@4xl:left-[unset] @4xl:right-0' : '@4xl:right-[unset] @4xl:left-0',
@@ -46,7 +47,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 		<Tag className={twMerge(
 			clsx(
 				'brk-project-item',
-				'@container/project-item w-full',
+				'@container/project-item w-full pt-4',
 				className
 			))}>
 
@@ -54,7 +55,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 			<div className={twMerge(
 				clsx(
 					'brk-project-item-wrapper',
-					'relative w-full flex flex-col @4xl:flex-row @4xl:items-center gap-6 @xl:gap-8 p-6 @xl:p-8 @2xl:p-10 @3xl:py-12 @5xl:py-24',
+					'relative w-full flex flex-col @4xl:flex-row @4xl:items-center gap-6 @xl:gap-8',
+					'px-6 @xl:px-8 @2xl:px-10 pt-10 @xl:pt-12 @2xl:pt-14 @3xl:pt-16 @5xl:pt-28 pb-6 @xl:pb-8 @2xl:pb-10 @3xl:pb-12 @5xl:pb-24',
 					styles.wrapper
 				))}>
 
@@ -164,7 +166,43 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 					'absolute z-0 top-0 left-0 pointer-events-none border-3 border-secondary-700 rounded-lg',
 					'w-full h-full @4xl:w-[calc(100%-var(--spacing)*24)]',
 					styles.frame
-				))} />
+				))}>
+					<div className={twMerge(
+						clsx(
+							'brk-project-item-technologies',
+							'w-full absolute overflow-hidden',
+							'-top-5',
+							'w-[calc(100%-(var(--spacing)*6)))] @xl:w-[calc(100%-(var(--spacing)*8)))] @2xl:w-[calc(100%-(var(--spacing)*10)))]',
+						))}>
+						<div className={clsx(
+							'brk-project-item-technologies-wrapper',
+							'ml-6 @xl:ml-8 @2xl:ml-10',
+						)}>
+							<div className={clsx(
+								'absolute top-0 w-12 h-full z-10',
+								'left-6 @xl:left-8 @2xl:left-10',
+								'bg-gradient-to-r from-secondary-950 to-transparent',
+							)}
+							/>
+							<SkillsList
+								className={clsx(
+									'brk-project-item-technologies-list',
+								)}
+								size="sm"
+								variant="chip"
+								slideshow
+								skills={technologies}
+							/>
+							<div className={clsx(
+								'absolute top-0 w-12 h-full z-10',
+								'right-0',
+								'bg-gradient-to-l from-secondary-950 to-transparent',
+							)}
+							/>
+						</div>
+					</div>
+
+				</div>
 				{/* </ProjectItemFrame> */}
 			</div>
 			{/* </ProjectItemWrapper> */}
