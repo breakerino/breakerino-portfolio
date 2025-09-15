@@ -66,6 +66,13 @@ export const SOCIAL_SITES: Record<string, SocialSite> = {
 export const ICON_SET_URI = '/assets/svg/icons.svg';
 
 // --------------------------------------------------------------------- 
+// Header
+// --------------------------------------------------------------------- 
+export const HEADER_STICKY_SCROLL_THRESHOLD_Y = 768;
+export const HEADER_HIDE_SCROLL_OFFSET_Y = 10;
+export const HEADER_SHOW_SCROLL_OFFSET_Y = 75;
+
+// --------------------------------------------------------------------- 
 // Sections
 // --------------------------------------------------------------------- 
 export const SECTION_COMPONENT_MAP = {
