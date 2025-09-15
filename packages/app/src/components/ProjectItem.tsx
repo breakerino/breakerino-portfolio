@@ -146,6 +146,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 									className={clsx(
 										'brk-project-item-link'
 									)}
+									variant="animated"
 									size={isMobile ? 'xs' : 'sm'}
 									{...link}
 								/>

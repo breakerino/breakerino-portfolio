@@ -82,6 +82,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 							{socialProfiles.map(({ type, username }) => (
 								<Link
 									key={type}
+									variant="animated"
 									size={isMobile ? 'sm' : isTablet ? 'md' : 'lg'}
 									icon={SOCIAL_SITES[type].icon}
 									text={SOCIAL_SITES[type].label}
