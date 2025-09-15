@@ -33,7 +33,16 @@ export default function Index() {
 // --------------------------------------------------------------------- 
 // Server-side data prefetch
 // --------------------------------------------------------------------- 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { refresh, token } = context.query;
+
+	// Invalidate queries on refresh
+	if (refresh === '' && token === process.env.APP_REFRESH_TOKEN) {
+		for (const { queryKey } of queries) {
+			queryClient.invalidateQueries({ queryKey });
+		}
+	}
+
 	await Promise.all(
 		queries.map(({ queryKey, queryFn }) =>
 			queryClient.prefetchQuery({
