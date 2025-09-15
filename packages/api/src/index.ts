@@ -1,20 +1,26 @@
-// import type { Core } from '@strapi/strapi';
+// --------------------------------------------------------------------- 
+import type { Core } from '@strapi/strapi';
+// --------------------------------------------------------------------- 
+import { refreshAppCache } from './hooks/refreshAppCache';
+// --------------------------------------------------------------------- 
 
 export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
+    const lifecycleEvents = ['afterCreate', 'afterUpdate'];
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+    Object.values(strapi.contentTypes).forEach((contentType) => {
+      const uid = contentType.uid;
+
+      lifecycleEvents.forEach((event) => {
+        strapi.db.lifecycles.subscribe({
+          models: [uid],
+          [event]: async ({ result }) => {
+            if ('publishedAt' in result && result.publishedAt) {
+              refreshAppCache();
+            }
+          },
+        });
+      });
+    });
+  },
 };
