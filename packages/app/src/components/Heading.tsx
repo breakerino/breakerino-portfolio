@@ -41,7 +41,7 @@ const Heading: React.FC<HeadingProps> = ({ className, as: Tag = 'h2', title, sub
 					</span>
 					<span className={clsx(
 						'brk-heading-subtitle__line',
-						'flex-1 w-full h-0.75 bg-secondary-700'
+						'flex-1 w-full h-0.75 bg-secondary-700 rounded-sm'
 					)} />
 				</div>
 			)}
