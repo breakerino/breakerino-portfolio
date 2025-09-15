@@ -35,6 +35,7 @@ export default function Index() {
 // --------------------------------------------------------------------- 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { refresh, token } = context.query;
+	const { res } = context;
 
 	// Invalidate queries on refresh
 	if (refresh === '' && token === process.env.APP_REFRESH_TOKEN) {
@@ -43,6 +44,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		}
 	}
 
+	const fetchingErrors: unknown[] = [];
+
+	// Prefetch queries
 	await Promise.all(
 		queries.map(({ queryKey, queryFn }) =>
 			queryClient.prefetchQuery({
@@ -57,12 +61,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 						} else {
 							console.error(error);
 						}
-						return [];
+
+						fetchingErrors.push(error);
+
+						return null;
 					}
-				}
+				},
 			})
 		)
 	);
+
+	if (fetchingErrors.length > 0) {
+		for (const { queryKey } of queries) {
+			queryClient.invalidateQueries({ queryKey });
+		}
+
+		res.statusCode = 503;
+		res.end();
+		return { props: {} };
+	}
 
 	return {
 		props: {
