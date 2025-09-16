@@ -18,13 +18,19 @@ import { BaseComponentProps } from '@/app/types';
 
 export interface PortalProps extends BaseComponentProps {}
 
-export default function Portal({ className, children }: PortalProps) {
-	if (typeof document === 'undefined') {
+const Portal: React.FC<PortalProps> = ({ className, children }) => {	
+	const portalRoot = React.useMemo(() => {
+		return document.querySelector('.brk-portal-root');
+	}, []);
+	
+	if (typeof document === 'undefined' || ! ( portalRoot instanceof HTMLElement )) {
 		return null;
 	}
 	
 	return createPortal(
 		<div className={clsx('brk-portal', className)}>{children}</div>,
-		document.body
+		portalRoot
 	);
 }
+
+export default Portal;
