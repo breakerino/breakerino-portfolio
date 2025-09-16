@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 			className={twMerge(
 				clsx(
 					'brk-section--hero',
-					'md:py-16 lg:py-20',
+					'md:py-16 lg:py-32',
 					className
 				)
 			)}>
