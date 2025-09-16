@@ -10,6 +10,7 @@ import { Inter } from 'next/font/google';
 // --------------------------------------------------------------------- 
 import Head from '@/components/Head';
 import SkipLink from '@/components/SkipLink';
+import PortalRoot from '@/components/PortalRoot';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -28,6 +29,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => (
 		<body className="bg-secondary-950 text-primary-50">
 			<SkipLink />
 			{children}
+			<PortalRoot />
 		</body>
 	</html>
 )
