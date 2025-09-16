@@ -46,6 +46,19 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, activeMenuItemID, 
 			actions.setIsNavigating(false);
 		}, 1000)
 	}
+	
+	const handleMouseOver: React.MouseEventHandler<HTMLAnchorElement> = ({target}) => {
+		const element = target as HTMLAnchorElement;
+		const activeItemRect = element.getBoundingClientRect();
+
+		document.documentElement.style.setProperty('--brk-menu-indicator-width', `${activeItemRect.width}px`);
+		document.documentElement.style.setProperty('--brk-menu-indicator-offset-x', `${element.offsetLeft}px`);
+	} 
+	
+	const handleMouseLeave: React.MouseEventHandler<HTMLUListElement> = () => {
+		document.documentElement.style.setProperty('--brk-menu-indicator-width', '0px');
+		document.documentElement.style.setProperty('--brk-menu-indicator-offset-x', '0px');
+	}
 
 	return (
 		<nav
@@ -57,7 +70,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, activeMenuItemID, 
 			)}
 			aria-label={ariaLabel ?? 'Desktop navigation'}
 		>
-			<ul className="brk-menu-list flex items-center gap-8">
+			<ul className="brk-menu-list flex items-center gap-8" onMouseLeave={handleMouseLeave}>
 				{menuItems.map(({ id, href, label, className }) => (
 					<li className="brk-menu-list__item" key={id} ref={id === activeMenuItemID ? activeItemRef : null}>
 						<Link
@@ -67,6 +80,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, activeMenuItemID, 
 								className
 							)}
 							onClick={handleNavigation}
+							onMouseOver={handleMouseOver}
 						>
 							{label}
 						</Link>
