@@ -59,7 +59,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 							/>
 						</Frame>
 					</div>
-					<div className="flex flex-1 mt-8 lg:mt-12 items-center">
+					<div className="flex flex-1 md:mt-8 lg:mt-12 items-center">
 						<Text
 							withMarkdown
 							as="div"
