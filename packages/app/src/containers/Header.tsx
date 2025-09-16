@@ -21,6 +21,7 @@ import Logo, { LogoProps } from '@/components/Logo';
 import Section from '@/components/Section';
 import useHeader from '@/hooks/useHeader';
 import { HEADER_STICKY_SCROLL_THRESHOLD_Y, HEADER_SHOW_SCROLL_OFFSET_Y, HEADER_HIDE_SCROLL_OFFSET_Y } from '@/app/constants';
+import useActiveSection from '@/hooks/useActiveSection';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -40,6 +41,9 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 		showOffset: HEADER_SHOW_SCROLL_OFFSET_Y,
 		hideOffset: HEADER_HIDE_SCROLL_OFFSET_Y
 	})
+	const [activeSectionID] = useActiveSection({
+		selector: 'section.brk-section'
+	});
 
 	const logo: LogoProps = React.useMemo(() => ({
 		...pick(logoImage, ['width', 'height']),
@@ -55,7 +59,6 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 	const socialItems = React.useMemo(() => {
 		return settings.personal.socials.filter(social => socials.includes(social.type))
 	}, [socials, settings.personal.socials])
-
 
 	return (
 		<Section
@@ -76,8 +79,8 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 					{...logo}
 					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
 				/>
-				<DesktopMenu className="hidden md:flex" menuItems={menuItems} />
-				<MobileMenu {...{ logo, menuItems, socialItems }} />
+				<DesktopMenu className="hidden md:flex" menuItems={menuItems} activeMenuItemID={activeSectionID} />
+				<MobileMenu {...{ logo, menuItems, socialItems, activeMenuItemID: activeSectionID }} />
 			</Container>
 		</Section>
 	)
