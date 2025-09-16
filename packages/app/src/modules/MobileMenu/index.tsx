@@ -28,6 +28,7 @@ export interface MobileMenuProps extends BaseComponentProps {
 	logo: Omit<LogoProps, 'className' | 'href'>
 	menuItems: MenuItem[]
 	socialItems?: SocialProfile[]
+	activeMenuItemID?: string | null;
 	ariaLabel?: string
 }
 
@@ -35,6 +36,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 	className,
 	logo,
 	menuItems,
+	activeMenuItemID,
 	socialItems,
 	ariaLabel: navigationAriaLabel,
 }) => {
@@ -67,6 +69,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 				<Navigation
 					className="px-10 py-8 flex-1"
 					items={menuItems}
+					activeItemID={activeMenuItemID}
 					ariaLabel={navigationAriaLabel}
 					onClose={handleClose}
 				/>
