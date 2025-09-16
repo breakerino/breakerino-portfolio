@@ -15,6 +15,12 @@ export interface AppContextProps {
 }
 
 export interface AppContextStore {
+	store: {
+		isNavigating: boolean;
+	};
+	actions: {
+		setIsNavigating: (value: boolean) => void;
+	};
 	settings: {
 		personal: PersonalSettings;
 		site: SiteSettings;
@@ -29,6 +35,8 @@ export interface AppContextStore {
 const AppContext = React.createContext<AppContextStore | undefined>(undefined);
 
 export const AppContextProvider: React.FC<AppContextProps> = ({ children }) => {
+	const [isNavigating, setIsNavigating] = React.useState<boolean>(false);
+	
 	const { data: siteSettings } = useQuery<SiteSettings>({
 		queryKey: ['settings', 'site'],
 		suspense: true,
@@ -62,6 +70,12 @@ export const AppContextProvider: React.FC<AppContextProps> = ({ children }) => {
 	return (
 		<AppContext.Provider
 			value={{
+				store: {
+					isNavigating
+				},
+				actions: {
+					setIsNavigating
+				},
 				settings: {
 					site: siteSettings!,
 					personal: personalSettings!
