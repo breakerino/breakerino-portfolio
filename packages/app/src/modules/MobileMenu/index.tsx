@@ -22,6 +22,7 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Overlay from './components/Overlay'
 import { SOCIAL_SITES } from '@/app/constants'
+import Portal from '@/components/Portal'
 // --------------------------------------------------------------------- 
 
 export interface MobileMenuProps extends BaseComponentProps {
@@ -64,41 +65,43 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 				onClick={handleToggle}
 			/>
 
-			<Sidebar className="md:hidden" isOpened={isOpened}>
-				<Header className="pl-10 pr-5 py-5" logo={logo} onClose={handleClose} />
-				<Navigation
-					className="px-10 py-8 flex-1"
-					items={menuItems}
-					activeItemID={activeMenuItemID}
-					ariaLabel={navigationAriaLabel}
+			<Portal>
+				<Sidebar className="md:hidden" isOpened={isOpened}>
+					<Header className="pl-10 pr-5 py-5" logo={logo} onClose={handleClose} />
+					<Navigation
+						className="px-10 py-8 flex-1"
+						items={menuItems}
+						activeItemID={activeMenuItemID}
+						ariaLabel={navigationAriaLabel}
+						onClose={handleClose}
+					/>
+					<Footer className="pl-10 pr-8 py-5" >
+						{socialItems && (
+							<div className={clsx(
+								'brk-mobile-menu-socials',
+								'w-full flex flex-wrap gap-2'
+							)}>
+								{socialItems.map(({ type, username }) => (
+									<Link
+										key={type}
+										size="xs"
+										showLabel={false}
+										icon={SOCIAL_SITES[type].icon}
+										text={SOCIAL_SITES[type].label}
+										url={`${SOCIAL_SITES[type].baseURL}/${username}`}
+									/>
+								))}
+							</div>
+						)}
+					</Footer>
+				</Sidebar>
+
+				<Overlay
+					className="md:hidden"
+					isOpened={isOpened}
 					onClose={handleClose}
 				/>
-				<Footer className="pl-10 pr-8 py-5" >
-					{socialItems && (
-						<div className={clsx(
-							'brk-mobile-menu-socials',
-							'w-full flex flex-wrap gap-2'
-						)}>
-							{socialItems.map(({ type, username }) => (
-								<Link
-									key={type}
-									size="xs"
-									showLabel={false}
-									icon={SOCIAL_SITES[type].icon}
-									text={SOCIAL_SITES[type].label}
-									url={`${SOCIAL_SITES[type].baseURL}/${username}`}
-								/>
-							))}
-						</div>
-					)}
-				</Footer>
-			</Sidebar>
-
-			<Overlay
-				className="md:hidden"
-				isOpened={isOpened}
-				onClose={handleClose}
-			/>
+			</Portal>
 		</>
 	)
 }
