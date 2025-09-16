@@ -1,0 +1,5 @@
+.brk-mobile-menu-list-item {
+	&__link:hover + &__indicator {
+		width: 100%;
+	}
+}

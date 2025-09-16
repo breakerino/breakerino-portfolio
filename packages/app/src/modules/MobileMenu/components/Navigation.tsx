@@ -11,15 +11,27 @@ import { twMerge } from 'tailwind-merge';
 
 // --------------------------------------------------------------------- 
 import { MenuItem, BaseComponentProps } from '@/app/types';
+import { useAppContext } from '@/contexts/App';
 // --------------------------------------------------------------------- 
 
 export interface NavigationProps extends BaseComponentProps {
 	items: MenuItem[];
+	activeItemID?: string | null;
 	ariaLabel?: string;
 	onClose: React.MouseEventHandler<HTMLElement>;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, onClose: handleClose }) => {
+const Navigation: React.FC<NavigationProps> = ({ className, items, activeItemID, ariaLabel, onClose: handleClose }) => {
+	const { actions } = useAppContext();
+	
+	const handleNavigation = () => {
+		actions.setIsNavigating(true);
+		
+		setTimeout(() => {
+			actions.setIsNavigating(false);
+		}, 1000)
+	}
+	
 	return (
 		<nav
 			className={twMerge(
@@ -35,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 				{items.map(({ id, href, label, className }) => (
 					<li className={clsx(
 						'brk-mobile-menu-list-item',
-						'w-fit'
+						'w-fit relative'
 					)}
 						key={id}
 						onClick={handleClose}
@@ -44,9 +56,10 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 							href={href}
 							className={clsx(
 								'brk-mobile-menu-list-item__link',
-								'font-semibold text-3xl @sm:text-4xl no-underline hover:underline active:underline transition-colors',
+								'font-semibold text-3xl @sm:text-4xl no-underline transition-colors',
 								className
 							)}
+							onClick={handleNavigation}
 						>
 							<span className={clsx(
 								'brk-menu-list-item__text',
@@ -57,6 +70,16 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, ariaLabel, on
 								'text-primary-400'
 							)}>.</span>
 						</Link>
+
+						<div
+							className={clsx(
+								'brk-menu-list-item__indicator',
+								'absolute -bottom-1.5 bg-primary-400 rounded-sm',
+								'transition-all duration-300 ease-in-out',
+								'left-0 w-0 h-1',
+								id === activeItemID && 'w-full'
+							)}
+						/>
 					</li>
 				))}
 			</ul>
