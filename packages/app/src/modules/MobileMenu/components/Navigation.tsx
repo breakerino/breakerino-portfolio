@@ -73,7 +73,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, activeItemID,
 
 						<div
 							className={clsx(
-								'brk-menu-list-item__indicator',
+								'brk-mobile-menu-list-item__indicator',
 								'absolute -bottom-1.5 bg-primary-400 rounded-sm',
 								'transition-all duration-300 ease-in-out',
 								'left-0 w-0 h-1',
