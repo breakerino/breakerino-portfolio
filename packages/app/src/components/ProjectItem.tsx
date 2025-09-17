@@ -17,6 +17,7 @@ import moment from 'moment';
 import { getStaticAssetURL } from '@/app/functions';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import SkillsList from '@/components/SkillsList';
+import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
 export interface ProjectItemProps extends Omit<BaseComponentProps, 'children'>, ProjectItemType {
@@ -52,13 +53,20 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 			))}>
 
 			{/* <ProjectItemWrapper> */}
-			<div className={twMerge(
-				clsx(
-					'brk-project-item-wrapper',
-					'relative w-full flex flex-col @4xl:flex-row @4xl:items-center gap-6 @xl:gap-8',
-					'px-6 @xl:px-8 @2xl:px-10 pt-10 @xl:pt-12 @2xl:pt-14 @3xl:pt-16 @5xl:pt-28 pb-6 @xl:pb-8 @2xl:pb-10 @3xl:pb-12 @5xl:pb-24',
-					styles.wrapper
-				))}>
+			<Motion.ScrollReveal
+				initial={{ opacity: 0, y: '10%' }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{
+					duration: 0.6
+				}}
+				className={twMerge(
+					clsx(
+						'brk-project-item-wrapper',
+						'relative w-full flex flex-col @4xl:flex-row @4xl:items-center gap-6 @xl:gap-8',
+						'px-6 @xl:px-8 @2xl:px-10 pt-10 @xl:pt-12 @2xl:pt-14 @3xl:pt-16 @5xl:pt-28 pb-6 @xl:pb-8 @2xl:pb-10 @3xl:pb-12 @5xl:pb-24',
+						styles.wrapper
+					))}
+			>
 
 				{/* <ProjectItemLeft> */}
 				<div className={twMerge(clsx(
@@ -104,43 +112,74 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							'brk-project-item-heading',
 							'flex flex-col gap-3 @lg:gap-4'
 						)}>
-
 							{/* <ProjectItemSubtitle> */}
-							<span className={clsx(
-								'brk-project-item-subtitle',
-								'w-fit px-2.5 md:px-3 py-1.5 md:py-2 text-base md:text-lg lg:text-xl leading-[1] font-normal text-secondary-100 bg-secondary-900 rounded-full'
-							)}>
+							<Motion.ScrollReveal
+								initial={{ opacity: 0, y: '15%' }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{
+									duration: 0.6
+								}}
+								className={clsx(
+									'brk-project-item-subtitle',
+									'w-fit px-2.5 md:px-3 py-1.5 md:py-2 text-base md:text-lg lg:text-xl leading-[1] font-normal text-secondary-100 bg-secondary-900 rounded-full'
+								)}
+							>
 								{moment(finishDate).year()}
-							</span>
+							</Motion.ScrollReveal>
 
 							{/* <ProjectItemTitle> */}
-							<h3 className={clsx(
-								'brk-project-item-title',
-								'font-bold text-2xl md:text-4xl xl:text-5xl leading-[1.25]'
-							)}>
-								{name}
+							<h3
+								className={clsx(
+									'brk-project-item-title',
+									'font-bold text-2xl md:text-4xl xl:text-5xl leading-[1.25] overflow-hidden'
+								)}
+							>
+								<Motion.ScrollReveal
+									initial={{ opacity: 0, y: '50%' }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{
+										duration: 0.6
+									}}
+								>
+									{name}
+								</Motion.ScrollReveal>
 							</h3>
 						</div>
 						{/* </ProjectItemHeading> */}
 
 						{/* <ProjectItemDescription> */}
-						<Text
-							withMarkdown
-							as="div"
-							className={clsx(
-								'brk-project-item-description',
-								'text-base md:text-lg lg:text-xl leading-[1.75]'
-							)}
-						>
-							{description}
-						</Text>
+						<div className="overflow-hidden">
+							<Motion.ScrollReveal
+								initial={{ opacity: 0, y: '50%' }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{
+									duration: 0.6
+								}}
+							>
+								<Text
+									withMarkdown
+									as="div"
+									className={clsx(
+										'brk-project-item-description',
+										'text-base md:text-lg lg:text-xl leading-[1.75]'
+									)}
+								>
+									{description}
+								</Text>
+							</Motion.ScrollReveal>
+						</div>
 						{/* </ProjectItemDescription> */}
 
 						{/* <ProjectItemLinks> */}
-						<div className={clsx(
-							'brk-project-item-links',
-							'flex flex-wrap gap-3'
-						)}>
+						<Motion.ScrollReveal
+							className={clsx(
+								'brk-project-item-links',
+								'flex flex-wrap gap-3'
+							)}
+							initial={{ opacity: 0, y: '50%' }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6 }}
+						>
 							{links.map((link) => (
 								<Link
 									key={link.text}
@@ -153,7 +192,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 									{...link}
 								/>
 							))}
-						</div>
+						</Motion.ScrollReveal>
 						{/* </ProjectItemLinks> */}
 					</div>
 					{/* </ProjectItemContent> */}
@@ -204,7 +243,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
 				</div>
 				{/* </ProjectItemFrame> */}
-			</div>
+			</Motion.ScrollReveal>
 			{/* </ProjectItemWrapper> */}
 		</Tag>
 	)

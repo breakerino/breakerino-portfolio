@@ -11,13 +11,14 @@ import { marked } from 'marked';
 
 // --------------------------------------------------------------------- 
 import { BaseComponentProps } from '@/app/types';
+import { motion } from 'motion/react';
 // --------------------------------------------------------------------- 
 
 export interface TextProps extends BaseComponentProps {
 	withMarkdown?: boolean;
 }
 
-const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'span', withMarkdown = false }) => {
+const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'span', withMarkdown = false, ...props }) => {
 	const styles = 'text-base md:text-lg lg:text-xl font-normal text-primary-100 leading-[1.75]';
 	
 	if (withMarkdown) {
@@ -31,6 +32,7 @@ const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'span', with
 					)
 				)}
 				dangerouslySetInnerHTML={{ __html: marked.parse(`${children}`) }}
+				{...props}
 			/>
 		)
 	}
@@ -44,10 +46,13 @@ const Text: React.FC<TextProps> = ({ className, children, as: Tag = 'span', with
 					className
 				)
 			)}
+			{...props}
 		>
 			{children}
 		</Tag>
 	)
 }
+
+export const MotionText = motion.create(Text)
 
 export default Text;

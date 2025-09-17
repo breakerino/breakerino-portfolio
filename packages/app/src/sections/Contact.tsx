@@ -16,6 +16,7 @@ import Container from '@/components/Container';
 import { useAppContext } from '@/contexts/App';
 import { SOCIAL_SITES } from '@/app/constants';
 import Link from '@/components/Link';
+import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -47,17 +48,43 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 				<div className="flex flex-col items-center gap-8">
 					<div className="flex flex-col gap-3 md:gap-4 lg:gap-5">
 						<h2 className="text-primary-50 text-3xl md:text-5xl lg:text-6xl font-bold text-center">
-							<span>{text}</span>
-							<abbr className="text-primary-400" aria-hidden={true}>.</abbr>
+							<div className="overflow-hidden py-1">
+								<Motion.ScrollReveal
+									initial={{ opacity: 0, y: '15%' }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{
+										duration: 0.6
+									}}
+								>
+									<span>{text}</span>
+									<abbr className="text-primary-400" aria-hidden={true}>.</abbr>
+								</Motion.ScrollReveal>
+							</div>
 						</h2>
-						<NextLink
-							href={`mailto:${email}`}
-							className="text-primary-50 text-xl md:text-3xl lg:text-4xl font-semibold text-center underline decoration-3"
-						>
-							{email}
-						</NextLink>
+						<div className="overflow-hidden py-1 text-center">
+							<Motion.ScrollReveal
+								initial={{ opacity: 0, y: '15%' }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{
+									duration: 0.6
+								}}
+							>
+								<NextLink
+									href={`mailto:${email}`}
+									className="text-primary-50 hover:text-primary-400 text-xl md:text-3xl lg:text-4xl font-semibold text-center underline decoration-3 transition-colors"
+								>
+									{email}
+								</NextLink>
+							</Motion.ScrollReveal>
+						</div>
 					</div>
-					<div className="flex flex-wrap gap-4 justify-center">
+					<Motion.ScrollReveal
+						initial={{ opacity: 0, y: '15%' }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{
+							duration: 0.6
+						}}
+						className="flex flex-wrap gap-4 justify-center">
 						{socialItems.map(({ type, username }) => (
 							<Link
 								key={type}
@@ -68,7 +95,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 								url={`${SOCIAL_SITES[type].baseURL}/${username}`}
 							/>
 						))}
-					</div>
+					</Motion.ScrollReveal>
 				</div>
 			</Container>
 		</Section>

@@ -6,6 +6,7 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { motion } from 'motion/react';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -13,17 +14,25 @@ import { BaseComponentProps, Skill } from '@/app/types';
 import Icon from '@/components/Icon';
 // --------------------------------------------------------------------- 
 
-export interface SkillItemProps extends Omit<BaseComponentProps, 'children'>, Omit<Skill, 'order'> {
+export interface SkillItemProps extends Omit<BaseComponentProps, 'children'>, Omit<Skill, 'id'|'order'> {
 	variant?: 'rounded' | 'chip';
 	size?: 'sm' | 'md' | 'lg';
 }
 
-const SkillItem: React.FC<SkillItemProps> = ({ className, name, icon, size = 'md', variant = 'rounded', as: Tag = 'div' }) => {
+const SkillItem: React.FC<SkillItemProps> = ({
+	className,
+	name,
+	icon,
+	size = 'md',
+	variant = 'rounded',
+	as: Tag = 'div',
+	...props
+}) => {
 	const variants: Record<NonNullable<SkillItemProps['variant']>, string> = {
 		rounded: 'rounded-lg',
 		chip: 'rounded-full'
 	}
-	
+
 	const sizes: Record<NonNullable<SkillItemProps['size']>, { wrapper: string, icon: string; text: string }> = {
 		sm: { icon: 'w-5 h-5', text: 'text-base', wrapper: variant === 'chip' ? 'px-3 py-1.5 gap-1.5' : 'px-2 py-1.5 gap-1.5' },
 		md: { icon: 'w-6 h-6', text: 'text-lg', wrapper: variant === 'chip' ? 'px-4 py-2.5 gap-2' : 'px-3 py-2 gap-2' },
@@ -43,6 +52,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ className, name, icon, size = 'md
 					variants[variant]
 				)
 			)}
+			{...props}
 		>
 			<Icon
 				id={icon}
@@ -62,5 +72,6 @@ const SkillItem: React.FC<SkillItemProps> = ({ className, name, icon, size = 'md
 		</Tag>
 	)
 }
+export const MotionSkillItem = motion.create(SkillItem)
 
 export default SkillItem;

@@ -10,6 +10,7 @@ import clsx from 'clsx';
 
 // --------------------------------------------------------------------- 
 import { BaseComponentProps, Heading as HeadingType } from '@/app/types';
+import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
 export interface HeadingProps extends BaseComponentProps, HeadingType {
@@ -33,16 +34,29 @@ const Heading: React.FC<HeadingProps> = ({ className, as: Tag = 'h2', title, sub
 					'brk-heading-subtitle',
 					'flex items-center gap-6'
 				)}>
-					<span className={clsx(
-						'brk-heading-subtitle__text',
-						'text-xl md:text-2xl lg:text-3xl font-normal leading-[1] text-primary-100'
-					)}>
-						{subtitle}
+					<span
+						className={clsx(
+							'brk-heading-subtitle__text',
+							'text-xl md:text-2xl lg:text-3xl font-normal leading-[1] text-primary-100'
+						)}
+						aria-label={subtitle}
+					>
+						<Motion.LettersPullUp>
+							{subtitle}
+						</Motion.LettersPullUp>
 					</span>
-					<span className={clsx(
-						'brk-heading-subtitle__line',
-						'flex-1 w-full h-0.75 bg-secondary-700 rounded-sm'
-					)} />
+					<Motion.ScrollReveal
+						className={clsx(
+							'brk-heading-subtitle__line',
+							'flex-1 w-full h-0.75 bg-secondary-700 rounded-sm'
+						)}
+						initial={{ scaleX: 0, transformOrigin: 'left' }}
+						animate={{ scaleX: 1 }}
+						transition={{
+							duration: 0.6,
+							delay: (subtitle?.length ?? 0) * 0.05
+						}}
+					/>
 				</div>
 			)}
 
@@ -56,19 +70,25 @@ const Heading: React.FC<HeadingProps> = ({ className, as: Tag = 'h2', title, sub
 						'text-primary-50'
 					)}
 					aria-label={title.toLocaleLowerCase()}
+				>
+					<Motion.LettersPullUp
+						initialDelay={(subtitle?.length ?? 0) * 0.05}
 					>
-					{title}
+						{title}
+					</Motion.LettersPullUp>
 				</span>
 				{showTitleDot && (
-					<abbr
+					<Motion.LettersPullUp
 						className={clsx(
 							'brk-heading-title__dot',
 							'text-primary-400'
 						)}
-						aria-hidden={true}
+						as="abbr"
+						ariaHidden
+						initialDelay={(title.length * 0.05) + (subtitle?.length ?? 0) * 0.05 + 0.3}
 					>
 						.
-					</abbr>
+					</Motion.LettersPullUp>
 				)}
 			</div>
 		</Tag>

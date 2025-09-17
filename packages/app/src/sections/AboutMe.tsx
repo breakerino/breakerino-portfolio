@@ -18,6 +18,7 @@ import Heading from '@/components/Heading';
 import { BaseSectionProps } from '../app/types';
 import { getStaticAssetURL } from '@/app/functions';
 import Frame from '@/components/Frame';
+import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -50,7 +51,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 				{heading && <Heading {...heading} />}
 				<div className="flex flex-col md:flex-row gap-8">
 					<div className="w-fit sm:max-w-1/2">
-						<Frame className="md:sticky md:top-8">
+						<Frame className="md:sticky md:top-8" animated>
 							<Image
 								src={getStaticAssetURL(reel.thumbnail.url)}
 								width={reel.thumbnail.width}
@@ -59,13 +60,18 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 							/>
 						</Frame>
 					</div>
-					<div className="flex flex-1 md:mt-8 lg:mt-12 items-center">
-						<Text
-							withMarkdown
-							as="div"
+					<div className="flex flex-1 md:mt-8 lg:mt-12 items-center overflow-hidden">
+						<Motion.ScrollReveal
+							initial={{opacity: 0, y: '15%'}}
+							animate={{opacity: 1, y: '0%'}}
 						>
-							{text}
-						</Text>
+							<Text
+								withMarkdown
+								as="div"
+							>
+								{text}
+							</Text>
+						</Motion.ScrollReveal>
 					</div>
 				</div>
 			</Container>

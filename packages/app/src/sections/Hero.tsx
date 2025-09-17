@@ -16,10 +16,11 @@ import { BaseSectionProps } from '@/app/types';
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Link from '@/components/Link';
-import Text from '@/components/Text';
 import { getStaticAssetURL } from '@/app/functions';
-import PhotoFrame from '@/components/PhotoFrame';
+import { MotionPhotoFrame } from '@/components/PhotoFrame';
 import { SOCIAL_SITES } from '@/app/constants';
+import Motion from '@/modules/motion';
+import Text from '@/components/Text';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -58,27 +59,53 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 						'@container/hero-left w-full flex-1 md:w-8/12 md:flex-8/12 flex flex-col gap-6 xl:gap-8'
 					)}>
 						<h1 className="flex flex-col gap-2">
-							<span className="text-2xl md:text-3xl xl:text-5xl font-light text-primary-100">
+							<Motion.LettersPullUp
+								className="text-2xl md:text-3xl xl:text-5xl font-light text-primary-100"
+								ariaLabel={heading?.subtitle}
+							>
 								{heading?.subtitle}
-							</span>
+							</Motion.LettersPullUp>
 							<span className="text-5xl md:text-7xl xl:text-8xl font-bold text-primary-50">
-								<span>{heading?.title}</span>
-								<abbr className="text-primary-400" aria-hidden="true">.</abbr>
+								<Motion.LettersPullUp ariaLabel={heading?.title}>
+									{heading?.title}
+								</Motion.LettersPullUp>
+								<Motion.LettersPullUp
+									as="abbr"
+									className="text-primary-400"
+									ariaHidden
+									initialDelay={((heading?.title?.length ?? 0) * 0.05)}
+								>
+									.
+								</Motion.LettersPullUp>
 							</span>
-							<span
+							<Motion.LettersPullUp
 								className="text-xl md:text-3xl xl:text-4xl font-medium text-primary-400"
-								aria-label={`— ${subheading}`}
+								animationDuration={0.2}
+								delayBetweenLetters={0.025}
+								ariaLabel={`— ${subheading}`}
 							>
 								{subheading}
-							</span>
+							</Motion.LettersPullUp>
 						</h1>
-						<Text
-							withMarkdown
-							as="div"
+						<div className="overflow-hidden">
+							<Motion.ScrollReveal
+								initial={{ opacity: 0, y: '15%' }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{
+									duration: 0.6
+								}}
+							>
+								<Text withMarkdown as="div">
+									{text}
+								</Text>
+							</Motion.ScrollReveal>
+						</div>
+						<Motion.ScrollReveal
+							className="flex gap-4 overflow-hidden"
+							initial={{ opacity: 0, y: '50%' }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6 }}
 						>
-							{text}
-						</Text>
-						<div className="flex gap-4">
 							{socialProfiles.map(({ type, username }) => (
 								<Link
 									key={type}
@@ -89,15 +116,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 									url={`${SOCIAL_SITES[type].baseURL}/${username}`}
 								/>
 							))}
-						</div>
+						</Motion.ScrollReveal>
 					</div>
 					<div className={clsx(
 						'brk-section--hero-right',
-						'@container/hero-right left -order-1 xl:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 xl:w-4/12 xl:flex-4/12'
+						'@container/hero-right left -order-1 xl:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 xl:w-4/12 xl:flex-4/12 overflow-hidden'
 					)}>
-						<PhotoFrame
+						<MotionPhotoFrame
 							className="min-w-52 w-[33.33333vw] md:w-full"
-							image={{ ...image, url: getStaticAssetURL(image.url), }}
+							image={{ ...image, url: getStaticAssetURL(image.url) }}
+							animated
+							animationDuration={1}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 1 }}
 						/>
 					</div>
 				</div>

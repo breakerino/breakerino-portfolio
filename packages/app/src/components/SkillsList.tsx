@@ -8,24 +8,52 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+import { useInView, Variants } from 'motion/react';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseComponentProps, Skill as SkillType } from '@/app/types';
-import Skill, { SkillItemProps } from '@/components/SkillItem';
+import { BaseComponentProps, Skill } from '@/app/types';
+import SkillItem, { MotionSkillItem, SkillItemProps } from '@/components/SkillItem';
 // --------------------------------------------------------------------- 
 
 export interface SkillsListProps extends Omit<BaseComponentProps, 'children'> {
-	skills: SkillType[];
+	skills: Skill[];
 	variant?: SkillItemProps['variant'];
 	size?: SkillItemProps['size'];
 	slideshow?: boolean;
+	animated?: boolean;
 }
 
-const SkillsList: React.FC<SkillsListProps> = ({ className, skills: passedSkills, as: Tag = 'ul', variant, size, slideshow = false }) => {
+const SkillsList: React.FC<SkillsListProps> = ({
+	className,
+	as = 'ul',
+	variant, size,
+	skills: passedSkills,
+	slideshow = false,
+	animated = false
+}) => {
+	const containerRef = React.useRef(null)
+	const isInView = useInView(containerRef, { once: true, margin: '-10% 0px' })
+
 	const skills = React.useMemo(() => {
 		return passedSkills.sort((a, b) => a.order > b.order ? 1 : -1);
 	}, [passedSkills]);
+
+	const Tag = (as as unknown) as React.ElementType
+	const Item = animated ? MotionSkillItem : SkillItem;
+
+	const motionVariants: Variants = {
+		initial: { y: '15%', opacity: 0 },
+		animate: (i: number) => ({
+			y: '0%',
+			opacity: 1,
+			transition: {
+				duration: 0.6,
+				ease: 'easeOut',
+				delay: i * 0.05
+			}
+		})
+	}
 
 	const sizes: Record<NonNullable<SkillItemProps['size']>, string> = {
 		sm: 'gap-2',
@@ -59,9 +87,9 @@ const SkillsList: React.FC<SkillsListProps> = ({ className, skills: passedSkills
 				extensions={{ AutoScroll }}
 			>
 				<SplideTrack>
-					{skills.map(skill => (
+					{skills.map((skill) => (
 						<SplideSlide key={skill.name}>
-							<Skill {...{ ...skill, variant, size }} />
+							<SkillItem {...{ ...skill, variant, size }} />
 						</SplideSlide>
 					))}
 				</SplideTrack>
@@ -71,6 +99,7 @@ const SkillsList: React.FC<SkillsListProps> = ({ className, skills: passedSkills
 
 	return (
 		<Tag
+			ref={containerRef}
 			className={twMerge(
 				clsx(
 					'brk-skills-list',
@@ -80,8 +109,16 @@ const SkillsList: React.FC<SkillsListProps> = ({ className, skills: passedSkills
 				)
 			)}
 		>
-			{skills.map(skill => (
-				<Skill key={skill.name} as="li" {...{ ...skill, variant, size }} />
+			{skills.map((skill, index) => (
+				<Item
+					key={skill.name}
+					as="li"
+					variants={motionVariants}
+					initial="initial"
+					animate={isInView ? 'animate' : 'initial'}
+					custom={index}
+					{...{ ...skill, variant, size }}
+				/>
 			))}
 		</Tag>
 	)

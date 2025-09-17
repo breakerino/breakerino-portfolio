@@ -11,13 +11,26 @@ import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 import { BaseComponentProps } from '@/app/types';
 import { useDimensions } from '@/hooks/useDimensions';
+import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
-export interface FrameProps extends BaseComponentProps {}
+export interface FrameProps extends BaseComponentProps {
+	animated?: boolean
+	animationDuration?: number;
+}
 
-const Frame: React.FC<FrameProps> = ({ className, children, as: Tag = 'div' }) => {
+const Frame: React.FC<FrameProps> = ({
+	className,
+	children,
+	as: Tag = 'div',
+	animated = false,
+	animationDuration = 0.6,
+}) => {
 	const contentRef = React.useRef<HTMLDivElement>(null);
 	const { width, height } = useDimensions<HTMLDivElement>(contentRef);
+
+	const FrameBorder = animated ? Motion.ScrollReveal : 'div'
+	const FrameContent = animated ? Motion.ScrollReveal : 'div'
 
 	return (
 		<Tag
@@ -29,7 +42,7 @@ const Frame: React.FC<FrameProps> = ({ className, children, as: Tag = 'div' }) =
 				)
 			)}
 		>
-			<div
+			<FrameContent
 				ref={contentRef}
 				className={clsx(
 					'brk-frame-content',
@@ -37,9 +50,14 @@ const Frame: React.FC<FrameProps> = ({ className, children, as: Tag = 'div' }) =
 				)}
 			>
 				{children}
-			</div>
-			
-			<div
+			</FrameContent>
+
+			<FrameBorder
+				{...(animated && {
+					initial: { opacity: 0, x: -32, y: -32 },
+					animate: { opacity: 1, x: 0, y: 0 },
+					transition: { duration: animationDuration, delay: animationDuration }
+				})}
 				style={{
 					width: `${width}px`,
 					height: `${height}px`
