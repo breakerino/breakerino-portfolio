@@ -56,8 +56,16 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, activeMenuItemID, 
 	} 
 	
 	const handleMouseLeave: React.MouseEventHandler<HTMLUListElement> = () => {
-		document.documentElement.style.setProperty('--brk-menu-indicator-width', '0px');
-		document.documentElement.style.setProperty('--brk-menu-indicator-offset-x', '0px');
+		if (!(activeItemRef.current instanceof HTMLLIElement)) {
+			document.documentElement.style.setProperty('--brk-menu-indicator-width', '0px');
+			document.documentElement.style.setProperty('--brk-menu-indicator-offset-x', '0px');
+			return;
+		}
+
+		const activeItemRect = activeItemRef.current.getBoundingClientRect();
+
+		document.documentElement.style.setProperty('--brk-menu-indicator-width', `${activeItemRect.width}px`);
+		document.documentElement.style.setProperty('--brk-menu-indicator-offset-x', `${activeItemRef.current.offsetLeft}px`);
 	}
 
 	return (
