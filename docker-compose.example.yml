@@ -71,6 +71,8 @@ services:
     networks:
       - main
       - internal
+    extra_hosts:
+      - ${APP_SERVER_NAME}:host-gateway
     depends_on:
       - database
 
