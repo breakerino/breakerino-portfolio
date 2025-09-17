@@ -19,7 +19,6 @@ const meta = {
 		layout: 'fullscreen',
 	},
 	args: {
-		id: 1,
 		icon: 'html-logo',
 		name: 'HTML',
 	},
