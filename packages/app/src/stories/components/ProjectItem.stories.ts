@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------
-// Stories > Components > Sample component
+// Stories > Components > Project item
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
@@ -19,34 +19,16 @@ const meta = {
 		layout: 'fullscreen',
 	},
 	args: {
-		'id': 8,
-		'name': 'Portfolio',
-		'description': 'Modern, responsive personal portfolio designed in Figma and built with Next.js and Strapi. Featured custom components, smooth scroll animations, and a layout tailored to showcase skills and projects effectively.',
-		'finishDate': '2025-09-10',
+		'id': 6,
+		'name': 'Tuturium',
+		'description': 'All-in-one expense tracker with bank sync, eKasa receipt scanning, and AI-powered categorization. Designed in Figma and developed with React, Strapi, Chakra UI, and GPT-4o-mini, featuring zero-knowledge encryption for privacy.',
+		'finishDate': '2024-12-12',
 		'technologies': [
 			{
-				'id': 1,
-				'name': 'HTML',
-				'icon': 'html-logo',
-				'order': 0
-			},
-			{
-				'id': 2,
-				'name': 'CSS',
-				'icon': 'css-logo',
-				'order': 1
-			},
-			{
-				'id': 3,
-				'name': 'SASS',
-				'icon': 'sass-logo',
-				'order': 2
-			},
-			{
-				'id': 4,
-				'name': 'Tailwind CSS',
-				'icon': 'tailwind-css-logo',
-				'order': 3
+				'id': 6,
+				'name': 'TypeScript',
+				'icon': 'typescript-logo',
+				'order': 5
 			},
 			{
 				'id': 8,
@@ -55,16 +37,34 @@ const meta = {
 				'order': 7
 			},
 			{
-				'id': 20,
-				'name': 'Storybook',
-				'icon': 'storybook-logo',
-				'order': 19
+				'id': 12,
+				'name': 'Chakra UI',
+				'icon': 'chakra-ui-logo',
+				'order': 11
 			},
 			{
-				'id': 9,
-				'name': 'Next.js',
-				'icon': 'nextjs-logo',
-				'order': 8
+				'id': 17,
+				'name': 'Axios',
+				'icon': 'axios-logo',
+				'order': 16
+			},
+			{
+				'id': 18,
+				'name': 'React Query',
+				'icon': 'react-query-logo',
+				'order': 17
+			},
+			{
+				'id': 11,
+				'name': 'React Router',
+				'icon': 'react-router-logo',
+				'order': 10
+			},
+			{
+				'id': 16,
+				'name': 'React Hook Form',
+				'icon': 'react-hook-form-logo',
+				'order': 15
 			},
 			{
 				'id': 28,
@@ -79,6 +79,12 @@ const meta = {
 				'order': 29
 			},
 			{
+				'id': 36,
+				'name': 'MariaDB',
+				'icon': 'mariadb-logo',
+				'order': 35
+			},
+			{
 				'id': 43,
 				'name': 'AWS',
 				'icon': 'aws-logo',
@@ -91,31 +97,38 @@ const meta = {
 				'order': 46
 			}
 		],
-		'video': {
-			'video': null,
+		'media': {
+			'video': {
+				'id': 26,
+				'name': 'tuturium-video.mp4',
+				'alternativeText': 'Tuturium - Project Video',
+				'width': null,
+				'height': null,
+				'url': '/uploads/tuturium_video_49ebca71a5.mp4'
+			},
 			'thumbnail': {
-				'id': 4,
-				'name': 'breakerino-portfolio-thumbnail.png',
-				'alternativeText': null,
-				'width': 768,
-				'height': 450,
-				'url': '/uploads/breakerino_portfolio_thumbnail_c5894767a6.png'
+				'id': 33,
+				'name': 'tuturium-thumbnail.png',
+				'alternativeText': 'Tuturium - Project Video Thumbnail',
+				'width': 960,
+				'height': 540,
+				'url': '/uploads/tuturium_thumbnail_d262bd558f.png'
 			}
 		},
 		'links': [
 			{
 				'text': 'Live demo',
-				'url': 'https://breakerino.me',
+				'url': 'https://tuturium.breakerino.me',
 				'icon': 'link'
 			},
 			{
 				'text': 'GitHub',
-				'url': 'https://github.com/Breakerino/portfolio',
+				'url': 'https://github.com/Breakerino/tuturium',
 				'icon': 'github'
 			},
 			{
 				'text': 'Figma',
-				'url': 'https://www.figma.com/design/XRHlNdPccvgB58JKbFvhFv/Breakerino.me-%7C-Portfolio-%7C-Design?node-id=0-1&t=e5UmAN1X2BbmEhUU-1',
+				'url': 'https://www.figma.com/design/1aiRa47i2kMsiJAeck2Yxt/Tuturium?node-id=0-1&t=ySz4QdFtagVnnn6j-1',
 				'icon': 'figma-logo'
 			}
 		]
