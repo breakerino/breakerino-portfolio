@@ -37,7 +37,7 @@ const Frame: React.FC<FrameProps> = ({
 			className={twMerge(
 				clsx(
 					'brk-frame',
-					'relative w-fit h-fit pr-8 pb-8 lg:pr-12 lg:pb-12',
+					'relative w-fit h-fit pr-8 pb-8 xl:pr-12 xl:pb-12',
 					className
 				)
 			)}
@@ -46,7 +46,7 @@ const Frame: React.FC<FrameProps> = ({
 				ref={contentRef}
 				className={clsx(
 					'brk-frame-content',
-					'relative z-10 w-fit h-fit'
+					'relative z-10 w-fit h-fit rounded-lg overflow-hidden'
 				)}
 			>
 				{children}
@@ -64,7 +64,7 @@ const Frame: React.FC<FrameProps> = ({
 				}}
 				className={clsx(
 					'brk-frame-border',
-					'absolute top-8 left-8 lg:top-12 lg:left-12 bg-transparent border-3 border-secondary-700 rounded-lg'
+					'absolute top-8 left-8 xl:top-12 xl:left-12 bg-transparent border-3 border-secondary-700 rounded-lg'
 				)}
 			/>
 		</Tag>
