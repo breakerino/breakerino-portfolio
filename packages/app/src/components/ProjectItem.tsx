@@ -17,6 +17,7 @@ import { getStaticAssetURL } from '@/app/functions';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import SkillsList from '@/components/SkillsList';
 import Motion from '@/modules/motion';
+import Video from '@/components/Video';
 // --------------------------------------------------------------------- 
 
 export interface ProjectItemProps extends Omit<BaseComponentProps, 'children'>, Project {
@@ -75,19 +76,25 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 				))}>
 
 					{/* <ProjectItemVideo> */}
-					<div className={clsx(
-						'brk-project-item-video',
-						'border-3 border-secondary-700 rounded-lg overflow-hidden',
-						'w-full @4xl:w-[50vw] @4xl:max-w-[48rem]'
-					)}>
-						<Image
-							className="w-full h-full object-contain object-center"
-							src={getStaticAssetURL(video.thumbnail.url)}
-							width={video.thumbnail.width}
-							height={video.thumbnail.height}
-							alt={video.thumbnail.alternativeText ?? 'Project video thumbnail'}
-						/>
-					</div>
+					{(media?.thumbnail?.url || media?.video.url) && (
+						<div className={clsx(
+							'brk-project-item-video',
+							'border-3 border-secondary-700 rounded-lg overflow-hidden',
+							'w-full @4xl:w-[50vw] @4xl:max-w-[48rem]'
+						)}>
+							<Video
+								autoPlay
+								loop
+								muted
+								playsInline
+								poster={getStaticAssetURL(media?.thumbnail?.url)}
+								sources={media?.video?.url
+									? [{ src: getStaticAssetURL(media?.video.url), type: 'video/mp4' }]
+									: []
+								}
+							/>
+						</div>
+					)}
 					{/* </ProjectItemVideo> */}
 
 				</div>
