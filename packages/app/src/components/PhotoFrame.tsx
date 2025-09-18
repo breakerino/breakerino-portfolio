@@ -16,12 +16,12 @@ import { motion } from 'motion/react'
 
 // --------------------------------------------------------------------- 
 import { useDimensions } from '@/hooks/useDimensions'
-import { BaseComponentProps, Image as ImageType } from '@/app/types'
+import { BaseComponentProps, MediaFile } from '@/app/types'
 // --------------------------------------------------------------------- 
 
 export interface PhotoFrameProps extends Omit<BaseComponentProps, 'children'> {
-	image: ImageType
-	animated?: boolean
+	image: MediaFile;
+	animated?: boolean;
 	animationDuration?: number;
 }
 
@@ -33,10 +33,10 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({
 	animationDuration = 0.6,
 	...props
 }) => {
-	const imageRef = React.useRef<HTMLDivElement>(null)
-	const { width } = useDimensions<HTMLDivElement>(imageRef)
+	const imageRef = React.useRef<HTMLDivElement>(null);
+	const { width } = useDimensions<HTMLDivElement>(imageRef);
 
-	const ImageWrapper = animated ? motion.div : 'div'
+	const ImageWrapper = animated ? motion.div : 'div';
 
 	return (
 		<Tag
