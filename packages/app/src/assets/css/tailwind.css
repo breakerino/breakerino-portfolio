@@ -57,4 +57,13 @@
   --spacing-18:  calc(var(--spacing) * 18);  /* 4.5rem   =  72px */
   --spacing-23:  calc(var(--spacing) * 23);  /* 5.75rem  =  92px */
   --spacing-container: calc(var(--spacing) * 360); /* 90rem = 1440px */
+	
+	/*
+   * ------------------------------------------------------------------------------
+   * Breakpoints
+   * ------------------------------------------------------------------------------
+   */
+	--breakpoint-xs: 475px;
+  --breakpoint-2xs: 375px;
 }
+
