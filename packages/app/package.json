@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"dev": "yarn icons:generate && next dev --turbopack",
-		"build": "yarn icons:generate && next build",
+		"build": "patch-package && yarn icons:generate && next build",
 		"start": "next start",
 		"lint": "next lint",
 		"format": "prettier --write .",
