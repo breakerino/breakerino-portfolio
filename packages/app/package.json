@@ -8,7 +8,7 @@
 		"url": "https://breakerino.me"
 	},
 	"scripts": {
-		"dev": "yarn icons:generate && next dev --turbopack",
+		"dev": "patch-package && yarn icons:generate && next dev --turbopack",
 		"build": "patch-package && yarn icons:generate && next build",
 		"start": "next start",
 		"lint": "next lint",
