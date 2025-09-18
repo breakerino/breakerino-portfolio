@@ -67,3 +67,8 @@
   --breakpoint-2xs: 375px;
 }
 
+@layer base {
+  ::selection {
+    @apply bg-primary-300 text-secondary-950;
+  }
+}
