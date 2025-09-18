@@ -6,7 +6,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { Image as ImageType, SocialSiteType } from '@/app/types';
+import { MediaFile, SocialSiteType } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -27,8 +27,8 @@ import Text from '@/components/Text';
 export interface HeroSectionProps extends BaseSectionProps {
 	subheading: string;
 	text: string;
-	socials: SocialSiteType[]
-	image: ImageType
+	socials: SocialSiteType[];
+	image: MediaFile;
 }
 // --------------------------------------------------------------------- 
 

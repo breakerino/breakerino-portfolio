@@ -18,8 +18,8 @@ export interface LogoProps extends BaseComponentProps {
 	href?: string;
 	target?: HTMLAttributeAnchorTarget;
 	src: string;
-	width: number;
-	height: number;
+	width?: number | null;
+	height?: number | null;
 	alt?: string
 	priority?: boolean;
 }
@@ -44,7 +44,12 @@ const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt
 				)}
 				alt={alt ?? 'Logo'}
 				draggable={false}
-				{...{src, width, height, priority}}
+				{...{
+					src,
+					width: width ?? undefined,
+					height: height ?? undefined,
+					priority
+				}}
 			/>
 		</Link>
 	)

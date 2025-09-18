@@ -4,13 +4,12 @@
 
 // --------------------------------------------------------------------- 
 import React from 'react';
-import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { BaseComponentProps, Project as ProjectItemType } from '@/app/types';
+import { BaseComponentProps, Project } from '@/app/types';
 import Link from '@/components/Link';
 import Text from '@/components/Text';
 import moment from 'moment';
@@ -20,7 +19,7 @@ import SkillsList from '@/components/SkillsList';
 import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
-export interface ProjectItemProps extends Omit<BaseComponentProps, 'children'>, ProjectItemType {
+export interface ProjectItemProps extends Omit<BaseComponentProps, 'children'>, Project {
 	alignment?: 'left' | 'right';
 }
 
@@ -31,7 +30,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 	finishDate,
 	description,
 	technologies,
-	video,
+	media,
 	links,
 	alignment = 'left'
 }) => {

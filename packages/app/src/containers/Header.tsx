@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { pick } from 'lodash';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
-import { NavigationItem, SocialSiteType, Image } from '@/app/types';
+import { NavigationItem, SocialSiteType, MediaFile } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -27,7 +27,7 @@ import useActiveSection from '@/hooks/useActiveSection';
 // --------------------------------------------------------------------- 
 export interface HeaderProps extends Pick<BaseSectionProps, 'className'> {
 	data: {
-		logo: Image;
+		logo: MediaFile;
 		navigation: NavigationItem[]
 		socials: SocialSiteType[];
 	}

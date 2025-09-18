@@ -48,20 +48,24 @@ export interface Skill {
 	link?: string;
 }
 
-export interface Image {
+export interface MediaFile {
 	id?: number;
 	name?: string;
 	url: string;
-	width: number;
-	height: number;
+	width: number|null;
+	height: number|null;
 	alternativeText?: string|null;
 }
 
-export type Video = {
-	title?: string;
-	thumbnail: Image;
-	video: unknown; // TODO
+export type Media = {
+	thumbnail: MediaFile;
+	video: MediaFile;
 }	
+
+export interface MediaSource {
+	src: string;
+	type: string;
+}
 
 export interface SocialSite {
 	label: string;
@@ -88,7 +92,7 @@ export interface Project {
 	finishDate: string;
 	description: string;
 	technologies: Skill[];
-	video: Video;
+	media: Media;
 	links: Link[];
 }
 
@@ -96,7 +100,7 @@ export interface WorkExperience {
 	id: number;
 	companyName: string;
 	companySiteURL: string;
-	companyLogo: Image;
+	companyLogo: MediaFile;
 	location: string;
 	startDate: string;
 	endDate: string;
