@@ -20,7 +20,6 @@ export interface GeneralVideo extends Struct.ComponentSchema {
   };
   attributes: {
     thumbnail: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String;
     video: Schema.Attribute.Media<'files' | 'videos'>;
   };
 }

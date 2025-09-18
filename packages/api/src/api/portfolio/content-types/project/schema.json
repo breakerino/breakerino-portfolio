@@ -44,7 +44,7 @@
       "relation": "oneToMany",
       "target": "api::portfolio.skill"
     },
-    "video": {
+    "media": {
       "type": "component",
       "pluginOptions": {
         "i18n": {

@@ -415,6 +415,12 @@ export interface ApiPortfolioProject extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::portfolio.project'
     >;
+    media: Schema.Attribute.Component<'general.video', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -429,12 +435,6 @@ export interface ApiPortfolioProject extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    video: Schema.Attribute.Component<'general.video', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
   };
 }
 
