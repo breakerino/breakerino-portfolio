@@ -15,7 +15,8 @@
 		"format": "prettier --write .",
 		"icons:generate": "svgstore -o public/assets/svg/icons.svg src/assets/icons/*.svg",
 		"storybook": "yarn icons:generate && storybook dev -p 6006",
-		"build-storybook": "yarn icons:generate && storybook build"
+		"build-storybook": "yarn icons:generate && storybook build",
+		"postinstall": "patch-package"
 	},
 	"dependencies": {
 		"@splidejs/react-splide": "^0.7.12",
@@ -57,7 +58,9 @@
 		"eslint": "^9",
 		"eslint-config-next": "15.5.0",
 		"eslint-plugin-storybook": "^9.1.4",
+		"patch-package": "^8.0.0",
 		"playwright": "^1.55.0",
+		"postinstall-postinstall": "^2.1.0",
 		"prettier": "^3.6.2",
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"storybook": "^9.1.4",
