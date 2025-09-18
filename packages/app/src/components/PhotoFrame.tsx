@@ -40,7 +40,7 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({
 
 	return (
 		<Tag
-			className={twMerge(clsx('brk-photo-frame', 'relative', className))}
+			className={twMerge(clsx('brk-photo-frame', 'relative overflow-hidden', className))}
 			{...props}
 		>
 			<ImageWrapper
@@ -56,10 +56,12 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({
 				)}
 			>
 				<Image
+					className="select-none"
 					src={image.url}
-					width={image.width}
-					height={image.height}
+					width={image.width ?? undefined}
+					height={image.height ?? undefined}
 					alt={image.alternativeText ?? 'Image'}
+					draggable={false}
 					priority
 				/>
 			</ImageWrapper>

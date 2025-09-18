@@ -30,7 +30,7 @@ const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt
 			className={twMerge(
 				clsx(
 					'brk-logo',
-					'block h-6 no-underline',
+					'block h-6 no-underline cursor-none',
 					className
 				)
 			)}
@@ -43,6 +43,7 @@ const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt
 					'w-full h-full object-contain object-left'
 				)}
 				alt={alt ?? 'Logo'}
+				draggable={false}
 				{...{src, width, height, priority}}
 			/>
 		</Link>

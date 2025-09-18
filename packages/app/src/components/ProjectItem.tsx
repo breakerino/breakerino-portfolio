@@ -54,7 +54,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
 			{/* <ProjectItemWrapper> */}
 			<Motion.ScrollReveal
-				initial={{ opacity: 0, y: '10%' }}
+				initial={{ opacity: 0, y: 24 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{
 					duration: 0.6
@@ -114,7 +114,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 						)}>
 							{/* <ProjectItemSubtitle> */}
 							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '15%' }}
+								initial={{ opacity: 0, y: '25%' }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
 									duration: 0.6
@@ -131,11 +131,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							<h3
 								className={clsx(
 									'brk-project-item-title',
-									'font-bold text-2xl md:text-4xl xl:text-5xl leading-[1.25] overflow-hidden'
+									'font-bold text-2xl md:text-4xl xl:text-5xl leading-[1.25]'
 								)}
 							>
 								<Motion.ScrollReveal
-									initial={{ opacity: 0, y: '50%' }}
+									initial={{ opacity: 0, y: '25%' }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{
 										duration: 0.6
@@ -148,9 +148,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 						{/* </ProjectItemHeading> */}
 
 						{/* <ProjectItemDescription> */}
-						<div className="overflow-hidden">
 							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '50%' }}
+								initial={{ opacity: 0, y: '25%' }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
 									duration: 0.6
@@ -167,7 +166,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 									{description}
 								</Text>
 							</Motion.ScrollReveal>
-						</div>
 						{/* </ProjectItemDescription> */}
 
 						{/* <ProjectItemLinks> */}
@@ -176,7 +174,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 								'brk-project-item-links',
 								'flex flex-wrap gap-3'
 							)}
-							initial={{ opacity: 0, y: '50%' }}
+							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6 }}
 						>

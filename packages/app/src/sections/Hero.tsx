@@ -87,9 +87,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 								{subheading}
 							</Motion.LettersPullUp>
 						</h1>
-						<div className="overflow-hidden">
 							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '15%' }}
+								initial={{ opacity: 0, y: '10%' }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
 									duration: 0.6
@@ -99,9 +98,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 									{text}
 								</Text>
 							</Motion.ScrollReveal>
-						</div>
 						<Motion.ScrollReveal
-							className="flex gap-4 overflow-hidden"
+							className="flex gap-4"
 							initial={{ opacity: 0, y: '50%' }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6 }}
@@ -120,7 +118,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 					</div>
 					<div className={clsx(
 						'brk-section--hero-right',
-						'@container/hero-right left -order-1 xl:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 xl:w-4/12 xl:flex-4/12 overflow-hidden'
+						'@container/hero-right left -order-1 xl:order-2 w-full flex-1 md:w-5/12 md:flex-5/12 xl:w-4/12 xl:flex-4/12'
 					)}>
 						<MotionPhotoFrame
 							className="min-w-52 w-[33.33333vw] md:w-full"

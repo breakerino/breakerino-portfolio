@@ -54,7 +54,7 @@ const Link: React.FC<LinkProps> = ({
 			className={twMerge(
 				clsx(
 					'brk-link',
-					'w-fit flex items-center border-2 border-secondary-700 rounded-lg hover:bg-secondary-800 active:bg-secondary-900 transition-colors',
+					'w-fit flex items-center border-2 border-secondary-700 rounded-lg hover:bg-secondary-800 active:bg-secondary-900 transition-colors cursor-none',
 					sizeStyles.wrapper,
 					variantStyles.wrapper,
 					className

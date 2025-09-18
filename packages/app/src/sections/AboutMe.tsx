@@ -50,20 +50,10 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 			<Container>
 				{heading && <Heading {...heading} />}
 				<div className="flex flex-col md:flex-row gap-8">
-					<div className="w-fit sm:max-w-1/2">
-						<Frame className="md:sticky md:top-8" animated>
-							<Image
-								src={getStaticAssetURL(reel.thumbnail.url)}
-								width={reel.thumbnail.width}
-								height={reel.thumbnail.height}
-								alt={reel.thumbnail.alternativeText}
-							/>
-						</Frame>
-					</div>
-					<div className="flex flex-1 md:mt-8 lg:mt-12 items-center overflow-hidden">
+					<div className="flex flex-1 md:mt-8 lg:mt-12 items-center">
 						<Motion.ScrollReveal
-							initial={{opacity: 0, y: '15%'}}
-							animate={{opacity: 1, y: '0%'}}
+							initial={{ opacity: 0, y: 32 }}
+							animate={{ opacity: 1, y: '0%' }}
 						>
 							<Text
 								withMarkdown

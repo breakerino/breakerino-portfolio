@@ -39,7 +39,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 	return (
 		<Motion.ScrollReveal
 			as={as as keyof DOMMotionComponents}
-			initial={{ opacity: 0, y: '15%' }}
+			initial={{ opacity: 0, y: 24 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{
 				duration: 0.6
@@ -62,14 +62,22 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 					'flex flex-col gap-4 @3xl:flex-row @3xl:items-center @3xl:justify-between'
 				)}>
 					<div className="flex flex-col gap-3 @3xl:gap-4">
-						<Logo
-							className="w-fit h-12 @3xl:h-16 @6xl:h-23"
-							src={getStaticAssetURL(companyLogo.url)}
-							href={companySiteURL}
-							width={companyLogo.width}
-							height={companyLogo.height}
-							alt={companyLogo.alternativeText ?? `${companyName} logo`}
-						/>
+						<Motion.ScrollReveal
+							initial={{ opacity: 0, y: '15%' }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{
+								duration: 0.6
+							}}
+						>
+							<Logo
+								className="w-fit h-12 @3xl:h-16 @6xl:h-23 hover:-translate-y-1.5 transition-transform duration-500"
+								src={getStaticAssetURL(companyLogo.url)}
+								href={companySiteURL}
+								width={companyLogo.width ?? undefined}
+								height={companyLogo.height ?? undefined}
+								alt={companyLogo.alternativeText ?? `${companyName} logo`}
+							/>
+						</Motion.ScrollReveal>
 						<div className="flex flex-col gap-1.5 @3xl:gap-2">
 							<div className="overflow-hidden">
 								<Motion.ScrollReveal
@@ -82,7 +90,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 									<Link
 										href={companySiteURL}
 										target="_blank"
-										className="text-primary-50 text-xl @3xl:text-2xl @6xl:text-3xl leading-[1.15] font-normal"
+										className="text-primary-50 hover:text-primary-400 text-xl @3xl:text-2xl @6xl:text-3xl leading-[1.15] font-normal cursor-none"
 									>
 										{companyName}
 									</Link>
@@ -157,7 +165,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 				)}>
 					<div className="overflow-hidden">
 						<Motion.ScrollReveal
-							initial={{ opacity: 0, y: '15%' }}
+							initial={{ opacity: 0, y: 32 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{
 								duration: 0.6
@@ -172,17 +180,15 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 						</Motion.ScrollReveal>
 					</div>
 					<div className="flex flex-col gap-4">
-						<div className="overflow-hidden">
-							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '15%' }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{
-									duration: 0.6
-								}}
-							>
-								<strong className="text-primary-100 text-2xl">Skills used</strong>
-							</Motion.ScrollReveal>
-						</div>
+						<Motion.ScrollReveal
+							initial={{ opacity: 0, y: '15%' }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{
+								duration: 0.6
+							}}
+						>
+							<strong className="text-primary-100 text-2xl">Skills used</strong>
+						</Motion.ScrollReveal>
 						<SkillsList animated skills={skills} variant="chip" size="sm" />
 					</div>
 				</div>

@@ -43,14 +43,14 @@ const SkillsList: React.FC<SkillsListProps> = ({
 	const Item = animated ? MotionSkillItem : SkillItem;
 
 	const motionVariants: Variants = {
-		initial: { y: '15%', opacity: 0 },
+		initial: { y: '10%', opacity: 0 },
 		animate: (i: number) => ({
 			y: '0%',
 			opacity: 1,
 			transition: {
 				duration: 0.6,
-				ease: 'easeOut',
-				delay: i * 0.05
+				ease: 'easeInOut',
+				delay: i * 0.075
 			}
 		})
 	}
@@ -113,10 +113,12 @@ const SkillsList: React.FC<SkillsListProps> = ({
 				<Item
 					key={skill.name}
 					as="li"
-					variants={motionVariants}
-					initial="initial"
-					animate={isInView ? 'animate' : 'initial'}
-					custom={index}
+					{...(animated ? {
+						variants: motionVariants,
+						initial: 'initial',
+						animate: isInView ? 'animate' : 'initial',
+						custom: index
+					} : {})}
 					{...{ ...skill, variant, size }}
 				/>
 			))}

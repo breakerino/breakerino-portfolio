@@ -50,7 +50,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 						<h2 className="text-primary-50 text-3xl md:text-5xl lg:text-6xl font-bold text-center">
 							<div className="overflow-hidden py-1">
 								<Motion.ScrollReveal
-									initial={{ opacity: 0, y: '15%' }}
+									initial={{ opacity: 0, y: '10%' }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{
 										duration: 0.6
@@ -63,7 +63,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 						</h2>
 						<div className="overflow-hidden py-1 text-center">
 							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '15%' }}
+								initial={{ opacity: 0, y: '10%' }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
 									duration: 0.6
@@ -79,7 +79,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 						</div>
 					</div>
 					<Motion.ScrollReveal
-						initial={{ opacity: 0, y: '15%' }}
+						initial={{ opacity: 0, y: '10%' }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{
 							duration: 0.6
