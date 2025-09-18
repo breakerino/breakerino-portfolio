@@ -19,7 +19,7 @@ export interface UseHeaderProps {
 	delay?: number;
 }
 
-const useHeader = ({stickyThreshold, showOffset, hideOffset, delay = 50}: UseHeaderProps) => {
+const useHeader = ({stickyThreshold, showOffset, hideOffset, delay = 20}: UseHeaderProps) => {
 	const { store: {isNavigating} } = useAppContext();
 	
 	const [isVisible, setIsVisible] = React.useState<boolean>(false);
