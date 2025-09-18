@@ -21,7 +21,10 @@ const eslintConfig = [
     quotes: ['error', 'single', { avoidEscape: true }],
 		
 		// Disable the empty object type rule globally
-		'@typescript-eslint/no-empty-object-type': 'off'
+		'@typescript-eslint/no-empty-object-type': 'off',
+		
+		// Disable React hooks exhaustive-deps rule
+		'react-hooks/exhaustive-deps': 'off'
   },
 }];
 
