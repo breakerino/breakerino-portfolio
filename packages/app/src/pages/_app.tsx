@@ -6,6 +6,7 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
+import { MotionConfig } from 'framer-motion'
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -34,9 +35,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps, router }) => {
 					)
 					: (
 						<AppContextProvider>
-							<RootLayout>
-								<Component {...pageProps} />
-							</RootLayout>
+							<MotionConfig reducedMotion="user" transition={{ type: 'spring' }}>
+								<RootLayout>
+									<Component {...pageProps} />
+								</RootLayout>
+							</MotionConfig>
 						</AppContextProvider>
 					)}
 			</Hydrate>
