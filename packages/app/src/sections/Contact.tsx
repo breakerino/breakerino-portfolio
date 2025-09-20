@@ -71,7 +71,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className, text, email,
 							>
 								<NextLink
 									href={`mailto:${email}`}
-									className="text-primary-50 hover:text-primary-400 text-xl md:text-3xl lg:text-4xl font-semibold text-center underline decoration-3 transition-colors"
+									className="text-primary-50 hover:text-primary-400 text-xl md:text-3xl lg:text-4xl font-semibold text-center underline decoration-3 transition-colors cursor-none"
 								>
 									{email}
 								</NextLink>
