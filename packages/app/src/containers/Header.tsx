@@ -22,6 +22,7 @@ import Section from '@/components/Section';
 import useHeader from '@/hooks/useHeader';
 import { HEADER_STICKY_SCROLL_THRESHOLD_Y, HEADER_SHOW_SCROLL_OFFSET_Y, HEADER_HIDE_SCROLL_OFFSET_Y } from '@/app/constants';
 import useActiveSection from '@/hooks/useActiveSection';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -44,6 +45,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 	const [activeSectionID] = useActiveSection({
 		selector: 'section.brk-section'
 	});
+	const [isMobile] = useMediaQuery('(max-width: 48rem)');
 
 	const logo: LogoProps = React.useMemo(() => ({
 		...pick(logoImage, ['width', 'height']),
@@ -79,8 +81,11 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 					{...logo}
 					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
 				/>
-				<DesktopMenu className="hidden md:flex" menuItems={menuItems} activeMenuItemID={activeSectionID} />
-				<MobileMenu {...{ logo, menuItems, socialItems, activeMenuItemID: activeSectionID }} />
+				{! isMobile ? (
+					<DesktopMenu menuItems={menuItems} activeMenuItemID={activeSectionID} />
+				) : (
+					<MobileMenu {...{ logo, menuItems, socialItems, activeMenuItemID: activeSectionID }} />
+				)}
 			</Container>
 		</Section>
 	)

@@ -58,15 +58,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 	return (
 		<>
 			<Hamburger
-				className={twMerge(
-					className,
-					'md:hidden'
-				)}
+				className={className}
 				onClick={handleToggle}
 			/>
 
 			<Portal>
-				<Sidebar className="md:hidden" isOpened={isOpened}>
+				<Sidebar isOpened={isOpened}>
 					<Header className="pl-10 pr-5 py-5" logo={logo} onClose={handleClose} />
 					<Navigation
 						className="px-10 py-8 flex-1"
@@ -97,7 +94,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 				</Sidebar>
 
 				<Overlay
-					className="md:hidden"
 					isOpened={isOpened}
 					onClose={handleClose}
 				/>
