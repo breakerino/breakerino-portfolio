@@ -50,19 +50,20 @@ const Video: React.FC<VideoProps> = ({
 		if (!video) {
 			return;
 		}
+		
+		const handleVideoLoadedData = (event: Event) => {
+			const videoElement = event.target as HTMLVideoElement;
+			
+			if (videoElement.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
+				videoElement.play().catch(() => { });
+			}
+			
+			video.removeEventListener('loadeddata', handleVideoLoadedData);
+		}
 
 		if (isPartiallyInView && !shouldLoad) {
 			setShouldLoad(true);
-
-			video.addEventListener('loadeddata', () => {
-				if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-					video.play().catch(() => { });
-					
-					if ( ! isFullyInView ) {
-						video.pause();
-					}
-				}
-			})
+			video.addEventListener('loadeddata', handleVideoLoadedData)
 		}
 	}, [shouldLoad, isPartiallyInView, isFullyInView]);
 
