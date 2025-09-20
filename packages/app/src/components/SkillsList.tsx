@@ -33,7 +33,9 @@ const SkillsList: React.FC<SkillsListProps> = ({
 	animated = false
 }) => {
 	const containerRef = React.useRef(null)
-	const isInView = useInView(containerRef, { once: true, margin: '-10% 0px' })
+	const splideRef = React.useRef<Splide>(null)
+	const isInView = useInView(containerRef, { once: true, margin: '10% 0px' })
+	const isPartiallyInView = useInView(containerRef, { once: false, margin: '10% 0px', amount: 'some' });
 
 	const skills = React.useMemo(() => {
 		return passedSkills.sort((a, b) => a.order > b.order ? 1 : -1);
@@ -61,39 +63,62 @@ const SkillsList: React.FC<SkillsListProps> = ({
 		lg: 'gap-3'
 	}
 
+	React.useEffect(() => {
+		if (!splideRef.current?.splide) {
+			return;
+		}
+
+		const splide = splideRef.current.splide;
+
+		if (isPartiallyInView) {
+			splide.Components.AutoScroll?.play();
+		} else {
+			splide.Components.AutoScroll?.pause();
+		}
+
+		return () => {
+			splide.Components.AutoScroll?.pause();
+		};
+	}, [isPartiallyInView]);
+
 	if (slideshow) {
 		return (
-			<Splide
+			<Tag
+				ref={containerRef}
 				className={twMerge(
 					clsx(
 						'brk-skills-list',
 						className
 					)
 				)}
-				aria-label="Skills list"
-				hasTrack={false}
-				options={{
-					type: 'loop',
-					drag: 'free',
-					focus: 'center',
-					pagination: false,
-					arrows: false,
-					autoWidth: true,
-					gap: `calc(var(--spacing) * ${sizes[size ?? 'md'].replace('gap-', '')})`,
-					autoScroll: {
-						speed: 1
-					},
-				}}
-				extensions={{ AutoScroll }}
 			>
-				<SplideTrack>
-					{skills.map((skill) => (
-						<SplideSlide key={skill.name}>
-							<SkillItem {...{ ...skill, variant, size }} />
-						</SplideSlide>
-					))}
-				</SplideTrack>
-			</Splide>
+				<Splide
+					ref={splideRef}
+					hasTrack={false}
+					aria-label="Skills list"
+					options={{
+						type: 'loop',
+						drag: 'free',
+						focus: 'center',
+						pagination: false,
+						arrows: false,
+						autoWidth: true,
+						gap: `calc(var(--spacing) * ${sizes[size ?? 'md'].replace('gap-', '')})`,
+						autoScroll: {
+							speed: 1
+						},
+					}}
+					extensions={{ AutoScroll }}
+				>
+					<SplideTrack>
+						{skills.map((skill, index) => (
+							<SplideSlide key={`skill_${index}`}>
+								<SkillItem {...{ ...skill, variant, size }} />
+							</SplideSlide>
+						))}
+					</SplideTrack>
+				</Splide>
+			</Tag>
 		)
 	}
 
