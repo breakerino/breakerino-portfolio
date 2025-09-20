@@ -14,7 +14,7 @@ import { useInView } from 'motion/react';
 
 // --------------------------------------------------------------------- 
 import { BaseComponentProps, Media } from '@/app/types';
-import { getStaticAssetURL } from '@/app/functions';
+import { getOptimisedStaticAssetURL, getStaticAssetURL } from '@/app/functions';
 // --------------------------------------------------------------------- 
 
 export interface ReelsProps extends Omit<BaseComponentProps, 'as' | 'children'> {
@@ -120,7 +120,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 								height={`${reel?.thumbnail.height ?? 0}px`}
 								muted
 								playsInline
-								poster={shouldLoad ? getStaticAssetURL(reel?.thumbnail?.url) : undefined}
+								poster={getOptimisedStaticAssetURL(reel?.thumbnail?.url, reel?.thumbnail.width ?? 0)}
 							>
 								{shouldLoad && (
 									<source src={getStaticAssetURL(reel.video.url)} type="video/mp4" />
