@@ -19,11 +19,6 @@ import { BaseComponentProps, MediaSource } from '@/app/types';
 
 export interface VideoProps extends BaseComponentProps, React.VideoHTMLAttributes<HTMLVideoElement> {
 	sources: MediaSource[];
-	autoPlay?: boolean;
-	loop?: boolean;
-	muted?: boolean;
-	playsInline?: boolean;
-	poster?: string;
 }
 
 // ---------------------------------------------------------------------
@@ -34,10 +29,12 @@ const Video: React.FC<VideoProps> = ({
 	loop = false,
 	muted = false,
 	playsInline = false,
+	poster,
 	...props
 }) => {
 	const videoRef = React.useRef<HTMLVideoElement | null>(null);
-	const isInView = useInView(videoRef, { once: false, margin: '10% 0px 0px', amount: 'some' });
+	const isFullyInView = useInView(videoRef, { once: false, margin: '10% 0px 0px', amount: 'all' });
+	const isPartiallyInView = useInView(videoRef, { once: false, margin: '10% 0px 0px', amount: 0.01 });
 
 	const [shouldLoad, setShouldLoad] = React.useState<boolean>(false);
 
@@ -48,15 +45,36 @@ const Video: React.FC<VideoProps> = ({
 			return;
 		}
 
-		if (isInView) {
+		if (isPartiallyInView && !shouldLoad) {
 			setShouldLoad(true);
-			video.play();
-		} else {
-			video.currentTime = 0;
-			video.pause();
+
+			video.addEventListener('loadeddata', () => {
+				if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+					video.play().catch(() => { });
+					video.pause();
+				}
+			})
+		}
+	}, [shouldLoad, isPartiallyInView]);
+
+	React.useEffect(() => {
+		const video = videoRef.current;
+
+		if (!video) {
+			return;
 		}
 
-	}, [isInView]);
+		if (isFullyInView) {
+			video.play().catch(() => { });
+		} else {
+			video.pause();
+
+			if (!isPartiallyInView) {
+				video.currentTime = 0;
+			}
+		}
+
+	}, [isPartiallyInView, isFullyInView]);
 
 	return (
 		<video
@@ -71,6 +89,7 @@ const Video: React.FC<VideoProps> = ({
 			loop={loop}
 			muted={muted}
 			playsInline={playsInline}
+			poster={shouldLoad ? poster : undefined}
 			{...props}
 		>
 			{shouldLoad && (
