@@ -1865,7 +1865,7 @@ export const contentData = [
 
 export const footerData: FooterProps['data'] = {
 	'copyrightText': `© ${generalSettings.year} Breakerino. All rights reserved.`,
-	'text': 'Designed & Developed with 🩵 by **<a class='cursor-none hover:text-primary-400 transition-colors' href='https://breakerino.me'>Breakerino<span class='text-primary-400'>.</span></a>**'
+	'text': 'Designed & Developed with 🩵 by **<a class="cursor-none hover:text-primary-400 transition-colors" href="https://breakerino.me">Breakerino<span class="text-primary-400">.</span></a>**'
 }
 
 export const queries = [
