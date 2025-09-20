@@ -57,11 +57,14 @@ const Video: React.FC<VideoProps> = ({
 			video.addEventListener('loadeddata', () => {
 				if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
 					video.play().catch(() => { });
-					video.pause();
+					
+					if ( ! isFullyInView ) {
+						video.pause();
+					}
 				}
 			})
 		}
-	}, [shouldLoad, isPartiallyInView]);
+	}, [shouldLoad, isPartiallyInView, isFullyInView]);
 
 	React.useEffect(() => {
 		const video = videoRef.current;
