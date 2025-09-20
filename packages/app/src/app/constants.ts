@@ -20,6 +20,7 @@ export const DEFAULT_EVENT_BUS_LABEL = 'Breakerino';
 export const DEFAULT_LOGGER_LABEL = 'Breakerino';
 
 export const TRANSITION_DURATION = 300;
+export const APP_BASE_URL = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
 // --------------------------------------------------------------------- 
 // Social sites

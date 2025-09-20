@@ -28,9 +28,9 @@ const WorkExperienceList: React.FC<WorkExperienceListProps> = ({ className, as: 
 				)
 			)}
 		>
-			{items.map((item) => (
+			{items.map((item, index) => (
 				<WorkExperienceItem
-					key={item.id}
+					key={`work-experience_${index}`}
 					as="li"
 					{...item}
 				/>

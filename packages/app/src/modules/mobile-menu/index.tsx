@@ -5,24 +5,24 @@
 // --------------------------------------------------------------------- 
 import React from 'react'
 import clsx from 'clsx'
-import { twMerge } from 'tailwind-merge'
 // --------------------------------------------------------------------- 
 
-import { BaseComponentProps, MenuItem } from '@/app/types'
-import { LogoProps } from '@/components/Logo'
-import Link from '@/components/Link'
-import { SocialProfile } from '@/app/types'
+// --------------------------------------------------------------------- 
+import { BaseComponentProps, MenuItem , SocialProfile } from '@/app/types'
+import { SOCIAL_SITES } from '@/app/constants'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import Portal from '@/components/Portal'
+import Link from '@/components/Link'
+import { LogoProps } from '@/components/Logo'
 // --------------------------------------------------------------------- 
 
+// --------------------------------------------------------------------- 
 import Hamburger from './components/Hamburger'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Overlay from './components/Overlay'
-import { SOCIAL_SITES } from '@/app/constants'
-import Portal from '@/components/Portal'
 // --------------------------------------------------------------------- 
 
 export interface MobileMenuProps extends BaseComponentProps {

@@ -5,8 +5,8 @@
 // ---------------------------------------------------------------------
 import React from 'react';
 import Link from 'next/link';
-import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------

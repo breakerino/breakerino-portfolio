@@ -1,10 +1,10 @@
 // --------------------------------------------------------------------- 
-// Modules > MobileMenu > Components > Sidebar
+// Modules > Mobile menu > Components > Sidebar
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import clsx from 'clsx';
 import React from 'react';
+import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 

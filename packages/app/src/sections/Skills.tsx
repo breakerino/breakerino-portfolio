@@ -18,14 +18,12 @@ import SkillsList from '@/components/SkillsList';
 import Motion from '@/modules/motion';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
 export interface SkillsSectionProps extends BaseSectionProps {
 	skills: {
 		title: string;
 		skills: Skill[]
 	}[]
 }
-// --------------------------------------------------------------------- 
 
 const SkillsSection: React.FC<SkillsSectionProps> = ({ id, className, heading, skills }) => {
 	const [isTablet] = useMediaQuery('(max-width: 64rem)');

@@ -17,10 +17,10 @@
       { "name": "next" }
     ],
     "paths": {
+      "@/storybook/*": ["./.storybook/*"],
+      "@/*": ["./src/*"],
       "@breakerino/core/*": ["../core/src/*"],
       "@breakerino/api/*": ["../api/src/*"],
-      "@/storybook/*": ["./.storybook/*"],
-      "@/*": ["./src/*"]
     }
   },
   "include": [

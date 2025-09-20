@@ -6,31 +6,28 @@
 import React from 'react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { MediaFile, SocialSiteType } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { useAppContext } from '@/contexts/App';
+import { BaseSectionProps, MediaFile, SocialSiteType } from '@/app/types';
+import { getStaticAssetURL } from '@/app/functions';
+import Motion from '@/modules/motion';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { BaseSectionProps } from '@/app/types';
+import { useAppContext } from '@/contexts/App';
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Link from '@/components/Link';
-import { getStaticAssetURL } from '@/app/functions';
 import { MotionPhotoFrame } from '@/components/PhotoFrame';
 import { SOCIAL_SITES } from '@/app/constants';
-import Motion from '@/modules/motion';
 import Text from '@/components/Text';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
 export interface HeroSectionProps extends BaseSectionProps {
 	subheading: string;
 	text: string;
 	socials: SocialSiteType[];
 	image: MediaFile;
 }
-// --------------------------------------------------------------------- 
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subheading, text, socials, image }) => {
 	const { settings } = useAppContext();

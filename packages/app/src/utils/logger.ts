@@ -20,6 +20,7 @@ const logger = (label = '', prefix = DEFAULT_LOGGER_LABEL) => {
 		if (process.env.NODE_ENV !== 'development') {
 			return;
 		}
+		
 		console.table(data, keys);
 	}
 

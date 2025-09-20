@@ -7,11 +7,11 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { marked } from 'marked';
+import { motion } from 'motion/react';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
 import { BaseComponentProps } from '@/app/types';
-import { motion } from 'motion/react';
 // --------------------------------------------------------------------- 
 
 export interface TextProps extends BaseComponentProps {

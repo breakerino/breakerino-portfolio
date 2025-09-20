@@ -1,19 +1,25 @@
 // ---------------------------------------------------------------------
-// Storybook > Decorators > RootDecorator
+// Storybook > Decorators > Root
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
 import React from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
+import ReactLenis from 'lenis/react';
+import type { LenisRef } from 'lenis/react';
+import { cancelFrame, frame } from 'framer-motion';
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
+import PortalRoot from '@/components/PortalRoot';
+import Cursor from '@/components/Cursor';
 import { AppContextProvider } from '@/contexts/App';
-import queryClient from '@/app/api/client';
+import queryClient from '@/app/api/query-client';
 import { queries } from '@/storybook/data';
 // ---------------------------------------------------------------------
 
 const RootDecorator: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+	const lenisRef = React.useRef<LenisRef>(null)
 	const [hasPrefetchedQueries, setHasPrefetchedQueries] = React.useState(false);
 
 	React.useEffect(() => {
@@ -33,14 +39,30 @@ const RootDecorator: React.FC<{ children?: React.ReactNode }> = ({ children }) =
 		prefetchQueries();
 	}, []);
 
+	React.useEffect(() => {
+		function update(data: { timestamp: number }) {
+			const time = data.timestamp
+			lenisRef.current?.lenis?.raf(time)
+		}
+
+		frame.update(update, true)
+
+		return () => cancelFrame(update)
+	}, [])
+
 	if (!hasPrefetchedQueries) {
 		return null;
 	}
 
 	return (
-		<QueryClientProvider client={queryClient}>
-			<AppContextProvider>{children}</AppContextProvider>
-		</QueryClientProvider>
+		<>
+			<ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+			<Cursor className="bg-primary-400 shadow-primary-400" size={20} trailLength={24} trailScale={0.85} />
+			<QueryClientProvider client={queryClient}>
+				<AppContextProvider>{children}</AppContextProvider>
+			</QueryClientProvider>
+			<PortalRoot />
+		</>
 	);
 };
 

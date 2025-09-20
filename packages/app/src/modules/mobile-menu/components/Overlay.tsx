@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------- 
-// Modules > MobileMenu > Components > Overlay
+// Modules > Mobile menu > Components > Overlay
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -8,7 +8,6 @@ import clsx from 'clsx';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
-
 
 export interface OverlayProps extends BaseComponentProps {
 	isOpened?: boolean;

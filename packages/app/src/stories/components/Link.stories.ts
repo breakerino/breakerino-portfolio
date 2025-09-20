@@ -22,7 +22,7 @@ const meta = {
 		size: 'md',
 		icon: 'github',
 		text: 'GitHub',
-		url: 'https://github.com/Breakerino'
+		url: 'https://github.com/breakerino'
 	},
 	decorators: [ComponentDecorator],
 } satisfies Meta<typeof Link>;

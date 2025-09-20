@@ -10,12 +10,12 @@ import { GetServerSideProps } from 'next';
 
 // --------------------------------------------------------------------- 
 import { useAppContext } from '@/contexts/App';
-import queryClient from '@/app/api/client';
+import queryClient from '@/app/api/query-client';
 import queries from '@/app/api/queries';
 import Wrapper from '@/components/Wrapper';
+import Header from '@/containers/Header';
 import Content from '@/containers/Content';
 import Footer from '@/containers/Footer';
-import Header from '@/containers/Header';
 // --------------------------------------------------------------------- 
 
 export default function Index() {

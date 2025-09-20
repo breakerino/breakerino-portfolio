@@ -37,7 +37,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ className, projects: passed
 		>
 			{projects.map((project, index) => (
 				<ProjectItem
-					key={project.id}
+					key={`project_${index}`}
 					as="li"
 					alignment={index % 2 === 0 ? 'right' : 'left'}
 					{...project}

@@ -39,45 +39,45 @@ const Cursor: React.FC<CursorProps> = ({
 
 	const [isTouchDevice] = useTouchDevice();
 
+	function onMouseMove(e: MouseEvent) {
+		lastMouseRef.current = { x: e.clientX, y: e.clientY };
+	}
+
+	function loop() {
+		const { x, y } = lastMouseRef.current;
+
+		if (x === -9999 && y === -9999) {
+			rafRef.current = requestAnimationFrame(loop);
+			return;
+		}
+
+		positionsRef.current.pop();
+		positionsRef.current.unshift({ x, y });
+
+		trailRefs.current.forEach((node, i) => {
+			if (!node) {
+				return;
+			}
+
+			const positionIndex = Math.floor((i / trailRefs.current.length) * positionsRef.current.length);
+			const position = positionsRef.current[positionIndex];
+			const trailSize = size * Math.pow(trailScale, i + 1);
+
+			node.style.width = `${trailSize}px`;
+			node.style.height = `${trailSize}px`;
+			node.style.opacity = `${1 - (i + 1) / (trailRefs.current.length + 1)}`;
+			node.style.transform = `translate3d(${position.x - trailSize / 2}px, ${position.y - trailSize / 2}px, 0)`;
+		});
+
+		rafRef.current = requestAnimationFrame(loop);
+	}
+	
 	React.useEffect(() => {
 		if (isTouchDevice) {
 			return;
 		}
 
 		positionsRef.current = Array.from({ length: trailLength }).map(() => ({ x: -9999, y: -9999, }));
-
-		function onMouseMove(e: MouseEvent) {
-			lastMouseRef.current = { x: e.clientX, y: e.clientY };
-		}
-
-		function loop() {
-			const { x, y } = lastMouseRef.current;
-
-			if (x === -9999 && y === -9999) {
-				rafRef.current = requestAnimationFrame(loop);
-				return;
-			}
-
-			positionsRef.current.pop();
-			positionsRef.current.unshift({ x, y });
-
-			trailRefs.current.forEach((node, i) => {
-				if (!node) {
-					return;
-				}
-
-				const positionIndex = Math.floor((i / trailRefs.current.length) * positionsRef.current.length);
-				const position = positionsRef.current[positionIndex];
-				const trailSize = size * Math.pow(trailScale, i + 1);
-
-				node.style.width = `${trailSize}px`;
-				node.style.height = `${trailSize}px`;
-				node.style.opacity = `${1 - (i + 1) / (trailRefs.current.length + 1)}`;
-				node.style.transform = `translate3d(${position.x - trailSize / 2}px, ${position.y - trailSize / 2}px, 0)`;
-			});
-
-			rafRef.current = requestAnimationFrame(loop);
-		}
 
 		if (hideNativeCursor) {
 			prevBodyCursorRef.current = document.body.style.cursor || '';
@@ -113,15 +113,7 @@ const Cursor: React.FC<CursorProps> = ({
 	return (
 		<div
 			ref={containerRef}
-			style={{
-				position: 'fixed',
-				top: 0,
-				left: 0,
-				right: 0,
-				bottom: 0,
-				pointerEvents: 'none',
-				zIndex: 9999
-			}}
+			className="fixed top-0 left-0 right-0 bottom-0 pointer-events-none z-[10000]"
 			aria-hidden="true"
 		>
 			{Array.from({ length: trailLength }).map((_, i) => (

@@ -62,6 +62,7 @@ const Link: React.FC<LinkProps> = ({
 			)}
 		>
 			<Icon id={icon} className={sizeStyles.icon} />
+			
 			{showLabel && (
 				<span className={clsx('font-medium leading-[1.5]', sizeStyles.text)}>{text}</span>
 			)}

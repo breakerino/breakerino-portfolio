@@ -6,15 +6,15 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import moment from 'moment';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
 import { BaseComponentProps, Project } from '@/app/types';
-import Link from '@/components/Link';
-import Text from '@/components/Text';
-import moment from 'moment';
 import { getStaticAssetURL } from '@/app/functions';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import Link from '@/components/Link';
+import Text from '@/components/Text';
 import SkillsList from '@/components/SkillsList';
 import Motion from '@/modules/motion';
 import Video from '@/components/Video';
@@ -158,7 +158,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
 						{/* <ProjectItemDescription> */}
 							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '25%' }}
+								initial={{ opacity: 0, y: '10%' }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
 									duration: 0.6

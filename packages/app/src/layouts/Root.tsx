@@ -4,6 +4,9 @@
 
 // --------------------------------------------------------------------- 
 import React from 'react';
+import ReactLenis from 'lenis/react';
+import type { LenisRef } from 'lenis/react';
+import { cancelFrame, frame } from 'framer-motion';
 import { Inter } from 'next/font/google';
 // --------------------------------------------------------------------- 
 
@@ -12,9 +15,6 @@ import Head from '@/components/Head';
 import SkipLink from '@/components/SkipLink';
 import PortalRoot from '@/components/PortalRoot';
 import Cursor from '@/components/Cursor';
-import ReactLenis from 'lenis/react';
-import type { LenisRef } from 'lenis/react';
-import { cancelFrame, frame } from 'framer-motion';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 

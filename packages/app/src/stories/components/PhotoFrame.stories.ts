@@ -9,7 +9,12 @@ import ComponentDecorator from '@/storybook/decorators/component';
 
 // --------------------------------------------------------------------- 
 import PhotoFrame from '@/components/PhotoFrame';
+import { contentData } from '@/storybook/data';
+import { MediaFile } from '@/app/types';
+import { getStaticAssetURL } from '@/app/functions';
 // --------------------------------------------------------------------- 
+
+const photo = contentData.at(0)?.data?.image as MediaFile;
 
 const meta = {
 	title: 'Breakerino/Components/PhotoFrame',
@@ -20,10 +25,8 @@ const meta = {
 	},
 	args: {
 		image: {
-			url: '/assets/img/breakerino-photo.png',
-			width: 485,
-			height: 840,
-			alternativeText: 'Photo'
+			...photo,
+			url: getStaticAssetURL(photo.url)
 		}
 	},
 	decorators: [ComponentDecorator]

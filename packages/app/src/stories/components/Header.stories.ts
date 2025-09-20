@@ -12,7 +12,6 @@ import Header from '@/containers/Header';
 import { headerData } from '@/storybook/data';
 // --------------------------------------------------------------------- 
 
-
 const meta = {
 	title: 'Breakerino/Components/Header',
 	component: Header,

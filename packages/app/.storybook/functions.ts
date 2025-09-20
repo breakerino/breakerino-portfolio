@@ -1,11 +1,9 @@
 // --------------------------------------------------------------------- 
-// Storybook > Vitest setup
+// Storybook > Data
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import * as a11yAddonAnnotations from '@storybook/addon-a11y/preview';
-import { setProjectAnnotations } from '@storybook/nextjs-vite';
-import * as projectAnnotations from './preview';
+import { join, dirname } from 'path';
 // --------------------------------------------------------------------- 
 
-setProjectAnnotations([a11yAddonAnnotations, projectAnnotations]);
+export const getAbsolutePath = (value: string): string => dirname(require.resolve(join(value, 'package.json')));

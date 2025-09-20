@@ -11,7 +11,7 @@ import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 // --------------------------------------------------------------------- 
 import RootLayout from '@/layouts/Root';
 import { AppContextProvider } from '@/contexts/App';
-import queryClient from '@/app/api/client';
+import queryClient from '@/app/api/query-client';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 

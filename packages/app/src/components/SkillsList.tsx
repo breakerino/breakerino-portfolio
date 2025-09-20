@@ -4,8 +4,8 @@
 
 // --------------------------------------------------------------------- 
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import { useInView, Variants } from 'motion/react';

@@ -7,22 +7,20 @@ import clsx from 'clsx';
 import { pick } from 'lodash';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
-import { NavigationItem, SocialSiteType, MediaFile } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import { MenuItem, BaseSectionProps } from '@/app/types';
+import { NavigationItem, SocialSiteType, MediaFile, MenuItem, BaseSectionProps } from '@/app/types';
+import { HEADER_STICKY_SCROLL_THRESHOLD_Y, HEADER_SHOW_SCROLL_OFFSET_Y, HEADER_HIDE_SCROLL_OFFSET_Y } from '@/app/constants';
 import { getStaticAssetURL } from '@/app/functions';
-import { useAppContext } from '@/contexts/App';
+import useActiveSection from '@/hooks/useActiveSection';
 import DesktopMenu from '@/modules/desktop-menu';
 import MobileMenu from '@/modules/mobile-menu';
+import { useAppContext } from '@/contexts/App';
 import Container from '@/components/Container';
 import Logo, { LogoProps } from '@/components/Logo';
 import Section from '@/components/Section';
 import useHeader from '@/hooks/useHeader';
-import { HEADER_STICKY_SCROLL_THRESHOLD_Y, HEADER_SHOW_SCROLL_OFFSET_Y, HEADER_HIDE_SCROLL_OFFSET_Y } from '@/app/constants';
-import useActiveSection from '@/hooks/useActiveSection';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 

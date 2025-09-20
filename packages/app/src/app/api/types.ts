@@ -31,5 +31,3 @@ export interface RequestArgs {
 		response?: AxiosResponseTransformer,
 	}
 }
-
-export type UseApiProps = unknown

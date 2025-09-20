@@ -74,17 +74,16 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Breakerino/next-ts-docker.git"
+		"url": "git+https://github.com/breakerino/breakerino-portfolio.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Breakerino/next-ts-docker/issues"
+		"url": "https://github.com/breakerino/breakerino-portfolio/issues"
 	},
-	"homepage": "https://github.com/Breakerino/next-ts-docker#readme",
+	"homepage": "https://github.com/Breakerino/breakerino-portfolio#readme",
 	"keywords": [
+		"portfolio",
 		"nextjs",
 		"typescript",
-		"docker",
-		"react",
-		"starter"
+		"react"
 	]
 }

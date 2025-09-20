@@ -16,11 +16,9 @@ import Heading from '@/components/Heading';
 import ProjectsList from '@/components/ProjectsList';
 // --------------------------------------------------------------------- 
 
-// --------------------------------------------------------------------- 
 export interface ProjectsSectionProps extends BaseSectionProps {
 	projects: Project[]
 }
-// --------------------------------------------------------------------- 
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ id, className, heading, projects }) => {
 	return (

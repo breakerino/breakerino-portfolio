@@ -1,16 +1,16 @@
 // --------------------------------------------------------------------- 
-// Modules > MobileMenu > Components > Header
+// Modules > Mobile menu > Components > Header
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import clsx from 'clsx';
 import React from 'react';
+import clsx from 'clsx';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
+import { BaseComponentProps } from '@/app/types';
 import Icon from '@/components/Icon';
 import Logo, { LogoProps } from '@/components/Logo';
-import { BaseComponentProps } from '@/app/types';
 // --------------------------------------------------------------------- 
 
 export interface HeaderProps extends BaseComponentProps {

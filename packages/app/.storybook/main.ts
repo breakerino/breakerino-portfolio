@@ -1,15 +1,11 @@
 // --------------------------------------------------------------------- 
-import type { StorybookConfig } from '@storybook/nextjs-vite';
-import { join, dirname } from 'path';
+// Storybook > Main
 // --------------------------------------------------------------------- 
 
-/**
- * Resolve absolute path of a package.
- * Needed for Yarn PnP or monorepos.
- */
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
+// --------------------------------------------------------------------- 
+import type { StorybookConfig } from '@storybook/nextjs-vite';
+import { getAbsolutePath } from './functions';
+// --------------------------------------------------------------------- 
 
 const config: StorybookConfig = {
   stories: [

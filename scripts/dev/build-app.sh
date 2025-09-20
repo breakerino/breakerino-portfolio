@@ -23,6 +23,7 @@ set +a
 # Public variables
 export NEXT_PUBLIC_API_PUBLIC_BASE_URL="${API_PUBLIC_BASE_URL}"
 export NEXT_PUBLIC_STATIC_BASE_URL="${STATIC_BASE_URL}"
+export NEXT_PUBLIC_APP_BASE_URL="${APP_BASE_URL}"
 
 # Install dependencies for the app package.
 yarn install
