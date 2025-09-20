@@ -59,6 +59,7 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({
 					alt={image.alternativeText ?? 'Image'}
 					draggable={false}
 					priority
+					fetchPriority="high"
 				/>
 			</ImageWrapper>
 
