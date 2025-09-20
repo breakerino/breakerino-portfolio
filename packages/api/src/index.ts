@@ -1,17 +1,28 @@
 // --------------------------------------------------------------------- 
+// Global > Lifecycles
+// --------------------------------------------------------------------- 
+
+// --------------------------------------------------------------------- 
 import type { Core } from '@strapi/strapi';
 // --------------------------------------------------------------------- 
-import { refreshAppCache } from './hooks/refreshAppCache';
+
+// --------------------------------------------------------------------- 
+import refreshAppCache from './actions/refresh-app-cache';
+import sortSkills from './actions/sort-skills';
 // --------------------------------------------------------------------- 
 
 export default {
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    const lifecycleEvents = ['afterCreate', 'afterUpdate'];
-
+		// Actions > Sort skills
+		await sortSkills();
+		
+		// Actions > Refresh app cache
+		await refreshAppCache();
+		
     Object.values(strapi.contentTypes).forEach((contentType) => {
       const uid = contentType.uid;
 
-      lifecycleEvents.forEach((event) => {
+      ['afterCreate', 'afterUpdate'].forEach((event) => {
         strapi.db.lifecycles.subscribe({
           models: [uid],
           [event]: async ({ result }) => {
