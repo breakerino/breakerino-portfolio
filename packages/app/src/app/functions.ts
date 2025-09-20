@@ -2,6 +2,7 @@
 // App > Functions
 // --------------------------------------------------------------------- 
 export const getStaticAssetURL = (path: string) => `${process.env.NEXT_PUBLIC_STATIC_BASE_URL}${path}`;
+export const getOptimisedStaticAssetURL = (path: string, width: number, quality: number = 75) => `_next/image?url=${encodeURIComponent(getStaticAssetURL(path))}&w=${width}&q=${quality}`;
 
 export const isElementVisible = (element: Element, threshold: number = 0.25): boolean => {
 	const rect = element.getBoundingClientRect();
