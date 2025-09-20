@@ -15,6 +15,7 @@ import Head from '@/components/Head';
 import SkipLink from '@/components/SkipLink';
 import PortalRoot from '@/components/PortalRoot';
 import Cursor from '@/components/Cursor';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -48,6 +49,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
 				<ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
 				<Cursor className="bg-primary-400 shadow-primary-400" size={20} trailLength={24} trailScale={0.85} />
 				<SkipLink />
+				<GoogleAnalytics />
 				{children}
 				<PortalRoot />
 			</body>
