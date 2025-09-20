@@ -26,6 +26,7 @@ export default {
 
 		return response.send();
 	},
+	
 	getSections: async (ctx: DefaultContext) => {
 		const response = new Response(ctx);
 
