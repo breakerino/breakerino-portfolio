@@ -83,7 +83,7 @@ const SkillsList: React.FC<SkillsListProps> = ({
 
 	if (slideshow) {
 		return (
-			<Tag
+			<div
 				ref={containerRef}
 				className={twMerge(
 					clsx(
@@ -118,7 +118,7 @@ const SkillsList: React.FC<SkillsListProps> = ({
 						))}
 					</SplideTrack>
 				</Splide>
-			</Tag>
+			</div>
 		)
 	}
 
