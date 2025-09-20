@@ -48,7 +48,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ id, className, heading, s
 							key={title}
 							className="flex flex-col gap-3 md:gap-4"
 						>
-							<h3 className="font-bold text-2xl md:text-3xl lg:text-4xl text-primary-100" aria-label={title}>
+							<h3 className="font-bold text-2xl md:text-3xl lg:text-4xl text-primary-50" aria-label={title}>
 								<Motion.LettersPullUp>{title}</Motion.LettersPullUp>
 							</h3>
 							<SkillsList animated size={isMobile ? 'sm' : isTablet ? 'md' : 'lg'} {...{ skills }} />
