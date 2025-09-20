@@ -15,6 +15,14 @@
     "keywords": {
       "type": "string",
       "regex": "^[a-zA-ZÀ-ž0-9 .+-]+(?:,\\s*[a-zA-ZÀ-ž0-9 .+-]+)*$"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
     }
   },
   "config": {}

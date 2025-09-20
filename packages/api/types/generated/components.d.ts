@@ -103,6 +103,7 @@ export interface SiteMeta extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'files' | 'images'>;
     keywords: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
