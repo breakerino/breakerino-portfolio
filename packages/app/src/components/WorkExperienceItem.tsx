@@ -79,7 +79,6 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 							/>
 						</Motion.ScrollReveal>
 						<div className="flex flex-col gap-1.5 @3xl:gap-2">
-							<div className="overflow-hidden">
 								<Motion.ScrollReveal
 									initial={{ opacity: 0, y: '15%' }}
 									animate={{ opacity: 1, y: 0 }}
@@ -95,8 +94,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 										{companyName}
 									</Link>
 								</Motion.ScrollReveal>
-							</div>
-							<div className="text-primary-50 text-2xl @3xl:text-3xl @6xl:text-4xl leading-[1.15] overflow-hidden">
+							<div className="text-primary-50 text-2xl @3xl:text-3xl @6xl:text-4xl leading-[1.15]">
 								<Motion.ScrollReveal
 									as="strong"
 									className="font-semibold"
@@ -113,7 +111,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 					</div>
 
 					<div className="flex flex-col gap-2 @3xl:text-right">
-						<div className="text-primary-100 text-lg @3xl:text-xl @6xl:text-2xl] leading-[1.15] overflow-hidden">
+						<div className="text-primary-100 text-lg @3xl:text-xl @6xl:text-2xl] leading-[1.15]">
 							<Motion.ScrollReveal
 								as="span"
 								initial={{ opacity: 0, y: '15%' }}
@@ -127,7 +125,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 								{moment(endDate).diff(moment(startDate), 'years')} yrs {moment(endDate).diff(moment(startDate), 'months') % 12} mos
 							</Motion.ScrollReveal>
 						</div>
-						<div className="text-primary-200 text-base @3xl:text-lg @6xl:text-xl leading-[1.15] overflow-hidden">
+						<div className="text-primary-200 text-base @3xl:text-lg @6xl:text-xl leading-[1.15]">
 							<Motion.ScrollReveal
 								as="span"
 								initial={{ opacity: 0, y: '15%' }}
@@ -139,7 +137,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 								{location}
 							</Motion.ScrollReveal>
 						</div>
-						<div className="text-primary-100 text-sm @3xl:text-base @6xl:text-lg leading-[1.15] overflow-hidden">
+						<div className="text-primary-100 text-sm @3xl:text-base @6xl:text-lg leading-[1.15]">
 							<Motion.ScrollReveal
 								as="span"
 								initial={{ opacity: 0, y: '15%' }}
@@ -163,23 +161,22 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 					'brk-work-experience-item-content',
 					'flex flex-col @3xl:flex-row gap-8'
 				)}>
-					<div className="overflow-hidden">
-						<Motion.ScrollReveal
-							initial={{ opacity: 0, y: 32 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{
-								duration: 0.6
-							}}
+					<Motion.ScrollReveal
+						className="@3xl:w-7/12"
+						initial={{ opacity: 0, y: 32 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{
+							duration: 0.6
+						}}
+					>
+						<Text
+							withMarkdown
+							className="text-base @3xl:text-md @6xl:text-xl leading-[1.75]"
 						>
-							<Text
-								withMarkdown
-								className="text-base @3xl:text-md @6xl:text-xl leading-[1.75]"
-							>
-								{description}
-							</Text>
-						</Motion.ScrollReveal>
-					</div>
-					<div className="flex flex-col gap-4">
+							{description}
+						</Text>
+					</Motion.ScrollReveal>
+					<div className="@3xl:w-5/12 flex flex-col gap-4">
 						<Motion.ScrollReveal
 							initial={{ opacity: 0, y: '15%' }}
 							animate={{ opacity: 1, y: 0 }}
@@ -187,7 +184,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 								duration: 0.6
 							}}
 						>
-							<strong className="text-primary-100 text-2xl">Skills used</strong>
+							<strong className="text-primary-50 text-2xl">Skills used</strong>
 						</Motion.ScrollReveal>
 						<SkillsList animated skills={skills} variant="chip" size="sm" />
 					</div>
