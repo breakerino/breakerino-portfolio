@@ -46,7 +46,7 @@ const SkillItem: React.FC<SkillItemProps> = ({
 			className={twMerge(
 				clsx(
 					'brk-skill-item',
-					'flex items-center bg-secondary-950 border-2 border-secondary-700 hover:bg-secondary-800 active:bg-secondary-900 transition-colors select-none',
+					'flex items-center bg-secondary-950 border-2 border-secondary-700 hover:bg-secondary-800 active:bg-secondary-900 transition-colors select-none cursor-none',
 					className,
 					styles.wrapper,
 					variants[variant]
