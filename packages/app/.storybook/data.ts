@@ -8,7 +8,6 @@ import { GeneralSettings, PersonalSettings, SiteSettings } from '@/app/types';
 
 // --------------------------------------------------------------------- 
 import { HeaderProps } from '@/containers/Header';
-import { ContentProps } from '@/containers/Content';
 import { FooterProps } from '@/containers/Footer';
 // --------------------------------------------------------------------- 
 
@@ -19,8 +18,15 @@ export const generalSettings: GeneralSettings = {
 export const siteSettings: SiteSettings = {
 	'meta': {
 		'title': 'Breakerino - Full Stack Web Developer | Portfolio',
-		'description': 'Matúš Mendel, also known as Breakerino, is a 24-year-old Full Stack Web Developer with 6 years of experience building clean, user-focused web applications using React, TypeScript, Node.js, PHP, Strapi, and WordPress.',
-		'keywords': 'Matúš Mendel, Breakerino, Full Stack Developer, Web Developer Portfolio, Frontend Developer, Backend Developer, JavaScript, TypeScript, React, Next.js, Node.js, PHP, WordPress, Strapi, Tailwind CSS, Portfolio Website'
+		'description': 'Matúš Mendel, also known as Breakerino, is a 24-year-old full stack web developer with 6 years of experience and a passion for building modern, efficient, and user-friendly web applications using React, Next.js, Node.js, PHP & WordPress.',
+		'keywords': 'Matúš Mendel, Breakerino, Full Stack Developer, Web Developer Portfolio, Frontend Developer, Backend Developer, JavaScript, TypeScript, React, Next.js, Node.js, PHP, WordPress, Strapi, Tailwind CSS, Portfolio Website',
+		'image': {
+			'name': 'breakerino-og-image.png',
+			'alternativeText': null,
+			'width': 1200,
+			'height': 630,
+			'url': '/uploads/breakerino_og_image_5475b71d48.png'
+		}
 	}
 }
 
@@ -1859,7 +1865,7 @@ export const contentData = [
 
 export const footerData: FooterProps['data'] = {
 	'copyrightText': `© ${generalSettings.year} Breakerino. All rights reserved.`,
-	'text': 'Designed & Developed with 🩵 by **<a class="cursor-none hover:text-primary-400 transition-colors" href="https://breakerino.me">Breakerino<span class="text-primary-400">.</span></a>**'
+	'text': 'Designed & Developed with 🩵 by **<a class='cursor-none hover:text-primary-400 transition-colors' href='https://breakerino.me'>Breakerino<span class='text-primary-400'>.</span></a>**'
 }
 
 export const queries = [
