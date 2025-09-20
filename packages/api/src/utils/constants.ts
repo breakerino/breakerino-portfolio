@@ -22,6 +22,7 @@ export const IMAGE_FIELDS_TO_OMIT = [
 ];
 
 export const DOCUMENT_KEYS_TO_OMIT = [
+	'id',
 	'documentId',
 	'createdAt',
 	'updatedAt',
