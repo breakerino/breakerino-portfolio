@@ -45,7 +45,6 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 	const [activeSectionID] = useActiveSection({
 		selector: 'section.brk-section'
 	});
-	const [isMobile] = useMediaQuery('(max-width: 48rem)');
 
 	const logo: LogoProps = React.useMemo(() => ({
 		...pick(logoImage, ['width', 'height']),
@@ -69,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 			className={twMerge(
 				clsx(
 					'brk-header',
-					'@container/header w-full py-4 sm:py-4 md:py-8 lg:py-8',
+					'@container/header flex items-center w-full h-18 py-4 sm:py-4 md:h-23 md:py-8 lg:py-8',
 					isSticky && 'sticky top-0 z-100 backdrop-blur-sm -translate-y-full bg-secondary-950/75',
 					isAnimated && 'transition-transform duration-300 ease-in-out',
 					(!isSticky || isVisible) && 'translate-y-0',
@@ -81,11 +80,8 @@ const Header: React.FC<HeaderProps> = ({ className, data: { logo: logoImage, nav
 					{...logo}
 					className={clsx('brk-header-logo', 'md:h-7 lg:h-8')}
 				/>
-				{! isMobile ? (
-					<DesktopMenu menuItems={menuItems} activeMenuItemID={activeSectionID} />
-				) : (
-					<MobileMenu {...{ logo, menuItems, socialItems, activeMenuItemID: activeSectionID }} />
-				)}
+					<DesktopMenu className="hidden md:block" menuItems={menuItems} activeMenuItemID={activeSectionID} />
+					<MobileMenu className="md:hidden" {...{ logo, menuItems, socialItems, activeMenuItemID: activeSectionID }} />
 			</Container>
 		</Section>
 	)

@@ -62,7 +62,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 				onClick={handleToggle}
 			/>
 
-			<Portal>
+			<Portal className="md:hidden">
 				<Sidebar isOpened={isOpened}>
 					<Header className="pl-10 pr-5 py-5" logo={logo} onClose={handleClose} />
 					<Navigation
