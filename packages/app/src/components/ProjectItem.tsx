@@ -83,6 +83,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 							'w-full @4xl:w-[50vw] @4xl:max-w-[48rem]'
 						)}>
 							<Video
+								width={`${media?.thumbnail.width ?? 0}px`}
+								height={`${media?.thumbnail.height ?? 0}px`}
+								className="bg-secondary-950"
 								autoPlay
 								loop
 								muted

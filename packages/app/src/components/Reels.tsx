@@ -112,6 +112,9 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 					return (
 						<SplideSlide key={`reel-${index}`}>
 							<video
+								className="bg-secondary-950"
+								width={`${reel?.thumbnail.width ?? 0}px`}
+								height={`${reel?.thumbnail.height ?? 0}px`}
 								muted
 								playsInline
 								poster={getStaticAssetURL(reel?.thumbnail?.url)}
