@@ -21,11 +21,6 @@ const Head: React.FC<HeadProps> = ({ children }) => {
 
 	return (
 		<NextHead>
-			<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-			<link rel="icon" href="/favicon.ico" />
-			<meta name="apple-mobile-web-app-title" content="Breakerino.me" />
-			
 			<title>{settings.site.meta.title}</title>
 			<meta name="description" content={settings.site.meta.description} />
 			<meta name="keywords" content={settings.site.meta.keywords} />
@@ -40,8 +35,13 @@ const Head: React.FC<HeadProps> = ({ children }) => {
 			<meta name="twitter:title" content={settings.site.meta.title} />
 			<meta name="twitter:description" content={settings.site.meta.description} />
 			<meta name="twitter:image" content={getStaticAssetURL(settings.site.meta.image.url)} />
-			
-			<link rel="preload" as="image/svg+xml" href={ICON_SET_URI} />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+			<link rel="icon" href="/favicon.ico" />
+			<meta name="apple-mobile-web-app-title" content="Breakerino.me" />
+
+			<link rel="preload" as="image" href={ICON_SET_URI} type="image/svg+xml" />
 
 			{children}
 		</NextHead>
