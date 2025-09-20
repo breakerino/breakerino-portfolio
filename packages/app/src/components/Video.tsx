@@ -15,10 +15,16 @@ import { useInView } from 'motion/react';
 
 // ---------------------------------------------------------------------
 import { BaseComponentProps, MediaSource } from '@/app/types';
+import { getOptimisedStaticAssetURL } from '@/app/functions';
 // ---------------------------------------------------------------------
 
-export interface VideoProps extends BaseComponentProps, React.VideoHTMLAttributes<HTMLVideoElement> {
+export interface VideoProps extends BaseComponentProps, Omit<React.VideoHTMLAttributes<HTMLVideoElement>, 'poster'> {
 	sources: MediaSource[];
+	poster: {
+		url: string;
+		width?: number|null
+		height?: number|null
+	}
 }
 
 // ---------------------------------------------------------------------
@@ -89,7 +95,7 @@ const Video: React.FC<VideoProps> = ({
 			loop={loop}
 			muted={muted}
 			playsInline={playsInline}
-			poster={shouldLoad ? poster : undefined}
+			poster={getOptimisedStaticAssetURL(poster.url, poster?.width ?? 1080)}
 			{...props}
 		>
 			{shouldLoad && (
