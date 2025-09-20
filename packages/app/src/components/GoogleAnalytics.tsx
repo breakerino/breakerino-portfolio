@@ -11,6 +11,10 @@ import { GOOGLE_ANALYTICS_ID } from '@/app/constants'
 // --------------------------------------------------------------------- 
 
 const GoogleAnalytics = () => {
+	if (process.env.NODE_ENV !== 'production') {
+    return null;
+  }
+	
   return (
     <>
       <Script id="ga-consent" strategy="beforeInteractive">
