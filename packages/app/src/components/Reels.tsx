@@ -27,8 +27,14 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 	const ref = React.useRef<HTMLDivElement | null>(null);
 	const splideRef = React.useRef<SplideClass | null>(null);
 
-	const isInView = useInView(ref, { once: false, margin: '10% 0px 0px' });
+	const isInView = useInView(ref, { once: false, margin: '10% 0px 0px', amount: 0.01 });
 
+	React.useEffect(() => {
+		if (isInView) {
+			setShouldLoad(true);
+		}
+	}, [isInView]);
+	
 	React.useEffect(() => {
 		if (!splideRef.current?.splide) {
 			return;
@@ -68,9 +74,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 			});
 		};
 
-		if (isInView) {
-			setShouldLoad(true);
-		} else {
+		if (! isInView) {
 			splide.go(0);
 			
 			videos.forEach((video) => {
@@ -78,7 +82,6 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 				video.currentTime = 0;
 			});
 		}
-
 		handleSlideChange();
 		bindVideoEndListeners();
 		
@@ -117,7 +120,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 								height={`${reel?.thumbnail.height ?? 0}px`}
 								muted
 								playsInline
-								poster={getStaticAssetURL(reel?.thumbnail?.url)}
+								poster={shouldLoad ? getStaticAssetURL(reel?.thumbnail?.url) : undefined}
 							>
 								{shouldLoad && (
 									<source src={getStaticAssetURL(reel.video.url)} type="video/mp4" />
