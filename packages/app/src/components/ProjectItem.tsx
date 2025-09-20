@@ -90,7 +90,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 								loop
 								muted
 								playsInline
-								poster={getStaticAssetURL(media?.thumbnail?.url)}
+								poster={media?.thumbnail}
 								sources={media?.video?.url
 									? [{ src: getStaticAssetURL(media?.video.url), type: 'video/mp4' }]
 									: []
@@ -183,7 +183,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 								'brk-project-item-links',
 								'flex flex-wrap gap-3'
 							)}
-							initial={{ opacity: 0, y: 20 }}
+							initial={{ opacity: 0, y: 15 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6 }}
 						>
