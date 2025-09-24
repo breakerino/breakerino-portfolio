@@ -84,6 +84,11 @@ export default [
 		'name': 'Motion'
 	},
 	{
+		'id': 82,
+		'documentId': 'x9kor3t9pieakgoxzyfn55jt',
+		'name': 'Splide'
+	},
+	{
 		'id': 15,
 		'documentId': 'zgatrg00vajhjn6eavlbcsij',
 		'name': 'Formik'
