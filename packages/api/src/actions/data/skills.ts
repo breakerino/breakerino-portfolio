@@ -139,16 +139,6 @@ export default [
 		'name': 'Node.js'
 	},
 	{
-		'id': 24,
-		'documentId': 'k6uzf77ybc50o3rp5dg4mzfm',
-		'name': 'NPM'
-	},
-	{
-		'id': 25,
-		'documentId': 'yovbaz2fz9fxzwb9tymspy5x',
-		'name': 'Yarn'
-	},
-	{
 		'id': 29,
 		'documentId': 'nh511vr7gqq7s7y0vc97y1qo',
 		'name': 'Express.js'
@@ -237,6 +227,16 @@ export default [
 		'id': 48,
 		'documentId': 'oltme03odaw09efnf6tmrvq4',
 		'name': 'Nginx'
+	},
+	{
+		'id': 24,
+		'documentId': 'k6uzf77ybc50o3rp5dg4mzfm',
+		'name': 'NPM'
+	},
+	{
+		'id': 25,
+		'documentId': 'yovbaz2fz9fxzwb9tymspy5x',
+		'name': 'Yarn'
 	},
 	{
 		'id': 79,
