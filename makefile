@@ -1,4 +1,4 @@
-.PHONY: start stop restart build force-build start-app-dev start-app-storybook build-app start-api-dev build-api
+.PHONY: start stop restart build force-build start-app-dev start-app-storybook start-app-preview build-app start-api-dev build-api
 
 start:
 	bash scripts/prod/start.sh
@@ -23,6 +23,9 @@ start-app-dev:
 	
 start-app-storybook:
 	bash scripts/dev/start-app-storybook.sh
+	
+start-app-storybook:
+	bash scripts/dev/start-app-preview.sh
 
 build-app:
 	bash scripts/dev/build-app.sh
