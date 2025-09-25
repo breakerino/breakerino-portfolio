@@ -9,7 +9,7 @@
 // --------------------------------------------------------------------- 
 import React from 'react';
 import { Splide, SplideSlide, Splide as SplideClass } from '@splidejs/react-splide';
-import { useInView } from 'motion/react';
+import { useInView, usePageInView } from 'motion/react';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -23,17 +23,19 @@ export interface ReelsProps extends Omit<BaseComponentProps, 'as' | 'children'> 
 
 const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 	const [shouldLoad, setShouldLoad] = React.useState<boolean>(false);
+	const [isFirstVideoLoaded, setIsFirstVideoLoaded] = React.useState<boolean>(false);
 
 	const ref = React.useRef<HTMLDivElement | null>(null);
 	const splideRef = React.useRef<SplideClass | null>(null);
 
 	const isInView = useInView(ref, { once: false, margin: '10% 0px 0px', amount: 0.01 });
+	const isPageInView = usePageInView();
 
 	React.useEffect(() => {
-		if (isInView) {
+		if (isInView && isPageInView) {
 			setShouldLoad(true);
 		}
-	}, [isInView]);
+	}, [isInView, isPageInView]);
 	
 	React.useEffect(() => {
 		if (!splideRef.current?.splide) {
@@ -47,8 +49,22 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 			return;
 		}
 		
-		const videos = splideRoot.querySelectorAll<HTMLVideoElement>('video');
+		const videos = [...splideRoot.querySelectorAll<HTMLVideoElement>('video')];
+		
+		const firstVideo = videos.at(0);
 
+		const handleVideoLoadedData = (event: Event) => {
+			const videoElement = event.target as HTMLVideoElement;
+			
+			if (videoElement.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+				setIsFirstVideoLoaded(true);
+			}
+			
+			firstVideo?.removeEventListener('loadeddata', handleVideoLoadedData);
+		}
+		
+		firstVideo?.addEventListener('loadeddata', handleVideoLoadedData)
+		
 		const handleSlideChange = () => {
 			videos.forEach((video, index) => {
 				if (index === splide.index) {
@@ -74,7 +90,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 			});
 		};
 
-		if (! isInView) {
+		if (! isInView || ! isPageInView) {
 			splide.go(0);
 			
 			videos.forEach((video) => {
@@ -94,7 +110,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 				video.onended = null;
 			});
 		};
-	}, [isInView]);
+	}, [isInView, isPageInView]);
 
 	return (
 		<div ref={ref} className={className}>
@@ -120,7 +136,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 								height={`${reel?.thumbnail.height ?? 0}px`}
 								muted
 								playsInline
-								poster={getOptimisedStaticAssetURL(reel?.thumbnail?.url, reel?.thumbnail.width ?? 0)}
+								poster={index === 0 && isFirstVideoLoaded ? undefined : getOptimisedStaticAssetURL(reel?.thumbnail?.url, reel?.thumbnail.width ?? 0)}
 							>
 								{shouldLoad && (
 									<source src={getStaticAssetURL(reel.video.url)} type="video/mp4" />
