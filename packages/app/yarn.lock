@@ -169,6 +169,13 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-1.0.2.tgz#bbe12dca5b4ef983a0d0af4b07b9bc90ea0ababa"
   integrity sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==
 
+"@braintree/browser-detection@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@braintree/browser-detection/-/browser-detection-2.1.0.tgz#227089533fe2118559bca45a64ba62eea60875df"
+  integrity sha512-TbWESQre3wXBC3uag8X8xdr0zfD+FuhgUiuRxp2nkJagHB+NgA40zDOI8McGKijYFG7HeeAzNHW1MhFdEE1Blg==
+  dependencies:
+    detectincognitojs "1.6.0"
+
 "@chromatic-com/storybook@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@chromatic-com/storybook/-/storybook-4.1.1.tgz#6d67bb64380655887ece1d54561b6f056a3bb513"
@@ -2238,6 +2245,11 @@ detect-libc@^2.0.3, detect-libc@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.4.tgz#f04715b8ba815e53b4d8109655b6508a6865a7e8"
   integrity sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==
+
+detectincognitojs@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/detectincognitojs/-/detectincognitojs-1.6.0.tgz#14ae135f830b0eb82048063a3f7af02f254de090"
+  integrity sha512-aOmVmzcPdm1Vovuc0ZHr5Vk86ZSMBUXyvTD2S4JRFZZzg0/gbW8FmM+jDFxKSaDwvlpgH3B103rnxJfAX2ZGqA==
 
 doctrine@^2.1.0:
   version "2.1.0"

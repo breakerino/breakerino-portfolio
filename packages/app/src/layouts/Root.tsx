@@ -8,6 +8,7 @@ import ReactLenis from 'lenis/react';
 import type { LenisRef } from 'lenis/react';
 import { cancelFrame, frame } from 'framer-motion';
 import { Inter } from 'next/font/google';
+import { isSafari, isIosSafari } from '@braintree/browser-detection'; 
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -16,6 +17,7 @@ import SkipLink from '@/components/SkipLink';
 import PortalRoot from '@/components/PortalRoot';
 import Cursor from '@/components/Cursor';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import Icons from '@/components/Icons';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
@@ -41,6 +43,10 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
 
 		return () => cancelFrame(update)
 	}, [])
+	
+	const isSafariBrowser = React.useMemo(() => {
+		return typeof window !== 'undefined' && (isSafari() || isIosSafari());
+	}, []);
 
 	return (
 		<html lang="en" className={`${interFont.variable}`}>
@@ -48,8 +54,9 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
 			<body className="bg-secondary-950 text-primary-50">
 				<ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
 				<Cursor className="bg-primary-400 shadow-primary-400" size={20} trailLength={24} trailScale={0.85} />
-				<SkipLink />
+				<Icons shouldLoad={isSafariBrowser} />
 				<GoogleAnalytics />
+				<SkipLink />
 				{children}
 				<PortalRoot />
 			</body>

@@ -19,6 +19,7 @@
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
+		"@braintree/browser-detection": "^2.1.0",
 		"@splidejs/react-splide": "^0.7.12",
 		"@splidejs/splide-extension-auto-scroll": "^0.5.3",
 		"@tailwindcss/postcss": "^4.1.12",
