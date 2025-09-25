@@ -26,7 +26,7 @@ const Icon: React.FC<IconProps> = ({ className, id }) => (
     aria-label={id}
     role="img"
   >
-    <use href={`${ICON_SET_URI}#${id}`} />
+    <use href={`${ICON_SET_URI}#${id}`} xlinkHref={`${ICON_SET_URI}#${id}`} />
   </svg>
 );
 
