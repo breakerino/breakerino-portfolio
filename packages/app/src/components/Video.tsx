@@ -10,7 +10,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { useInView } from 'motion/react';
+import { useInView, usePageInView } from 'motion/react';
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
@@ -41,6 +41,7 @@ const Video: React.FC<VideoProps> = ({
 	const videoRef = React.useRef<HTMLVideoElement | null>(null);
 	const isFullyInView = useInView(videoRef, { once: false, margin: '10% 0px 0px', amount: 'all' });
 	const isPartiallyInView = useInView(videoRef, { once: false, margin: '10% 0px 0px', amount: 0.01 });
+	const isPageInView = usePageInView();
 
 	const [shouldLoad, setShouldLoad] = React.useState<boolean>(false);
 
@@ -54,18 +55,18 @@ const Video: React.FC<VideoProps> = ({
 		const handleVideoLoadedData = (event: Event) => {
 			const videoElement = event.target as HTMLVideoElement;
 			
-			if (videoElement.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
+			if (videoElement.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
 				videoElement.play().catch(() => { });
 			}
 			
 			video.removeEventListener('loadeddata', handleVideoLoadedData);
 		}
 
-		if (isPartiallyInView && !shouldLoad) {
+		if (isPageInView && isPartiallyInView && !shouldLoad) {
 			setShouldLoad(true);
 			video.addEventListener('loadeddata', handleVideoLoadedData)
 		}
-	}, [shouldLoad, isPartiallyInView, isFullyInView]);
+	}, [shouldLoad, isPartiallyInView, isPageInView]);
 
 	React.useEffect(() => {
 		const video = videoRef.current;
@@ -74,7 +75,7 @@ const Video: React.FC<VideoProps> = ({
 			return;
 		}
 
-		if (isFullyInView) {
+		if (isPageInView && isFullyInView ) {
 			video.play().catch(() => { });
 		} else {
 			video.pause();
@@ -84,7 +85,7 @@ const Video: React.FC<VideoProps> = ({
 			}
 		}
 
-	}, [isPartiallyInView, isFullyInView]);
+	}, [isPartiallyInView, isFullyInView, isPageInView]);
 
 	return (
 		<video
