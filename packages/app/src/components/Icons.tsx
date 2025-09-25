@@ -39,7 +39,7 @@ const Icons: React.FC<IconsProps> = ({ shouldLoad = true }) => {
 	}
 
 	if (!svgContents) {
-		return null;
+		return <></>;
 	}
 
 	return (
