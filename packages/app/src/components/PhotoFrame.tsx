@@ -29,8 +29,8 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({
 	animationDuration = 0.6,
 	...props
 }) => {
-	const imageRef = React.useRef<HTMLDivElement>(null);
-	const { width } = useDimensions<HTMLDivElement>(imageRef);
+	const imageWrapperRef = React.useRef<HTMLDivElement>(null);
+	const { width } = useDimensions<HTMLDivElement>(imageWrapperRef, {width: image.width ?? 0, height: image.height ?? 0});
 
 	const ImageWrapper = animated ? motion.div : 'div';
 
@@ -40,11 +40,11 @@ const PhotoFrame: React.FC<PhotoFrameProps> = ({
 			{...props}
 		>
 			<ImageWrapper
-				ref={imageRef}
+				ref={imageWrapperRef}
 				{...(animated && {
-					initial: { opacity: 0, y: '50%' },
-					animate: { opacity: 1, y: 0 },
-					transition: { duration: animationDuration }
+					initial: { y: '75%' },
+					animate: { y: 0 },
+					transition: { duration: animationDuration, ease: 'easeOut' }
 				})}
 				className={clsx(
 					'brk-photo-frame-image',

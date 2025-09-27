@@ -85,7 +85,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 							</Motion.LettersPullUp>
 						</h1>
 							<Motion.ScrollReveal
-								initial={{ opacity: 0, y: '10%' }}
+								initial={{ opacity: 0.01, y: '10%' }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{
 									duration: 0.6
@@ -122,7 +122,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className, id, heading, subhe
 							image={{ ...image, url: getStaticAssetURL(image.url) }}
 							animated
 							animationDuration={1}
-							initial={{ opacity: 0 }}
+							initial={{ opacity: 0.01 }}
 							animate={{ opacity: 1 }}
 							transition={{ duration: 1 }}
 						/>

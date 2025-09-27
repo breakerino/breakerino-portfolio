@@ -15,11 +15,8 @@ export interface Dimensions {
 	height: number;
 }
 
-export function useDimensions<T extends HTMLElement>(ref: React.RefObject<T | null>) {
-	const [dimensions, setDimensions] = React.useState<Dimensions>({
-		width: 0,
-		height: 0
-	});
+export function useDimensions<T extends HTMLElement>(ref: React.RefObject<T | null>, defaults: Dimensions = {width: 0, height: 0}) {
+	const [dimensions, setDimensions] = React.useState<Dimensions>(defaults);
 
 	React.useLayoutEffect(() => {
 		const node = ref.current;
