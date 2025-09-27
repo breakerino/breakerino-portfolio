@@ -8,12 +8,14 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import ReactLenis from 'lenis/react';
 import type { LenisRef } from 'lenis/react';
 import { cancelFrame, frame } from 'framer-motion';
+import { isIosSafari, isSafari } from '@braintree/browser-detection';
 // ---------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
 import PortalRoot from '@/components/PortalRoot';
 import Cursor from '@/components/Cursor';
 import { AppContextProvider } from '@/contexts/App';
+import Icons from '@/components/Icons';
 import queryClient from '@/app/api/query-client';
 import { queries } from '@/storybook/data';
 // ---------------------------------------------------------------------
@@ -49,6 +51,11 @@ const RootDecorator: React.FC<{ children?: React.ReactNode }> = ({ children }) =
 
 		return () => cancelFrame(update)
 	}, [])
+	
+		
+	const isSafariBrowser = React.useMemo(() => {
+		return typeof window !== 'undefined' && (isSafari() || isIosSafari());
+	}, []);
 
 	if (!hasPrefetchedQueries) {
 		return null;
@@ -58,6 +65,7 @@ const RootDecorator: React.FC<{ children?: React.ReactNode }> = ({ children }) =
 		<>
 			<ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
 			<Cursor className="bg-primary-400 shadow-primary-400" size={20} trailLength={24} trailScale={0.85} />
+			<Icons shouldLoad={isSafariBrowser} />
 			<QueryClientProvider client={queryClient}>
 				<AppContextProvider>{children}</AppContextProvider>
 			</QueryClientProvider>
