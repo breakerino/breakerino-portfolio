@@ -10,7 +10,7 @@ import NextHead from 'next/head';
 // --------------------------------------------------------------------- 
 import { useAppContext } from '@/contexts/App';
 import { BaseComponentProps } from '@/app/types';
-import { APP_BASE_URL, ICON_SET_URI } from '@/app/constants';
+import { APP_BASE_URL } from '@/app/constants';
 import { getStaticAssetURL } from '@/app/functions';
 // --------------------------------------------------------------------- 
 
@@ -40,8 +40,6 @@ const Head: React.FC<HeadProps> = ({ children }) => {
 
 			<link rel="icon" href="/favicon.ico" />
 			<meta name="apple-mobile-web-app-title" content="Breakerino.me" />
-
-			<link rel="preload" as="image" href={ICON_SET_URI} type="image/svg+xml" />
 
 			{children}
 		</NextHead>
