@@ -6,8 +6,8 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 

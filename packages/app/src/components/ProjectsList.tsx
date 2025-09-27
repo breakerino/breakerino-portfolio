@@ -1,11 +1,11 @@
 // --------------------------------------------------------------------- 
-// Components > Projects List
+// Components > Projects list
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import moment from 'moment';
 // --------------------------------------------------------------------- 
 

@@ -5,8 +5,8 @@
 // --------------------------------------------------------------------- 
 import React, { HTMLAttributeAnchorTarget } from 'react';
 import NextLink from 'next/link';
-import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { Link as LinkType } from '@/app/types';
 // --------------------------------------------------------------------- 
 
