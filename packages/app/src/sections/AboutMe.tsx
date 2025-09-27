@@ -39,7 +39,7 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({ className, heading, ree
 				<div className="flex flex-col md:flex-row gap-8">
 					<Frame className="md:sticky md:top-8" animated>
 						<Reels
-							className="2xs:w-[33.33333vw] 2xs:min-w-[18.75rem] md:min-w-[unset] lg:w-[27.5vw]"
+							className="2xs:w-[33.33333vw] 2xs:min-w-[18.75rem] md:min-w-[unset] lg:w-[27.5vw] lg:max-w-[27rem]"
 							reels={reels}
 						/>
 					</Frame>
