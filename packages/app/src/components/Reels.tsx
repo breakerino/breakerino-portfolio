@@ -124,6 +124,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 					pagination: false,
 					pauseOnHover: false,
 					pauseOnFocus: false,
+					drag: false
 				}}
 				aria-label="Reels Carousel"
 			>
