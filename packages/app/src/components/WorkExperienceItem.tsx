@@ -89,7 +89,7 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
 									<Link
 										href={companySiteURL}
 										target="_blank"
-										className="text-primary-50 hover:text-primary-400 text-xl @3xl:text-2xl @6xl:text-3xl leading-[1.15] font-normal cursor-none"
+										className="text-primary-50 hover:text-primary-400 text-xl @3xl:text-2xl @6xl:text-3xl leading-[1.15] font-normal"
 									>
 										{companyName}
 									</Link>

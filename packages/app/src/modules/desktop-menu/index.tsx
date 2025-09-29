@@ -84,7 +84,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, activeMenuItemID, 
 						<Link
 							href={href}
 							className={clsx(
-								'brk-menu-list__link text-lg lg:text-xl no-underline transition-colors cursor-none',
+								'brk-menu-list__link text-lg lg:text-xl no-underline transition-colors',
 								className
 							)}
 							onClick={handleNavigation}

@@ -56,7 +56,7 @@ const Navigation: React.FC<NavigationProps> = ({ className, items, activeItemID,
 							href={href}
 							className={clsx(
 								'brk-mobile-menu-list-item__link',
-								'font-semibold text-3xl @sm:text-4xl no-underline transition-colors cursor-none',
+								'font-semibold text-3xl @sm:text-4xl no-underline transition-colors',
 								className
 							)}
 							onClick={handleNavigation}

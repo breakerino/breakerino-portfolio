@@ -21,7 +21,7 @@ const Hamburger: React.FC<HamburgerProps> = ({ className, onClick: handleClick }
 	return (
 		<>
 			<button className={twMerge(clsx('brk-mobile-menu-hamburger',
-				'p-1 w-10 h-10 border-2 border-secondary-700 rounded-sm flex items-center justify-center hover:bg-secondary-800 active:bg-secondary-900 transition-colors cursor-none',
+				'p-1 w-10 h-10 border-2 border-secondary-700 rounded-sm flex items-center justify-center hover:bg-secondary-800 active:bg-secondary-900 transition-colors',
 				className))}
 				onClick={handleClick}	
 			>

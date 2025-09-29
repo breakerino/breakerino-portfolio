@@ -30,7 +30,7 @@ const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt
 			className={twMerge(
 				clsx(
 					'brk-logo',
-					'block h-6 no-underline cursor-none',
+					'block h-6 no-underline',
 					className
 				)
 			)}
