@@ -20,7 +20,6 @@ export interface CursorProps extends Omit<BaseComponentProps, 'as' | 'children'>
 	size?: number;
 	trailLength?: number;
 	trailScale?: number;
-	hideNativeCursor?: boolean;
 }
 
 const Cursor: React.FC<CursorProps> = ({
@@ -28,14 +27,12 @@ const Cursor: React.FC<CursorProps> = ({
 	size = 24,
 	trailLength = 8,
 	trailScale = 0.5,
-	hideNativeCursor = true,
 }) => {
 	const containerRef = React.useRef<HTMLDivElement | null>(null);
 	const trailRefs = React.useRef<HTMLDivElement[]>([]);
 	const rafRef = React.useRef<number | null>(null);
 	const positionsRef = React.useRef<{ x: number; y: number }[]>([]);
 	const lastMouseRef = React.useRef({ x: -9999, y: -9999 });
-	const prevBodyCursorRef = React.useRef<string | null>(null);
 
 	const [isTouchDevice] = useTouchDevice();
 
@@ -79,11 +76,6 @@ const Cursor: React.FC<CursorProps> = ({
 
 		positionsRef.current = Array.from({ length: trailLength }).map(() => ({ x: -9999, y: -9999, }));
 
-		if (hideNativeCursor) {
-			prevBodyCursorRef.current = document.body.style.cursor || '';
-			document.body.style.cursor = 'none';
-		}
-
 		rafRef.current = requestAnimationFrame(loop);
 		window.addEventListener('mousemove', onMouseMove, { passive: true });
 
@@ -93,12 +85,8 @@ const Cursor: React.FC<CursorProps> = ({
 			}
 
 			window.removeEventListener('mousemove', onMouseMove);
-
-			if (hideNativeCursor && prevBodyCursorRef.current !== null) {
-				document.body.style.cursor = prevBodyCursorRef.current;
-			}
 		};
-	}, [size, trailLength, trailScale, hideNativeCursor, isTouchDevice]);
+	}, [size, trailLength, trailScale, isTouchDevice]);
 
 	const setTrailRef = (element: HTMLDivElement | null, i: number) => {
 		if (element) {
