@@ -40,7 +40,7 @@ const Logo: React.FC<LogoProps> = ({ className, href, target = '_self', src, alt
 			<Image
 				className={clsx(
 					'brk-logo__image',
-					'w-full h-full object-contain object-left'
+					'w-fit h-full object-contain object-left'
 				)}
 				alt={alt ?? 'Logo'}
 				draggable={false}
