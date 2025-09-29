@@ -48,7 +48,7 @@ const LettersPullUp: React.FC<LettersPullUpProps> = ({
   const motionVariants: Variants = {
     initial: { y: '100%', opacity: 0 },
     animate: (i: number) => ({
-      y: '0%',
+      y: ['100%', '-10%', '0%'],
       opacity: 1,
       transition: {
         duration: animationDuration,
