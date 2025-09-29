@@ -67,7 +67,7 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 		
 		const handleSlideChange = () => {
 			videos.forEach((video, index) => {
-				if (index === splide.index) {
+				if (index === splide.index && isInView && isPageInView) {
 					video.play().catch(() => {});
 				} else {
 					video.pause();
@@ -89,15 +89,11 @@ const Reels: React.FC<ReelsProps> = ({ className, reels }) => {
 				};
 			});
 		};
-
+		
 		if (! isInView || ! isPageInView) {
 			splide.go(0);
-			
-			videos.forEach((video) => {
-				video.pause();
-				video.currentTime = 0;
-			});
 		}
+		
 		handleSlideChange();
 		bindVideoEndListeners();
 		
