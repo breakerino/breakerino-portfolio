@@ -7,28 +7,52 @@
 // --------------------------------------------------------------------- 
 
 // --------------------------------------------------------------------- 
-import React from 'react';
+import * as React from 'react';
 // --------------------------------------------------------------------- 
 
-const useTouchDevice = () => {
-  const [isTouch, setIsTouch] = React.useState(typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
+// --------------------------------------------------------------------- 
+const mediaQueries = {
+  primaryInputIsTouch: '(pointer: coarse)',
+  touchCannotHover: '(hover: none)',
+} as const;
+// --------------------------------------------------------------------- 
+
+const useTouchDevice = (): boolean => {
+  const getValue = React.useCallback(() => {
+    if (typeof window === 'undefined') {
+			return false;
+		}
+
+    return Object.values(mediaQueries).some(
+      query => window.matchMedia(query).matches
+    );
+  }, []);
+
+  const [isTouch, setIsTouch] = React.useState(getValue);
 
   React.useEffect(() => {
-		const mediaQuery = window.matchMedia('(pointer: coarse)');
-		
-    const checkTouch = () => {
-      const touch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-      setIsTouch(touch);
-    };
+    if (typeof window === 'undefined') {
+			return;
+		}
 
-    window.addEventListener('resize', checkTouch);
-		mediaQuery.addEventListener('change', checkTouch);
-		
+    const queries = Object.values(mediaQueries).map(query =>
+      window.matchMedia(query)
+    );
+
+    const handleUpdate = () => setIsTouch(getValue());
+
+    handleUpdate();
+
+    queries.forEach(query =>
+      query.addEventListener('change', handleUpdate)
+    );
+
     return () => {
-			window.removeEventListener('resize', checkTouch);
-			mediaQuery.removeEventListener('change', checkTouch);
+      queries.forEach(query =>
+        query.removeEventListener('change', handleUpdate)
+      );
     };
-  }, []);
+  }, [getValue]);
 
   return [isTouch];
 }
